@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:nutriya/RouteManager/app_routes.dart';
-import 'package:nutriya/RouteManager/navigator_service.dart';
 import 'package:nutriya/extension/extension_sized_box.dart';
 import 'package:theme_manager_plus/theme_manager_plus.dart';
 
@@ -73,7 +71,7 @@ class _UserBasicDetailsFormState extends State<UserBasicDetailForm> {
             height: 60.h,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: const Color(0xffEFECE8),
+              color: Color(0xffEFECE8),
               border: Border.all(color: Colors.orange, width: 1),
             ),
             child: Padding(
@@ -138,29 +136,34 @@ class _UserBasicDetailsFormState extends State<UserBasicDetailForm> {
                 child: SvgPicture.asset(svgCalenderIcon),
               )),
           20.sBH,
-          FloatingLabelTextField(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(width: 230.w,
+                child: FloatingLabelTextField(
                   floatingLabelText: "floatingLabelText",
 
                   isPaddingThere: false,
                   textInputType: TextInputType.text,
                 ),
-
-              // 10.sBW,
-              // Padding(
-              //   padding: EdgeInsets.only(top: 18.h),
-              //   child: SlidingTabSelector(
-              //     width: 100.w,
-              //     height: 20.h,
-              //     padding: EdgeInsets.all(2.h),
-              //     options: const ['KG', 'LB'],
-              //     initialIndex: 0,
-              //     onChanged: (index) {
-              //       print("Selected index: $index");
-              //     },
-              //   ),
-              // ),
-
-
+              ),
+              10.sBW,
+              Padding(
+                padding: EdgeInsets.only(top: 18.h),
+                child: SlidingTabSelector(
+                  width: 100.w,
+                  height: 20.h,
+                  padding: EdgeInsets.all(2.h),
+                  options: const ['KG', 'LB'],
+                  initialIndex: 0,
+                  onChanged: (index) {
+                    print("Selected index: $index");
+                  },
+                ),
+              ),
+            ],
+          ),
           20.sBH,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -198,8 +201,7 @@ class _UserBasicDetailsFormState extends State<UserBasicDetailForm> {
                   outfitFont: OutfitFontStyle.medium),
               width: 500.w,
               onPressed: (startLoading, stopLoading, btnState) {
-                appNavigator.pushNamed(routeBmiReport);
-                // widget.controller.changeCurrentPage();
+                widget.controller.changeCurrentPage();
               },
               isDisabled: false,
               disableElevation: false),

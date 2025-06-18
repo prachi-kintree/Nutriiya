@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nutriya/extension/extension_sized_box.dart';
 import 'package:nutriya/utils/app_string/app_image_path.dart';
 import 'package:nutriya/viewmodel/login/user_basic_details_view_model.dart';
+import 'package:nutriya/views/widget/selectable_field_widget.dart';
 
 import '../../../../utils/CustomWidgets/Button/custom_button.dart';
 import '../../../../utils/styles/app_text_styles.dart';
-import '../../../widgets/drop_downs/custom_dropdown.dart';
-import '../../../widgets/selectable_field_widget.dart';
+import '../../../widget/drop_downs/custom_dropdown.dart';
 import 'dietary_prefernces.dart';
 
 class YourGoal extends StatefulWidget {
@@ -60,7 +60,7 @@ class _YourGoalState extends State<YourGoal> {
       children: [
         10.sBH,
         SizedBox(
-          height: primaryGoals.length * 60.h,
+          height: 300.h,
           child: ListView.builder(
               itemCount: primaryGoals.length,
               itemBuilder: (context, index) {

@@ -9,7 +9,7 @@ import 'package:nutriya/utils/styles/app_text_styles.dart';
 import 'package:nutriya/utils/utils.dart';
 import 'package:theme_manager_plus/theme_manager_plus.dart';
 
-import '../../widgets/gradient_scaffold.dart';
+import '../../widget/gradient_scaffold.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});

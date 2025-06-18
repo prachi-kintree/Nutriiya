@@ -6,7 +6,6 @@ const String routeHome = "/";
 const String routeOtp = "/otp";
 const String routeSelectUserLanguage = "/selectLanguage";
 const String routeUserDetails = "/userDetails";
-const String routeBmiReport = "/bmiReport";
 const String routeVerifiedSuccess = "/verifiedSuccess";
 const String routeProfileCreatedSuccess = "/profileCreatedSuccess";
 const String routeMemberAddedSuccess = "/memberAddedSuccess";
@@ -121,3 +120,7 @@ const String routeGlobalSearch = "/GlobalSearch";
 
 // Recipe
 const String routeRecipeCreation = "/RecipeCreation";
+
+// nutriya
+const String routeProgress = "/Progress";
+const String routeHistory = "/History";

@@ -7,7 +7,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gallery_picker/gallery_picker.dart';
+// import 'package:gallery_picker/gallery_picker.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -35,24 +35,24 @@ class ImagePickerManager {
   }
 
   setUpOptions() {
-  //   options = [
-  //     BottomSheetTileModel(
-  //         title: LocaleKeys.select_media_camera.tr(),
-  //         leadingIconPath: svgCameraOutlined,
-  //         onPressed: () {}),
-  //     BottomSheetTileModel(
-  //         title: LocaleKeys.select_media_gallery.tr(),
-  //         leadingIconPath: svgPhotoIcon,
-  //         onPressed: () {}),
-  //   ];
-  //
-  //   options[0].onPressed = () {
-  //     openCamera();
-  //   };
-  //
-  //   options[1].onPressed = () {
-  //     openGallery();
-  //   };
+    //   options = [
+    //     BottomSheetTileModel(
+    //         title: LocaleKeys.select_media_camera.tr(),
+    //         leadingIconPath: svgCameraOutlined,
+    //         onPressed: () {}),
+    //     BottomSheetTileModel(
+    //         title: LocaleKeys.select_media_gallery.tr(),
+    //         leadingIconPath: svgPhotoIcon,
+    //         onPressed: () {}),
+    //   ];
+    //
+    //   options[0].onPressed = () {
+    //     openCamera();
+    //   };
+    //
+    //   options[1].onPressed = () {
+    //     openGallery();
+    //   };
   }
 
   openCamera() async {

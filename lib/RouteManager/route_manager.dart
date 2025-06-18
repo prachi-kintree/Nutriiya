@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:nutriya/extension/extension_string.dart';
+import 'package:nutriya/views/dashboard/dashboard_screen.dart';
+import 'package:nutriya/views/dashboard/history/history_screen.dart';
+import 'package:nutriya/views/dashboard/home/home_screen.dart';
+import 'package:nutriya/views/dashboard/profile/profile_screen.dart';
+import 'package:nutriya/views/dashboard/progress/progress_screen.dart';
 import '../Injector/app_injector.dart';
 import '../utils/LocalData/local_data_manager.dart';
 import '../utils/animations/page_route_animation.dart';
 import '../utils/styles/app_decoration.dart';
-import '../views/Onboarding/intro/intro_screen.dart';
 import '../views/Onboarding/languages/select_languages.dart';
 import '../views/Onboarding/login/login_screen.dart';
 import '../views/Onboarding/login/otp/otp_screen.dart';
 import '../views/Onboarding/login/sign_in_screen.dart';
 import '../views/Onboarding/user_detail/user_details_screen.dart';
-import '../views/Onboarding/user_detail/widgets/bmi_report.dart';
 import '../views/splash/splash_screen.dart';
 import 'app_routes.dart';
 import 'deep_link_helper.dart';
@@ -57,22 +60,29 @@ class AppRouteManager {
     switch (settings.name) {
       case routeSplash:
         return MaterialPageRoute(
-            builder: (_) => const SplashScreen(), settings: settings);
+            builder: (_) => SplashScreen(), settings: settings);
 
       case routeLogin:
-        return FadeInRoute(page: const LoginScreen(), settings: settings);
+        return FadeInRoute(page: LoginScreen(), settings: settings);
       case routeSignIn:
-        return FadeInRoute(page: const SignInScreen(), settings: settings);
+        return FadeInRoute(page: SignInScreen(), settings: settings);
       case routeOtp:
-        return FadeInRoute(page: const OtpScreen(), settings: settings);
+        return FadeInRoute(page: OtpScreen(), settings: settings);
       case routeSelectUserLanguage:
-        return FadeInRoute(page: const SelectLanguage(), settings: settings);
+        return FadeInRoute(page: SelectLanguage(), settings: settings);
       case routeUserDetails:
-        return FadeInRoute(page: const UserDetailsScreen(), settings: settings);
-      case routeBmiReport:
-        return FadeInRoute(page: const BmiReport(), settings: settings);
-      case routeIntro:
-        return FadeInRoute(page: const IntroScreen(), settings: settings);
+        // return FadeInRoute(page: UserDetailsScreen(), settings: settings);
+        return FadeInRoute(page: DashboardScreen(), settings: settings);
+      // case routeDashboard:
+      //   return FadeInRoute(page: DashboardScreen(), settings: settings);
+      // case routeProgress:
+      //   return FadeInRoute(page: ProgressScreen(), settings: settings);
+      // case routeCreatePost:
+      //   return FadeInRoute(page: (), settings: settings);
+      // case routeHistory:
+      //   return FadeInRoute(page: HistoryScreen(), settings: settings);
+      // case routeProfile:
+      //   return FadeInRoute(page: ProfileScreen(), settings: settings);
       // // return MaterialPageRoute(
       // //     builder: (_) => UserVerifiedSuccessfully(), settings: settings);
       // // return MaterialPageRoute(builder: (_) => OTPPage(), settings: settings);

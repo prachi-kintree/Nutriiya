@@ -5,7 +5,7 @@ import '../../../RouteManager/app_routes.dart';
 import '../../../RouteManager/navigator_service.dart';
 import '../../../utils/CustomWidgets/Button/custom_button.dart';
 import '../../../utils/styles/app_text_styles.dart';
-import '../../widgets/gradient_scaffold.dart';
+import '../../widget/gradient_scaffold.dart';
 import 'languages_widget/languages.dart';
 
 class SelectLanguage extends StatelessWidget {

@@ -1,4 +1,5 @@
-
+import 'package:nutriya/viewmodel/dashboard/dashboard_viewmodel.dart';
+import 'package:nutriya/viewmodel/dashboard/history/history_viewmodeld.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
@@ -7,7 +8,6 @@ import '../repository/LoginService/login_service.dart';
 import '../viewmodel/login/login_view_model.dart';
 import '../viewmodel/login/user_basic_details_view_model.dart';
 import 'app_injector.dart';
-
 
 class AppProvider {
   static AppProvider shared = AppProvider();
@@ -19,7 +19,8 @@ class AppProvider {
 //               AddMemberViewModel(loginservice: getIt<LoginService>())),
       ChangeNotifierProvider(
           create: (_) => LoginViewModel(
-              loginservice: getIt<LoginService>(),)),
+                loginservice: getIt<LoginService>(),
+              )),
 //       ChangeNotifierProvider(
 //           create: (_) => ForgetUserNameOrPasswordViewModel(
 //               loginservice: getIt<LoginService>(),
@@ -33,7 +34,8 @@ class AppProvider {
 //               ResetPasswordViewModel(loginService: getIt<LoginService>())),
 //       ChangeNotifierProvider(create: (_) => CountryViewModel()),
 //       ChangeNotifierProvider(create: (_) => BottomSheetViewModel()),
-//       ChangeNotifierProvider(create: (_) => DashBoardViewModel()),
+      ChangeNotifierProvider(create: (_) => DashboardViewmodel()),
+      ChangeNotifierProvider(create: (_) => HistoryViewmodeld()),
 //       ChangeNotifierProvider(create: (_) => BasicInfoFormViewModel()),
 //       ChangeNotifierProvider(create: (_) => FormAdditionInfoViewModel()),
 //       ChangeNotifierProvider(
