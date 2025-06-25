@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nutriya/RouteManager/app_routes.dart';
 import 'package:nutriya/utils/app_string/app_image_path.dart';
 import 'package:nutriya/utils/styles/app_text_styles.dart';
+import 'package:nutriya/views/widget/gradient_scaffold.dart';
 
 import '../../RouteManager/navigator_service.dart';
-import '../widgets/gradient_scaffold.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nutriya/extension/extension_string.dart';
 import 'package:nutriya/views/User_Progress/user_progress.dart';
+import 'package:nutriya/views/dashboard/dashboard_screen.dart';
+import 'package:nutriya/views/dashboard/history/history_screen.dart';
+import 'package:nutriya/views/dashboard/home/home_screen.dart';
+import 'package:nutriya/views/dashboard/profile/profile_screen.dart';
+import 'package:nutriya/views/dashboard/progress/progress_screen.dart';
 import '../Injector/app_injector.dart';
 import '../utils/LocalData/local_data_manager.dart';
 import '../utils/animations/page_route_animation.dart';
@@ -85,6 +90,18 @@ class AppRouteManager {
         return FadeInRoute(page: const AccountPage(), settings: settings);
       case routeSubscription:
         return FadeInRoute(page: const SubscriptionPlanPage(), settings: settings);
+        // return FadeInRoute(page: UserDetailsScreen(), settings: settings);
+        return FadeInRoute(page: DashboardScreen(), settings: settings);
+      // case routeDashboard:
+      //   return FadeInRoute(page: DashboardScreen(), settings: settings);
+      // case routeProgress:
+      //   return FadeInRoute(page: ProgressScreen(), settings: settings);
+      // case routeCreatePost:
+      //   return FadeInRoute(page: (), settings: settings);
+      // case routeHistory:
+      //   return FadeInRoute(page: HistoryScreen(), settings: settings);
+      // case routeProfile:
+      //   return FadeInRoute(page: ProfileScreen(), settings: settings);
       // // return MaterialPageRoute(
       // //     builder: (_) => UserVerifiedSuccessfully(), settings: settings);
       // // return MaterialPageRoute(builder: (_) => OTPPage(), settings: settings);

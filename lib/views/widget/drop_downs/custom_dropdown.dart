@@ -10,9 +10,7 @@ import '../../../utils/theme/theme_model.dart';
 class CustomDropdown extends StatefulWidget {
   final List<String> options;
   final String selectedValue;
-
   const CustomDropdown({required this.options, required this.selectedValue});
-
   @override
   _CustomDropdownState createState() => _CustomDropdownState();
 }
@@ -87,10 +85,10 @@ class _CustomDropdownState extends State<CustomDropdown>
                                 TextStyle(fontSize: 16.sp, color: Colors.black),
                             outfitFont: OutfitFontStyle.regular)),
                   ),
-                  if (option != widget.options[widget.options.length - 1])
+                  if (option != "Other (Add manually)")
                     const Divider(
                       height: 0,
-                      thickness: 1
+                      thickness: 1,
                     )
                 ],
               ),

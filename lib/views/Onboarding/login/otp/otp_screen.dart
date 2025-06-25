@@ -13,7 +13,7 @@ import 'package:theme_manager_plus/theme_manager_plus.dart';
 
 import '../../../../translation/locale_keys.g.dart';
 import '../../../../viewmodel/login/login_view_model.dart';
-import '../../../widgets/gradient_scaffold.dart';
+import '../../../widget/gradient_scaffold.dart';
 
 
 class OtpScreen extends StatelessWidget {
