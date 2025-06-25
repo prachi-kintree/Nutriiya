@@ -9,7 +9,7 @@ import '../../../utils/CustomWidgets/Button/custom_button.dart';
 import '../../../utils/app_string/app_image_path.dart';
 import '../../../utils/styles/app_text_styles.dart';
 import '../../../utils/theme/theme_model.dart';
-import '../../widgets/gradient_scaffold.dart';
+import '../../widget/gradient_scaffold.dart';
 
 class SubscriptionPlanPage extends StatelessWidget {
   const SubscriptionPlanPage({super.key});

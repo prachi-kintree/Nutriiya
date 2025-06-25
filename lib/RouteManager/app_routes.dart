@@ -10,37 +10,12 @@ const String routeVerifiedSuccess = "/verifiedSuccess";
 const String routeProfileCreatedSuccess = "/profileCreatedSuccess";
 const String routeMemberAddedSuccess = "/memberAddedSuccess";
 const String routeLoginBasicDetail = "/loginBasicDetails";
-const String routeAddMember = "/addMember";
-const String routeLoginUserName = "/loginUserName";
-const String routeForgetPassword = "/forgetPassword";
-const String routeSuccess = "/success";
-const String routeCreatePassword = "/createPassword";
-const String routeAddMemberDetail = "/addDetail";
-const String routeCountryList = "/countryList";
-const String routeTermsAndCondition = "/termsAndCondition";
-const String routeForgetCredentialOtpPage = "/forgetCredentialsOtp";
-const String routeResetPassword = "/resetPassword";
-const String routeShowUserName = "/viewUserName";
+
 const String routeUserProgress = "/userProgress";
 const String routeHistory = "/history";
 const String routeAccount = "/account";
 const String routeSubscription = "/subscription";
-
-const String routeDummyDashBoard = "/TestDashBoard";
-
-// Profile Routes
-const String routeProfile = "/profile";
-const String routeAboutUser = "/aboutPage";
-const String routeCompleteProfile = "/aboutCompleteProfile";
-const String routeBasicInfoForm = "/aboutBasicInfoForm";
-const String routeContactInfoForm = "/aboutContactInfoForm";
-const String routeAdditionalInfoForm = "/aboutAdditionalInfoForm";
-const String routeRegionalEthnicityInfoForm = "/aboutRegionalEthnicityInfoForm";
-const String routeEducationalDetailsForm = "/aboutEducationalDetailsForm";
-const String routeYourInterestForm = "/aboutYourInterestForm";
-const String routeSearchPage = "/SearchPage";
-const String routeLocationSearch = "/LocationSearch";
-const String routeViewKnownLanguage = "/viewKnownLanguage";
+const String routeBmiReport = "/bmiReport";
 
 // Dashboard Route
 const String routeDashboard = "/dashBoard";
@@ -49,7 +24,6 @@ const String routeCreatePost = "/createPost";
 const String postReviewPage = "/postReviewPage";
 
 // Post Routes
-
 const String routeFeelings = "/feelingPage";
 const String routeGifSearch = "/gifSearch";
 const String routeTagMember = "/tagMememberPage";
@@ -124,7 +98,3 @@ const String routeGlobalSearch = "/GlobalSearch";
 
 // Recipe
 const String routeRecipeCreation = "/RecipeCreation";
-
-// nutriya
-const String routeProgress = "/Progress";
-const String routeHistory = "/History";

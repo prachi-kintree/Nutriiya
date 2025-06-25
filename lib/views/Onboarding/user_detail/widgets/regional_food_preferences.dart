@@ -1,20 +1,13 @@
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ruler_picker/flutter_ruler_picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nutriya/extension/extension_sized_box.dart';
 import 'package:nutriya/utils/app_string/app_image_path.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:nutriya/viewmodel/login/user_basic_details_view_model.dart';
-import 'package:nutriya/views/widget/selectable_field_widget.dart';
-import 'package:theme_manager_plus/theme_manager_plus.dart';
 
 import '../../../../utils/CustomWidgets/Button/custom_button.dart';
-import '../../../../utils/CustomWidgets/Textfields/sliding_tab_selector.dart';
 import '../../../../utils/styles/app_text_styles.dart';
-import '../../../../utils/theme/theme_model.dart';
-import '../../../widget/drop_downs/custom_dropdown.dart';
+import '../../../widget/selectable_field_widget.dart';
 import 'dietary_prefernces.dart';
 
 class RegionalFoodPreferences extends StatefulWidget {
@@ -27,7 +20,7 @@ class RegionalFoodPreferences extends StatefulWidget {
 }
 
 class _RegionalFoodPreferencesState extends State<RegionalFoodPreferences> {
-  List<SelectableFieldItem> primaryGoals = [
+  List<SelectableFieldItem> regionalFoodPrefs = [
     SelectableFieldItem(
         icon: svgNorthIndian, dietType: "North Indian", isSelected: false),
     SelectableFieldItem(
@@ -72,31 +65,15 @@ class _RegionalFoodPreferencesState extends State<RegionalFoodPreferences> {
       children: [
         10.sBH,
         SizedBox(
-          height: 300.h,
+          height: regionalFoodPrefs.length * 60.h,
           child: ListView.builder(
-              itemCount: primaryGoals.length,
+              itemCount: regionalFoodPrefs.length,
               itemBuilder: (context, index) {
-                SelectableFieldItem currentPref = primaryGoals[index];
+                SelectableFieldItem currentPref = regionalFoodPrefs[index];
                 return SelectableFieldWidget(selectableFieldItem: currentPref);
               }),
         ),
         10.sBH,
-
-        const CustomDropdown(
-          options: [
-            "High blood pressure",
-            "Low blood pressure",
-            "High cholesterol",
-            "PCOS/PCOD",
-            "Thyroid (Hypo/Hyper)",
-            "Anxiety / Stress",
-            "Joint pain / Arthritis",
-            "Sleep issues",
-            "Other (Add manually)"
-          ],
-          selectedValue: 'Any existing conditions?',
-        ),
-        // 10.sBH,
 
         CustomButton(
             buttonText: "Continue",

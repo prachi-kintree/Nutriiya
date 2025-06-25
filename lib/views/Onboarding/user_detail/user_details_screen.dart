@@ -99,7 +99,7 @@ class _CommonBaseState extends State<CommonBase> {
       case 5:
         return RegionalFoodPreferences(controller: controller);
       case 6:
-        return const GroceryBehaviour();
+        return GroceryBehaviour(controller: controller);
       // return NudgeBottomSheet(
       //   bottomSheetType: BottomSheetType.statustracker,
       //   isThumps: false,
