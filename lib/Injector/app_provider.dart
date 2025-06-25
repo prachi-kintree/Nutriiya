@@ -1,5 +1,5 @@
 import 'package:nutriya/viewmodel/dashboard/dashboard_viewmodel.dart';
-import 'package:nutriya/viewmodel/dashboard/history/history_viewmodeld.dart';
+import 'package:nutriya/viewmodel/dashboard/history/history_viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 

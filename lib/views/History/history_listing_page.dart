@@ -12,9 +12,7 @@ class HistoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      builder: (_, __) => Scaffold(
+    return Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50.h),
           child: AppBar(
@@ -29,7 +27,6 @@ class HistoryScreen extends StatelessWidget {
           )),
         ),
         body: HistoryContent(),
-      ),
     );
   }
 }

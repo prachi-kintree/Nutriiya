@@ -88,8 +88,8 @@ class AppRouteManager {
         return FadeInRoute(page: const SubscriptionPlanPage(), settings: settings);
         // return FadeInRoute(page: UserDetailsScreen(), settings: settings);
         return FadeInRoute(page: DashboardScreen(), settings: settings);
-      // case routeDashboard:
-      //   return FadeInRoute(page: DashboardScreen(), settings: settings);
+      case routeDashboard:
+        return FadeInRoute(page: DashboardScreen(), settings: settings);
       // case routeProgress:
       //   return FadeInRoute(page: ProgressScreen(), settings: settings);
       // case routeCreatePost:

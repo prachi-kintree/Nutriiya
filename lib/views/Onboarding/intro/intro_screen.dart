@@ -298,9 +298,21 @@ class _IntroScreenState extends State<IntroScreen>
   int _step = 1;
   static const int maxSteps = 3;
   List<IntroScreenModel> introScreenModelList = [
-    IntroScreenModel(image: pngIntro1,title: "Snap & Track : One snap.\nFull breakdown.",subtitle: "Nutriya’s AI understands your plate — even if it’s\nbhindi, kadhi, or pongal. Just click a photo. We’ll handle the rest."),
-    IntroScreenModel(image: pngIntro2,title: "India's Most Comprehensive\nFood Database",subtitle: "Whether it’s Kashmiri Rogan Josh or Tamil Nadu’s Rasam,\nNutriya understands what’s really on your plate — macros,\nmicros, magic and all."),
-    IntroScreenModel(image: pngIntro3,title: "Track Your Progress,\nVisually",subtitle: "Nutriya shows your progress in smart, simple visuals.\nSo you always know what’s working — and what’s not."),
+    IntroScreenModel(
+        image: pngIntro1,
+        title: "Snap & Track : One snap.\nFull breakdown.",
+        subtitle:
+            "Nutriya’s AI understands your plate — even if it’s\nbhindi, kadhi, or pongal. Just click a photo. We’ll handle the rest."),
+    IntroScreenModel(
+        image: pngIntro2,
+        title: "India's Most Comprehensive\nFood Database",
+        subtitle:
+            "Whether it’s Kashmiri Rogan Josh or Tamil Nadu’s Rasam,\nNutriya understands what’s really on your plate — macros,\nmicros, magic and all."),
+    IntroScreenModel(
+        image: pngIntro3,
+        title: "Track Your Progress,\nVisually",
+        subtitle:
+            "Nutriya shows your progress in smart, simple visuals.\nSo you always know what’s working — and what’s not."),
   ];
 
   @override
@@ -315,7 +327,7 @@ class _IntroScreenState extends State<IntroScreen>
         child: Column(
           children: [
             SizedBox(height: 100.h),
-            _currentPage(introScreenModelList[_step-1]),
+            _currentPage(introScreenModelList[_step - 1]),
             const Spacer(),
             CustomPaint(
               size: Size(screenWidth, 100),
@@ -328,7 +340,7 @@ class _IntroScreenState extends State<IntroScreen>
                   if (_step < maxSteps) {
                     _step++;
                   } else {
-                    appNavigator.pushNamed(routeAccount);
+                    appNavigator.pushNamed(routeDashboard);
                     // _step = maxSteps;
                   }
                 });
@@ -338,9 +350,7 @@ class _IntroScreenState extends State<IntroScreen>
                 decoration: BoxDecoration(
                   // color: Colors.green,
                   borderRadius: BorderRadius.circular(32),
-                  border: Border.all(
-                      color: const Color(0xff8BE84F),
-                      width: 1),
+                  border: Border.all(color: const Color(0xff8BE84F), width: 1),
                 ),
                 child: Container(
                   width: 200.w,
@@ -354,11 +364,16 @@ class _IntroScreenState extends State<IntroScreen>
                     borderRadius: BorderRadius.circular(32),
                     // border: Border.all(color: Colors.white, width: 4),
                   ),
-                  child: _step == maxSteps ? Text("Get Started", style: AppTextStyle.outfitStyle(
-                      withTextStyle:
-                      TextStyle(fontSize: 18.sp, color: Colors.white),
-                      outfitFont: OutfitFontStyle.semibold),) : const Icon(Icons.arrow_forward_ios_outlined,
-                      color: Colors.white),
+                  child: _step == maxSteps
+                      ? Text(
+                          "Get Started",
+                          style: AppTextStyle.outfitStyle(
+                              withTextStyle: TextStyle(
+                                  fontSize: 18.sp, color: Colors.white),
+                              outfitFont: OutfitFontStyle.semibold),
+                        )
+                      : const Icon(Icons.arrow_forward_ios_outlined,
+                          color: Colors.white),
                 ),
               ),
             ),
@@ -380,18 +395,17 @@ class _IntroScreenState extends State<IntroScreen>
           model.title,
           textAlign: TextAlign.center,
           style: AppTextStyle.outfitStyle(
-              withTextStyle:
-              TextStyle(fontSize: 26.sp, color: Colors.black),
+              withTextStyle: TextStyle(fontSize: 26.sp, color: Colors.black),
               outfitFont: OutfitFontStyle.semibold),
         ),
         SizedBox(height: 15.h),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            model.subtitle,textAlign: TextAlign.center,
+            model.subtitle,
+            textAlign: TextAlign.center,
             style: AppTextStyle.outfitStyle(
-                withTextStyle:
-                TextStyle(fontSize: 14.sp, color: Colors.black),
+                withTextStyle: TextStyle(fontSize: 14.sp, color: Colors.black),
                 outfitFont: OutfitFontStyle.regular),
           ),
         ),
@@ -438,11 +452,11 @@ class CurvedProgressBarPainter extends CustomPainter {
       oldDelegate.progress != progress;
 }
 
-
 class IntroScreenModel {
   final String image;
   final String title;
   final String subtitle;
 
-  IntroScreenModel({required this.image, required this.title, required this.subtitle});
+  IntroScreenModel(
+      {required this.image, required this.title, required this.subtitle});
 }

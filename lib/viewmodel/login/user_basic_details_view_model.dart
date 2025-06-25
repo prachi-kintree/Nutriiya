@@ -2,8 +2,10 @@ import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:nutriya/RouteManager/navigator_service.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
+import '../../RouteManager/app_routes.dart';
 import '../../RouteManager/route_manager.dart';
 import '../../repository/FirebaseAuth/firebase_authservice.dart';
 import '../../repository/LoginService/login_service.dart';
@@ -49,6 +51,8 @@ class UserBasicDetailsViewModel extends ChangeNotifier {
     if (currentPage < 6) {
       currentPage++;
       notifyListeners();
+    } else {
+      appNavigator.pushReplacementNamed(routeIntro);
     }
   }
 
