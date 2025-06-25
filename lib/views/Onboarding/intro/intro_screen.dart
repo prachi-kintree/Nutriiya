@@ -278,9 +278,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nutriya/RouteManager/navigator_service.dart';
 import 'package:nutriya/utils/app_string/app_image_path.dart';
 import 'package:theme_manager_plus/theme_manager_plus.dart';
 
+import '../../../RouteManager/app_routes.dart';
 import '../../../utils/styles/app_text_styles.dart';
 import '../../../utils/theme/theme_model.dart';
 
@@ -326,6 +328,7 @@ class _IntroScreenState extends State<IntroScreen>
                   if (_step < maxSteps) {
                     _step++;
                   } else {
+                    appNavigator.pushNamed(routeAccount);
                     // _step = maxSteps;
                   }
                 });
@@ -340,8 +343,9 @@ class _IntroScreenState extends State<IntroScreen>
                       width: 1),
                 ),
                 child: Container(
-                  width: 140.w,
+                  width: 200.w,
                   height: 43.h,
+                  // padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 20.w),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     color: ThemeManagerPlus.of<AppTheme>(context)
@@ -404,7 +408,7 @@ class CurvedProgressBarPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final Paint basePaint = Paint()
-      ..color = Color(0xff8BE84F)
+      ..color = const Color(0xff8BE84F)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.h;
 

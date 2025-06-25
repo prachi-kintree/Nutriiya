@@ -12,7 +12,7 @@ import 'package:theme_manager_plus/theme_manager_plus.dart';
 import '../../../../utils/CustomWidgets/Button/custom_button.dart';
 import '../../../../utils/CustomWidgets/Textfields/floating_clickable_field.dart';
 import '../../../../utils/CustomWidgets/Textfields/floating_text_field.dart';
-import '../../../../utils/CustomWidgets/Textfields/gender_field.dart';
+import '../../../../utils/CustomWidgets/Textfields/custom_tab_bar.dart';
 import '../../../../utils/CustomWidgets/Textfields/sliding_tab_selector.dart';
 import '../../../../utils/app_string/app_image_path.dart';
 import '../../../../utils/styles/app_text_styles.dart';
@@ -127,7 +127,15 @@ class _UserBasicDetailsFormState extends State<UserBasicDetailForm> {
             isPaddingThere: false,
           ),
           20.sBH,
-          const GenderTabBar(),
+          CustomIconTabBar(
+            items: [
+              CustomTabItem(iconPath: svgMaleIcon, label: 'Male'),
+              CustomTabItem(iconPath: svgFemaleIcon, label: 'Female'),
+            ],
+            onChanged: (index) {
+              // handle index change
+            },
+          ),
           20.sBH,
           FloatingClickableTextField(
               floatingLabelText: "floatingLabelText",

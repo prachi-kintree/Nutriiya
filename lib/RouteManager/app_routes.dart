@@ -22,6 +22,10 @@ const String routeTermsAndCondition = "/termsAndCondition";
 const String routeForgetCredentialOtpPage = "/forgetCredentialsOtp";
 const String routeResetPassword = "/resetPassword";
 const String routeShowUserName = "/viewUserName";
+const String routeUserProgress = "/userProgress";
+const String routeHistory = "/history";
+const String routeAccount = "/account";
+const String routeSubscription = "/subscription";
 
 const String routeDummyDashBoard = "/TestDashBoard";
 
