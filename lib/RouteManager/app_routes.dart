@@ -98,3 +98,12 @@ const String routeGlobalSearch = "/GlobalSearch";
 
 // Recipe
 const String routeRecipeCreation = "/RecipeCreation";
+
+// nutriya
+const String routeProgress = "/Progress";
+const String routeHistory = "/History";
+const String routeMealSearch = "/MealSearch";
+const String routeIngredientSearch = "/IngredientSearch";
+const String routeFoodCart = "/FoodCart";
+const String routeMealDetailScreen = "/MealDetailScreen";
+const String routeMealCameraScreen = "/MealCameraScreen";

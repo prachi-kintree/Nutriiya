@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:nutriya/RouteManager/navigator_service.dart';
 import 'package:nutriya/extension/extension_sized_box.dart';
 import 'package:nutriya/utils/app_string/app_image_path.dart';
 import 'package:nutriya/utils/styles/app_text_styles.dart';
@@ -23,6 +24,7 @@ class CommonBottomsheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: height.h,
+      padding: EdgeInsets.symmetric(horizontal: 10.w),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -33,7 +35,14 @@ class CommonBottomsheet extends StatelessWidget {
           15.sBH,
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: [SvgPicture.asset(svgCancel), 15.sBW],
+            children: [
+              InkWell(
+                  onTap: () {
+                    appNavigator.goBack();
+                  },
+                  child: SvgPicture.asset(svgCancel)),
+              15.sBW
+            ],
           ),
           Text(title,
               textAlign: TextAlign.center,
@@ -47,7 +56,8 @@ class CommonBottomsheet extends StatelessWidget {
                   withTextStyle:
                       TextStyle(fontSize: 16.sp, color: Colors.black),
                   outfitFont: OutfitFontStyle.medium)),
-          // child
+          20.sBH,
+          child
         ],
       ),
     );

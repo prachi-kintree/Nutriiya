@@ -1,5 +1,9 @@
 import 'package:nutriya/viewmodel/dashboard/dashboard_viewmodel.dart';
+import 'package:nutriya/viewmodel/dashboard/scanner/meal_search_screen_viewmodel.dart';
 import 'package:nutriya/viewmodel/dashboard/history/history_viewmodel.dart';
+import 'package:nutriya/viewmodel/dashboard/history/history_viewmodeld.dart';
+import 'package:nutriya/viewmodel/dashboard/scanner/food_logger_viewmodel.dart';
+import 'package:nutriya/viewmodel/dashboard/scanner/meal_search_screen_viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
@@ -36,6 +40,8 @@ class AppProvider {
 //       ChangeNotifierProvider(create: (_) => BottomSheetViewModel()),
       ChangeNotifierProvider(create: (_) => DashboardViewmodel()),
       ChangeNotifierProvider(create: (_) => HistoryViewmodeld()),
+      ChangeNotifierProvider(create: (_) => FoodLoggerViewmodel()),
+      ChangeNotifierProvider(create: (_) => MealSearchScreenViewmodel()),
 //       ChangeNotifierProvider(create: (_) => BasicInfoFormViewModel()),
 //       ChangeNotifierProvider(create: (_) => FormAdditionInfoViewModel()),
 //       ChangeNotifierProvider(

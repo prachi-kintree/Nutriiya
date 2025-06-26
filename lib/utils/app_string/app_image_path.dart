@@ -395,3 +395,6 @@ String svgTea = "assets/images/tea.svg";
 String svgAddButtonCircle = "assets/images/add_button_circle.svg";
 String svgMorningIcon = "assets/images/morning_icon.svg";
 String pngProfileImg = "assets/images/profile_img.png";
+String svgScanFood = "assets/images/scan_food.svg";
+String svgLogFood = "assets/images/log_food.svg";
+String svgScanDashboard = "assets/images/scan_dashboard_icon.svg";

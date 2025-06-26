@@ -2,8 +2,13 @@ import 'package:date_util_plus/date_util_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:nutriya/RouteManager/route_manager_barrel.dart';
 import 'package:nutriya/extension/extension_sized_box.dart';
 import 'package:nutriya/utils/utils.dart';
+import 'package:nutriya/viewmodel/dashboard/scanner/food_logger_viewmodel.dart';
+import 'package:nutriya/viewmodel/dashboard/scanner/meal_search_screen_viewmodel.dart';
+import 'package:nutriya/views/widget/bottom_sheets/common_bottomsheet.dart';
+import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:theme_manager_plus/theme_manager_plus.dart';
 
@@ -13,10 +18,23 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Meals> meals = [
-      Meals(svgSandwich, "Breakfast", "Recommended : 481 kcal"),
-      Meals(svgPaneerCurry, "Lunch", "Recommended : 577 kcal"),
-      Meals(svgLoveFood, "Dinner", "Recommended : 577 kcal"),
-      Meals(svgTea, "Snack", "Recommended : 288 kcal"),
+      // Meals(svgSandwich, "Breakfast", "Recommended : 481 kcal"),
+      // Meals(svgPaneerCurry, "Lunch", "Recommended : 577 kcal"),
+      // Meals(svgLoveFood, "Dinner", "Recommended : 577 kcal"),
+      // Meals(svgTea, "Snack", "Recommended : 288 kcal"),
+      Meals(
+          icon: svgSandwich,
+          title: "Breakfast",
+          subtitle: "Recommended : 481 kcal"),
+      Meals(
+          icon: svgPaneerCurry,
+          title: "Lunch",
+          subtitle: "Recommended : 577 kcal"),
+      Meals(
+          icon: svgLoveFood,
+          title: "Dinner",
+          subtitle: "Recommended : 577 kcal"),
+      Meals(icon: svgTea, title: "Snack", subtitle: "Recommended : 288 kcal"),
     ];
 
     return Scaffold(
@@ -186,19 +204,198 @@ class HomeScreen extends StatelessWidget {
                             fontSize: 20.sp, color: Color(0xff09020F)),
                         jakartaFont: JakartaStyle.bold)),
                 10.sBH,
-                SizedBox(
-                  height: 330.h,
-                  child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    itemCount: meals.length,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return LogMealsWidget(
-                          icon: meals[index].icon!,
-                          title: meals[index].title!,
-                          subtitle: meals[index].subtitle!);
-                    },
-                  ),
+                Consumer<MealSearchScreenViewmodel>(
+                  builder: (context, value, child) {
+                    return SizedBox(
+                        // height: 330.h,
+                        child:
+                            //  ListView.builder(
+                            //   padding: EdgeInsets.zero,
+                            //   shrinkWrap: true,
+                            //   itemCount: meals.length,
+                            //   physics: const NeverScrollableScrollPhysics(),
+                            //   itemBuilder: (context, index) {
+                            //     return LogMealsWidget(
+                            //         list:
+                            //         icon: meals[index].icon!,
+                            //         title: meals[index].title!,
+                            //         subtitle: meals[index].subtitle!);
+                            //   },
+                            // ),
+                            ListView(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      children: [
+                        LogMealsWidget(
+                            onAddTap: () {
+                              openBottomSheet(
+                                  context: context,
+                                  title: "Log your meal",
+                                  subTitle:
+                                      "Choose how you want to log today’s meal",
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          appNavigator.goBack();
+                                          context
+                                              .read<FoodLoggerViewmodel>()
+                                              .navigateToDesireMeal(meals[0]);
+                                        },
+                                        child: Container(
+                                          height: 135.h,
+                                          width: 158.w,
+                                          padding: EdgeInsets.only(
+                                              left: 10.w, right: 5.w),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffD9ECCD),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      12.0.r)),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Align(
+                                                  alignment: Alignment.center,
+                                                  child: SvgPicture.asset(
+                                                      svgLogFood)),
+                                              10.sBH,
+                                              Text('Describe',
+                                                  textAlign: TextAlign.start,
+                                                  style:
+                                                      AppTextStyle.outfitStyle(
+                                                          withTextStyle:
+                                                              TextStyle(
+                                                                  fontSize:
+                                                                      16.sp,
+                                                                  color: Colors
+                                                                      .black),
+                                                          outfitFont:
+                                                              OutfitFontStyle
+                                                                  .regular)),
+                                              Text(
+                                                  "Write down what you ate— quick and easy tracking.",
+                                                  textAlign: TextAlign.start,
+                                                  style:
+                                                      AppTextStyle.outfitStyle(
+                                                          withTextStyle:
+                                                              TextStyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  color: Colors
+                                                                      .black),
+                                                          outfitFont:
+                                                              OutfitFontStyle
+                                                                  .light)),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      20.sBW,
+                                      InkWell(
+                                        onTap: () {
+                                          appNavigator.goBack();
+                                          context
+                                              .read<FoodLoggerViewmodel>()
+                                              .navigateToDesireMeal(meals[0]);
+                                        },
+                                        child: Container(
+                                          height: 135.h,
+                                          width: 158.w,
+                                          padding: EdgeInsets.only(
+                                              left: 10.w, right: 5.w),
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffD9ECCD),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      12.0.r)),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Align(
+                                                  alignment: Alignment.center,
+                                                  child: SvgPicture.asset(
+                                                      svgScanFood)),
+                                              20.sBH,
+                                              Text('Capture',
+                                                  textAlign: TextAlign.start,
+                                                  style:
+                                                      AppTextStyle.outfitStyle(
+                                                          withTextStyle:
+                                                              TextStyle(
+                                                                  fontSize:
+                                                                      16.sp,
+                                                                  color: Colors
+                                                                      .black),
+                                                          outfitFont:
+                                                              OutfitFontStyle
+                                                                  .regular)),
+                                              Text(
+                                                  "Snap a photo of your meal for visual logging.",
+                                                  textAlign: TextAlign.start,
+                                                  style:
+                                                      AppTextStyle.outfitStyle(
+                                                          withTextStyle:
+                                                              TextStyle(
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  color: Colors
+                                                                      .black),
+                                                          outfitFont:
+                                                              OutfitFontStyle
+                                                                  .light)),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ));
+                            },
+                            list: value.breakfastList,
+                            icon: meals[0].icon!,
+                            title: meals[0].title!,
+                            subtitle: meals[0].subtitle!),
+                        LogMealsWidget(
+                            onAddTap: () {
+                              context
+                                  .read<FoodLoggerViewmodel>()
+                                  .navigateToDesireMeal(meals[1]);
+                            },
+                            list: value.lunchList,
+                            icon: meals[1].icon!,
+                            title: meals[1].title!,
+                            subtitle: meals[1].subtitle!),
+                        LogMealsWidget(
+                            onAddTap: () {
+                              context
+                                  .read<FoodLoggerViewmodel>()
+                                  .navigateToDesireMeal(meals[2]);
+                            },
+                            list: value.dinnerList,
+                            icon: meals[2].icon!,
+                            title: meals[2].title!,
+                            subtitle: meals[2].subtitle!),
+                        LogMealsWidget(
+                            onAddTap: () {
+                              context
+                                  .read<FoodLoggerViewmodel>()
+                                  .navigateToDesireMeal(meals[3]);
+                            },
+                            list: value.snackList,
+                            icon: meals[3].icon!,
+                            title: meals[3].title!,
+                            subtitle: meals[3].subtitle!),
+                      ],
+                    ));
+                  },
                 ),
                 10.sBH,
                 Text("Water",
@@ -219,15 +416,18 @@ class HomeScreen extends StatelessWidget {
 }
 
 class LogMealsWidget extends StatelessWidget {
-  const LogMealsWidget({
-    super.key,
-    required this.icon,
-    required this.title,
-    required this.subtitle,
-  });
+  const LogMealsWidget(
+      {super.key,
+      required this.icon,
+      required this.title,
+      required this.subtitle,
+      this.list = const [],
+      required this.onAddTap});
   final String icon;
   final String title;
   final String subtitle;
+  final List<SuggestedFood> list;
+  final VoidCallback onAddTap;
 
   @override
   Widget build(BuildContext context) {
@@ -237,31 +437,77 @@ class LogMealsWidget extends StatelessWidget {
           elevation: 1,
           borderRadius: BorderRadius.circular(12.0.r),
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
-            height: 70.h,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+            // height: 70.h,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SvgPicture.asset(icon),
-                20.sBW,
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(title,
-                        style: AppTextStyle.outfitStyle(
-                            withTextStyle: TextStyle(
-                                fontSize: 18.sp, color: Color(0xff09020F)),
-                            outfitFont: OutfitFontStyle.regular)),
-                    5.sBH,
-                    Text(subtitle,
-                        style: AppTextStyle.outfitStyle(
-                            withTextStyle: TextStyle(
-                                fontSize: 14.sp, color: Color(0xff09020F)),
-                            outfitFont: OutfitFontStyle.regular)),
+                    SvgPicture.asset(icon),
+                    20.sBW,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(title,
+                            style: AppTextStyle.outfitStyle(
+                                withTextStyle: TextStyle(
+                                    fontSize: 18.sp, color: Color(0xff09020F)),
+                                outfitFont: OutfitFontStyle.regular)),
+                        5.sBH,
+                        Text(subtitle,
+                            style: AppTextStyle.outfitStyle(
+                                withTextStyle: TextStyle(
+                                    fontSize: 14.sp, color: Color(0xff09020F)),
+                                outfitFont: OutfitFontStyle.regular)),
+                      ],
+                    ),
+                    const Spacer(),
+                    InkWell(
+                        onTap: onAddTap,
+                        child: SvgPicture.asset(svgAddButtonCircle))
                   ],
                 ),
-                Spacer(),
-                SvgPicture.asset(svgAddButtonCircle)
+                5.sBH,
+                (list.isNotEmpty)
+                    ? SizedBox(
+                        height: 20.h,
+                        child: ListView.builder(
+                          padding: EdgeInsets.zero,
+                          physics: const NeverScrollableScrollPhysics(),
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          itemCount: list.length,
+                          itemBuilder: (context, index) {
+                            return Text(' ${list[index].foodname} ,',
+                                style: AppTextStyle.outfitStyle(
+                                    withTextStyle: TextStyle(
+                                        fontSize: 15.sp,
+                                        color: Color(0xff09020F)),
+                                    outfitFont: OutfitFontStyle.regular));
+                          },
+                        ))
+                    : const SizedBox(),
+                5.sBH,
+                list.isNotEmpty
+                    ? Align(
+                        alignment: Alignment.bottomRight,
+                        child: CustomButton(
+                            onPressed: (startLoading, stopLoading, btnState) {
+                              appNavigator.pushNamed(routeMealDetailScreen);
+                            },
+                            // padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
+                            buttonTextStyle: AppTextStyle.outfitStyle(
+                                withTextStyle: TextStyle(fontSize: 16.sp),
+                                outfitFont: OutfitFontStyle.medium),
+                            width: 100.w,
+                            height: 30.h,
+                            buttonText: 'Details'),
+                      )
+                    : const SizedBox(),
               ],
             ),
           )),
@@ -383,10 +629,13 @@ class _WaterTrackerState extends State<WaterTracker> {
                 if (glasses[index] == svgAddEmptyGlass) {
                   return GestureDetector(
                     onTap: onAddGlass,
-                    child: SvgPicture.asset(svgAddEmptyGlass),
+                    child: SvgPicture.asset(
+                      svgAddEmptyGlass,
+                      height: 40.h,
+                    ),
                   );
                 } else {
-                  return SvgPicture.asset(glasses[index]);
+                  return SvgPicture.asset(glasses[index], height: 40.h);
                 }
               }),
             ),
@@ -433,8 +682,8 @@ class ProgressIndicator extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SizedBox(
-          height: 130,
-          width: 120,
+          height: 110.w,
+          width: 110.w,
           child: SfRadialGauge(
             animationDuration: 2000,
             enableLoadingAnimation: true,
@@ -498,10 +747,10 @@ class ProgressIndicator extends StatelessWidget {
   }
 }
 
-class Meals {
-  final String? icon;
-  final String? title;
-  final String? subtitle;
+// class Meals {
+//   final String? icon;
+//   final String? title;
+//   final String? subtitle;
 
-  Meals(this.icon, this.title, this.subtitle);
-}
+//   Meals(this.icon, this.title, this.subtitle);
+// }
