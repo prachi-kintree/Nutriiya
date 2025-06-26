@@ -1,7 +1,5 @@
-import 'package:nutriya/viewmodel/dashboard/dashboard_viewmodel.dart';
 import 'package:nutriya/viewmodel/dashboard/scanner/meal_search_screen_viewmodel.dart';
 import 'package:nutriya/viewmodel/dashboard/history/history_viewmodel.dart';
-import 'package:nutriya/viewmodel/dashboard/history/history_viewmodeld.dart';
 import 'package:nutriya/viewmodel/dashboard/scanner/food_logger_viewmodel.dart';
 import 'package:nutriya/viewmodel/dashboard/scanner/meal_search_screen_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -9,6 +7,7 @@ import 'package:provider/single_child_widget.dart';
 
 import '../repository/FirebaseAuth/firebase_authservice.dart';
 import '../repository/LoginService/login_service.dart';
+import '../viewmodel/dashboard/dashboard_viewmodel.dart';
 import '../viewmodel/login/login_view_model.dart';
 import '../viewmodel/login/user_basic_details_view_model.dart';
 import 'app_injector.dart';

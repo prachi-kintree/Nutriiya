@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:nutriya/extension/extension_string.dart';
-import 'package:nutriya/views/dashboard/Scanner/camera_scanner_screen.dart';
-import 'package:nutriya/views/dashboard/Scanner/food_cart_screen.dart';
-import 'package:nutriya/views/dashboard/Scanner/ingredient_search_screen.dart';
-import 'package:nutriya/views/dashboard/Scanner/meal_detail_screen.dart';
-import 'package:nutriya/views/dashboard/Scanner/meal_search_screen.dart';
 import 'package:nutriya/views/User_Progress/user_progress.dart';
 import 'package:nutriya/views/dashboard/dashboard_screen.dart';
 import '../Injector/app_injector.dart';
 import '../utils/LocalData/local_data_manager.dart';
 import '../utils/animations/page_route_animation.dart';
 import '../utils/styles/app_decoration.dart';
+import '../viewmodel/dashboard/scanner/camera_scanner_screen.dart';
+import '../viewmodel/dashboard/scanner/ingredient_search_screen.dart';
+import '../viewmodel/dashboard/scanner/meal_detail_screen.dart';
+import '../viewmodel/dashboard/scanner/meal_search_screen.dart';
 import '../views/Account/amount_page.dart';
 import '../views/Account/subscription/subscription_plan.dart';
 import '../views/History/history_listing_page.dart';
@@ -22,6 +21,7 @@ import '../views/Onboarding/login/sign_in_screen.dart';
 import '../views/Onboarding/user_detail/user_details_screen.dart';
 import '../views/Onboarding/user_detail/widgets/bmi_report.dart';
 import '../views/splash/splash_screen.dart';
+import '../views/widgets/food_details/common_food_details.dart';
 import 'app_routes.dart';
 import 'deep_link_helper.dart';
 
