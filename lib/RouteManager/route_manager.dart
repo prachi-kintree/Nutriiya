@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nutriya/extension/extension_string.dart';
+import 'package:nutriya/views/dashboard/Scanner/camera_scanner_screen.dart';
+import 'package:nutriya/views/dashboard/Scanner/food_cart_screen.dart';
+import 'package:nutriya/views/dashboard/Scanner/ingredient_search_screen.dart';
+import 'package:nutriya/views/dashboard/Scanner/meal_detail_screen.dart';
+import 'package:nutriya/views/dashboard/Scanner/meal_search_screen.dart';
 import 'package:nutriya/views/dashboard/dashboard_screen.dart';
 import 'package:nutriya/views/dashboard/history/history_screen.dart';
 import 'package:nutriya/views/dashboard/home/home_screen.dart';
@@ -73,8 +78,16 @@ class AppRouteManager {
       case routeUserDetails:
         // return FadeInRoute(page: UserDetailsScreen(), settings: settings);
         return FadeInRoute(page: DashboardScreen(), settings: settings);
-      // case routeDashboard:
-      //   return FadeInRoute(page: DashboardScreen(), settings: settings);
+      case routeMealSearch:
+        return FadeInRoute(page: MealSearchScreen(), settings: settings);
+      case routeIngredientSearch:
+        return FadeInRoute(page: IngredientSearchScreen(), settings: settings);
+      case routeFoodCart:
+        return FadeInRoute(page: FoodCartScreen(), settings: settings);
+      case routeMealDetailScreen:
+        return FadeInRoute(page: MealDetailScreen(), settings: settings);
+      case routeMealCameraScreen:
+        return FadeInRoute(page: CameraScannerScreen(), settings: settings);
       // case routeProgress:
       //   return FadeInRoute(page: ProgressScreen(), settings: settings);
       // case routeCreatePost:
