@@ -10,7 +10,6 @@ import '../../app_string/app_image_path.dart';
 import '../../styles/app_text_styles.dart';
 import '../../theme/theme_model.dart';
 
-
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget? leadingIcon;
   String appBarTitle;
@@ -94,7 +93,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         }
                       : onBackButtonPressed,
                   child: SvgPicture.asset(
-                    svgBackButton,
+                    svgBackArrow,
                     fit: BoxFit.scaleDown,
                   ),
                 )

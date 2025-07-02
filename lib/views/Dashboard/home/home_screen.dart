@@ -79,6 +79,24 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
+                Padding(
+                  padding: EdgeInsets.only(top: 5.w, left: 15.w, right: 15.w),
+                  child: Row(
+                    children: [
+                      Text("Today, 27/06/2025",
+                          style: AppTextStyle.outfitStyle(
+                              withTextStyle: TextStyle(
+                                  fontSize: 14.sp, color: Color(0xff09020F)),
+                              outfitFont: OutfitFontStyle.regular)),
+                      10.sBW,
+
+                      // SvgPicture.asset(
+                      //   svgCalenderIcon,
+                      //   height: 14.h,
+                      // ),
+                    ],
+                  ),
+                ),
                 20.sBH,
                 SizedBox(
                   height: 180.h,
@@ -206,24 +224,30 @@ class _HomeScreenState extends State<HomeScreen> {
                               endIndent: 20.w,
                             ),
                             Expanded(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text("View Details",
-                                      style: AppTextStyle.outfitStyle(
-                                          withTextStyle: TextStyle(
-                                              fontSize: 14.sp,
-                                              color:
-                                                  ThemeManagerPlus.of<AppTheme>(
-                                                          context)
-                                                      .currentTheme
-                                                      .primaryGreen),
-                                          outfitFont: OutfitFontStyle.medium)),
-                                  5.sBW,
-                                  SvgPicture.asset(svgNextArrowGreen),
-                                  20.sBW,
-                                ],
+                              child: InkWell(
+                                onTap: () {
+                                  appNavigator
+                                      .pushNamed(routeCaloriesIntakeScreen);
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text("View Details",
+                                        style: AppTextStyle.outfitStyle(
+                                            withTextStyle: TextStyle(
+                                                fontSize: 14.sp,
+                                                color: ThemeManagerPlus.of<
+                                                        AppTheme>(context)
+                                                    .currentTheme
+                                                    .primaryGreen),
+                                            outfitFont:
+                                                OutfitFontStyle.medium)),
+                                    5.sBW,
+                                    SvgPicture.asset(svgNextArrowGreen),
+                                    20.sBW,
+                                  ],
+                                ),
                               ),
                             )
                           ],

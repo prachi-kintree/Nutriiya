@@ -150,3 +150,4 @@ const String routeWorkRhythmScreen = "/WorkRhythmScreen";
 const String routeConnectWatch = "/ConnectWatchScreen";
 const String routeFitnessActivity = "/FitnessActivityScreen";
 const String routeWalkingScreen = "/WalkingStatisticScreen";
+const String routeCaloriesIntakeScreen = "/CaloriesIntakeScreen";

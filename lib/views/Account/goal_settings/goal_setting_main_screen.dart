@@ -37,7 +37,7 @@ class _GoalSettingMainScreenState extends State<GoalSettingMainScreen> {
           child: Column(
             children: [
               Container(
-                height: 290.h,
+                height: 245.h,
                 margin: EdgeInsets.symmetric(vertical: 15.h),
                 padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
                 decoration: BoxDecoration(
@@ -102,7 +102,10 @@ class _GoalSettingMainScreenState extends State<GoalSettingMainScreen> {
                               style: AppTextStyle.outfitStyle(
                                   withTextStyle: TextStyle(
                                       fontSize: 14.sp,
-                                      color: Color(0xffFF981F)),
+                                      color:
+                                          ThemeManagerPlus.of<AppTheme>(context)
+                                              .currentTheme
+                                              .primaryGreen),
                                   outfitFont: OutfitFontStyle.regular)),
                         ),
                       ],
@@ -167,31 +170,31 @@ class _GoalSettingMainScreenState extends State<GoalSettingMainScreen> {
                     //   height: 10.h,
                     //   thickness: 1.h,
                     // ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Daily Steps Goal',
-                            style: AppTextStyle.outfitStyle(
-                                withTextStyle: TextStyle(
-                                    fontSize: 16.sp, color: Colors.black),
-                                outfitFont: OutfitFontStyle.regular)),
-                        InkWell(
-                          onTap: () {
-                            appNavigator.pushNamed(routeStepEditScreen);
-                          },
-                          child: Text('8000 Steps',
-                              style: AppTextStyle.outfitStyle(
-                                  withTextStyle: TextStyle(
-                                      fontSize: 14.sp,
-                                      color: Color(0xffFFC600)),
-                                  outfitFont: OutfitFontStyle.regular)),
-                        ),
-                      ],
-                    ),
-                    Divider(
-                      height: 10.h,
-                      thickness: 1.h,
-                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: [
+                    //     Text('Daily Steps Goal',
+                    //         style: AppTextStyle.outfitStyle(
+                    //             withTextStyle: TextStyle(
+                    //                 fontSize: 16.sp, color: Colors.black),
+                    //             outfitFont: OutfitFontStyle.regular)),
+                    //     InkWell(
+                    //       onTap: () {
+                    //         appNavigator.pushNamed(routeStepEditScreen);
+                    //       },
+                    //       child: Text('8000 Steps',
+                    //           style: AppTextStyle.outfitStyle(
+                    //               withTextStyle: TextStyle(
+                    //                   fontSize: 14.sp,
+                    //                   color: Color(0xffFFC600)),
+                    //               outfitFont: OutfitFontStyle.regular)),
+                    //     ),
+                    //   ],
+                    // ),
+                    // Divider(
+                    //   height: 10.h,
+                    //   thickness: 1.h,
+                    // ),
 
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

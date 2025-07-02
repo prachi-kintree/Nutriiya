@@ -142,17 +142,16 @@ class FitnessActivityScreen extends StatelessWidget {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    65.sBH,
+                                    80.sBH,
                                     SvgPicture.asset(svgCaloriesBurn),
                                     5.sBH,
-                                    Text("Calories",
+                                    Text("Burned Calories",
                                         style: AppTextStyle.outfitStyle(
                                             withTextStyle: TextStyle(
                                                 fontSize: 14.sp,
                                                 color: Colors.black),
                                             outfitFont:
                                                 OutfitFontStyle.medium)),
-                                    5.sBH,
                                     RichText(
                                         text: TextSpan(children: [
                                       TextSpan(
@@ -172,13 +171,6 @@ class FitnessActivityScreen extends StatelessWidget {
                                               outfitFont:
                                                   OutfitFontStyle.medium))
                                     ])),
-                                    Text("of 725 kcal",
-                                        style: AppTextStyle.outfitStyle(
-                                            withTextStyle: TextStyle(
-                                                fontSize: 16.sp,
-                                                color: Colors.black),
-                                            outfitFont:
-                                                OutfitFontStyle.medium)),
                                   ],
                                 ),
                               )
