@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nutriya/viewmodel/dashboard/scanner/scanner_screen.dart';
+// import 'package:nutriya/viewmodel/dashboard/scanner/scanner_screen.dart';
 import 'package:nutriya/views/Account/amount_page.dart';
 import 'package:nutriya/views/History/history_listing_page.dart';
 import 'package:nutriya/views/User_Progress/user_progress.dart';

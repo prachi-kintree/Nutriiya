@@ -27,10 +27,7 @@ class GradientScaffold extends StatelessWidget {
 }
 
 class CustomGradientBackground extends StatelessWidget {
-
-
-  const CustomGradientBackground(
-      {super.key});
+  const CustomGradientBackground({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -70,8 +67,7 @@ class CustomGradientBackground extends StatelessWidget {
           ),
         ),
       ],
-    )
-    ;
+    );
   }
 }
 

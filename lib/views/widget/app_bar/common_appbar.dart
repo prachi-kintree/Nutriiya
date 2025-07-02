@@ -13,6 +13,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.isCancelbutton = false,
     this.appBarTitle = "App Title ",
     this.isCustomCallback = false,
+    this.isAppBarTitleCenter = false,
     this.onTap,
   });
 
@@ -21,6 +22,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String appBarTitle;
   final VoidCallback? onTap;
   final bool isCustomCallback;
+  final bool isAppBarTitleCenter;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +44,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
               : 20.sBW,
           const Spacer(),
           Text(appBarTitle,
+              textAlign: isAppBarTitleCenter ? TextAlign.center : null,
               style: AppTextStyle.outfitStyle(
                   withTextStyle:
                       TextStyle(fontSize: 20.sp, color: Colors.black),

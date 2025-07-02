@@ -56,19 +56,19 @@ class _AccountState extends State<Account> {
     SettingsItem(
         title: "Goal Settings",
         iconPath: svgGoalSetting,
-        onTap: () => appNavigator.pushNamed(routeBmiReport)),
+        onTap: () => appNavigator.pushNamed(routeGoalSettingScreen)),
     SettingsItem(
         title: "Billing & Subscription",
         iconPath: svgBillingAndSubs,
-        onTap: () => appNavigator.pushNamed(routeBmiReport)),
+        onTap: () => appNavigator.pushNamed(routeMySubScriptionScreen)),
     SettingsItem(
         title: "Account & Security",
         iconPath: svgAccountAndSecurity,
-        onTap: () => appNavigator.pushNamed(routeBmiReport)),
+        onTap: () => appNavigator.pushNamed(routeSecurityScreen)),
     SettingsItem(
         title: "Help & Support",
         iconPath: svgHelpAndSupport,
-        onTap: () => appNavigator.pushNamed(routeBmiReport)),
+        onTap: () => appNavigator.pushNamed(routeHelpSupportScreen)),
     SettingsItem(
       title: "Share app",
       iconPath: svgShare,

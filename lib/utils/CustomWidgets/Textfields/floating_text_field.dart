@@ -8,7 +8,6 @@ import '../../../extension/remove_emoji.dart';
 import '../../styles/app_text_styles.dart';
 import '../../theme/theme_model.dart';
 
-
 class FloatingLabelTextField extends StatelessWidget {
   final String floatingLabelText;
   final String? hintText;
@@ -19,6 +18,7 @@ class FloatingLabelTextField extends StatelessWidget {
   bool hasBorder;
   TextStyle? textStyle;
   TextStyle? floatingLabelStyle;
+  TextStyle? labelTextStyle;
   String? Function(String?)? textValidator;
   List<TextInputFormatter>? fieldFormatter;
   bool isForMobile;
@@ -45,6 +45,7 @@ class FloatingLabelTextField extends StatelessWidget {
       this.maxLines,
       this.contentPadding,
       this.textStyle,
+      this.labelTextStyle,
       this.shouldAutoFocus = false,
       this.textValidator,
       this.initialValue,
@@ -123,8 +124,9 @@ class FloatingLabelTextField extends StatelessWidget {
               //           width: 3,
               //         ))
               //     : null,
-              fillColor:
-              ThemeManagerPlus.of<AppTheme>(context).currentTheme.textFieldGrey,
+              fillColor: ThemeManagerPlus.of<AppTheme>(context)
+                  .currentTheme
+                  .textFieldGrey,
               filled: true,
               contentPadding: contentPadding != null
                   ? contentPadding
