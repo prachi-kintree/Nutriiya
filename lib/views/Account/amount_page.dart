@@ -18,21 +18,21 @@ class AccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50.h),
-          child: AppBar(
-              elevation: 0,
-              backgroundColor: Colors.transparent,
-              centerTitle: true,
-              title: Text(
-                'Account',
-                style: AppTextStyle.outfitStyle(
-                    withTextStyle:
-                        TextStyle(fontSize: 20.sp, color: Colors.black),
-                    outfitFont: OutfitFontStyle.semibold),
-              )),
-        ),
-        body: SafeArea(child: Account()),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(50.h),
+        child: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            centerTitle: true,
+            title: Text(
+              'Account',
+              style: AppTextStyle.outfitStyle(
+                  withTextStyle:
+                      TextStyle(fontSize: 20.sp, color: Colors.black),
+                  outfitFont: OutfitFontStyle.semibold),
+            )),
+      ),
+      body: SafeArea(child: Account()),
     );
   }
 }
@@ -49,43 +49,35 @@ class _AccountState extends State<Account> {
     SettingsItem(
         title: "Notification Settings",
         iconPath: svgNotification,
-        onTap: () => appNavigator.pushNamed(routeBmiReport)
-    ),
+        onTap: () => appNavigator.pushNamed(routeBmiReport)),
     SettingsItem(
         title: "Languages",
         iconPath: svgLanguage,
-        onTap: () => appNavigator.pushNamed(routeBmiReport)
-    ),
+        onTap: () => appNavigator.pushNamed(routeBmiReport)),
     SettingsItem(
         title: "Reminder",
         iconPath: svgReminder,
-        onTap: () => appNavigator.pushNamed(routeBmiReport)
-    ),
+        onTap: () => appNavigator.pushNamed(routeBmiReport)),
     SettingsItem(
         title: "Unit & Measures",
         iconPath: svgUnitAndMeasures,
-        onTap: () => appNavigator.pushNamed(routeBmiReport)
-    ),
+        onTap: () => appNavigator.pushNamed(routeBmiReport)),
     SettingsItem(
         title: "Goal Settings",
         iconPath: svgGoalSetting,
-        onTap: () => appNavigator.pushNamed(routeBmiReport)
-    ),
+        onTap: () => appNavigator.pushNamed(routeGoalSettingScreen)),
     SettingsItem(
         title: "Billing & Subscription",
         iconPath: svgBillingAndSubs,
-        onTap: () => appNavigator.pushNamed(routeBmiReport)
-    ),
+        onTap: () => appNavigator.pushNamed(routeMySubScriptionScreen)),
     SettingsItem(
         title: "Account & Security",
         iconPath: svgAccountAndSecurity,
-        onTap: () => appNavigator.pushNamed(routeBmiReport)
-    ),
+        onTap: () => appNavigator.pushNamed(routeSecurityScreen)),
     SettingsItem(
         title: "Help & Support",
         iconPath: svgHelpAndSupport,
-        onTap: () => appNavigator.pushNamed(routeBmiReport)
-    ),
+        onTap: () => appNavigator.pushNamed(routeHelpSupportScreen)),
     SettingsItem(
       title: "Share app",
       iconPath: svgShare,
@@ -131,8 +123,9 @@ class _AccountState extends State<Account> {
         margin: EdgeInsets.symmetric(vertical: 10.h),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            color:
-                ThemeManagerPlus.of<AppTheme>(context).currentTheme.primaryGreen),
+            color: ThemeManagerPlus.of<AppTheme>(context)
+                .currentTheme
+                .primaryGreen),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -171,12 +164,15 @@ class _AccountState extends State<Account> {
       padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 12.h),
       margin: EdgeInsets.symmetric(vertical: 5.h),
       decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(blurRadius: 2,offset: Offset(1, 0),spreadRadius: 0,color: Color(0xff7D7D7D).withOpacity(0.1))
-        ],
+          boxShadow: [
+            BoxShadow(
+                blurRadius: 2,
+                offset: Offset(1, 0),
+                spreadRadius: 0,
+                color: Color(0xff7D7D7D).withOpacity(0.1))
+          ],
           borderRadius: BorderRadius.circular(12),
-          color:
-          const Color(0xffD9ECCD)),
+          color: const Color(0xffD9ECCD)),
       child: Row(
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -184,7 +180,10 @@ class _AccountState extends State<Account> {
             padding: EdgeInsets.all(13.h),
             margin: EdgeInsets.only(right: 10.h),
             decoration: BoxDecoration(
-                shape: BoxShape.circle, color: ThemeManagerPlus.of<AppTheme>(context).currentTheme.primaryGreen),
+                shape: BoxShape.circle,
+                color: ThemeManagerPlus.of<AppTheme>(context)
+                    .currentTheme
+                    .primaryGreen),
             child: SvgPicture.asset(svgCrown),
           ),
           Column(
@@ -193,18 +192,19 @@ class _AccountState extends State<Account> {
               Text("Raj Shah",
                   style: AppTextStyle.outfitStyle(
                       withTextStyle:
-                      TextStyle(fontSize: 16.sp, color: Colors.black),
+                          TextStyle(fontSize: 16.sp, color: Colors.black),
                       outfitFont: OutfitFontStyle.medium)),
               5.sBH,
-              Text(
-                  "9876543210",
+              Text("9876543210",
                   style: AppTextStyle.outfitStyle(
-                      withTextStyle:
-                      TextStyle(fontSize: 12.sp, color: ThemeManagerPlus.of<AppTheme>(context).currentTheme.subtitleGrey),
+                      withTextStyle: TextStyle(
+                          fontSize: 12.sp,
+                          color: ThemeManagerPlus.of<AppTheme>(context)
+                              .currentTheme
+                              .subtitleGrey),
                       outfitFont: OutfitFontStyle.regular)),
             ],
           ),
-
           const Spacer(),
           SvgPicture.asset(svgForwardArrowGreen)
         ],
@@ -216,13 +216,13 @@ class _AccountState extends State<Account> {
     return Container(
       // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
       margin: EdgeInsets.only(top: 13.h),
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(blurRadius: 2,offset: Offset(1, 0),spreadRadius: 0,color: Color(0xff7D7D7D).withOpacity(0.1))
-        ],
-          borderRadius: BorderRadius.circular(12),
-          color:
-           Colors.white),
+      decoration: BoxDecoration(boxShadow: [
+        BoxShadow(
+            blurRadius: 2,
+            offset: Offset(1, 0),
+            spreadRadius: 0,
+            color: Color(0xff7D7D7D).withOpacity(0.1))
+      ], borderRadius: BorderRadius.circular(12), color: Colors.white),
       child: ListView.separated(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
@@ -233,21 +233,27 @@ class _AccountState extends State<Account> {
           if (index < items.length) {
             final item = items[index];
             return ListTile(
-              leading: SvgPicture.asset(item.iconPath, width: 22.h, height: 22.h),
-              title: Text(item.title, style: AppTextStyle.outfitStyle(
-                  withTextStyle:
-                  TextStyle(fontSize: 16.sp, color: ThemeManagerPlus.of<AppTheme>(context).currentTheme.black),
-                  outfitFont: OutfitFontStyle.regular)),
+              leading:
+                  SvgPicture.asset(item.iconPath, width: 22.h, height: 22.h),
+              title: Text(item.title,
+                  style: AppTextStyle.outfitStyle(
+                      withTextStyle: TextStyle(
+                          fontSize: 16.sp,
+                          color: ThemeManagerPlus.of<AppTheme>(context)
+                              .currentTheme
+                              .black),
+                      outfitFont: OutfitFontStyle.regular)),
               trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 16),
               onTap: item.onTap,
             );
           } else {
             return ListTile(
               leading: SvgPicture.asset(svgLogout, width: 22.h, height: 22.h),
-              title:  Text("Logout", style: AppTextStyle.outfitStyle(
-                  withTextStyle:
-                  TextStyle(fontSize: 16.sp, color: const Color(0xffF64650)),
-                  outfitFont: OutfitFontStyle.regular)),
+              title: Text("Logout",
+                  style: AppTextStyle.outfitStyle(
+                      withTextStyle: TextStyle(
+                          fontSize: 16.sp, color: const Color(0xffF64650)),
+                      outfitFont: OutfitFontStyle.regular)),
               onTap: () {
                 // Handle logout
               },

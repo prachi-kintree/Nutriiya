@@ -22,12 +22,9 @@ class _DietaryPreferencesState extends State<DietaryPreferences> {
   List<SelectableFieldItem> dietaryPrefs = [
     SelectableFieldItem(
         icon: svgVeganDiet, dietType: "Vegan", isSelected: false),
-    SelectableFieldItem(
-        icon: svgJainDiet, dietType: "Jain", isSelected: false),
-    SelectableFieldItem(
-        icon: svgKetoDiet, dietType: "Keto", isSelected: false),
-    SelectableFieldItem(
-        icon: svgVegDiet, dietType: "Veg", isSelected: false),
+    SelectableFieldItem(icon: svgJainDiet, dietType: "Jain", isSelected: false),
+    SelectableFieldItem(icon: svgKetoDiet, dietType: "Keto", isSelected: false),
+    SelectableFieldItem(icon: svgVegDiet, dietType: "Veg", isSelected: false),
     SelectableFieldItem(
         icon: svgNonVegDiet, dietType: "Non-veg", isSelected: false),
   ];
@@ -64,8 +61,7 @@ class _DietaryPreferencesState extends State<DietaryPreferences> {
               itemCount: dietaryPrefs.length,
               itemBuilder: (context, index) {
                 SelectableFieldItem currentPref = dietaryPrefs[index];
-                return SelectableFieldWidget(
-                    selectableFieldItem: currentPref);
+                return SelectableFieldWidget(selectableFieldItem: currentPref);
               }),
         ),
         10.sBH,

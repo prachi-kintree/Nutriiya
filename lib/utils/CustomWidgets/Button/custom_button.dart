@@ -29,12 +29,13 @@ class CustomButton extends StatelessWidget {
       this.height,
       this.buttonColor = const Color(0xFF42A004),
       this.progressIndicatorColor,
-      this.onPressed, this.padding});
+      this.onPressed,
+      this.padding});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: padding ?? EdgeInsets.symmetric(horizontal: 5.w),
+      padding: padding ?? EdgeInsets.symmetric(horizontal: 5.w),
       child: LoadingBtn(
           height: height ?? 40.h,
           borderRadius: 30.w,
@@ -42,9 +43,7 @@ class CustomButton extends StatelessWidget {
           // elevation: disableElevation ? 0 : null,
           animate: true,
           color: isDisabled
-              ? ThemeManagerPlus.of<AppTheme>(context)
-                  .currentTheme
-                  .single_interest!
+              ? ThemeManagerPlus.of<AppTheme>(context).currentTheme.grey!
               : buttonColor,
           width: width ?? double.infinity,
           loader: Container(
@@ -63,12 +62,11 @@ class CustomButton extends StatelessWidget {
                   style: buttonTextStyle?.copyWith(
                       color: ThemeManagerPlus.of<AppTheme>(context)
                           .currentTheme
-                          .grey!
-                          .withOpacity(0.5)),
+                          .white!),
                 )
               : Text(
                   buttonText,
-            textAlign: TextAlign.center,
+                  textAlign: TextAlign.center,
                   style: buttonTextStyle,
                 ),
           onTap: isDisabled

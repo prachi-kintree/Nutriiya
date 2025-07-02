@@ -8,7 +8,6 @@ import '../../../extension/remove_emoji.dart';
 import '../../styles/app_text_styles.dart';
 import '../../theme/theme_model.dart';
 
-
 class FloatingLabelTextField extends StatelessWidget {
   final String floatingLabelText;
   final String? hintText;
@@ -18,6 +17,7 @@ class FloatingLabelTextField extends StatelessWidget {
   bool isRequired;
   bool hasBorder;
   TextStyle? textStyle;
+  TextStyle? labelTextStyle;
   String? Function(String?)? textValidator;
   List<TextInputFormatter>? fieldFormatter;
   bool isForMobile;
@@ -43,6 +43,7 @@ class FloatingLabelTextField extends StatelessWidget {
       this.maxLines,
       this.contentPadding,
       this.textStyle,
+      this.labelTextStyle,
       this.shouldAutoFocus = false,
       this.textValidator,
       this.initialValue,
@@ -89,8 +90,9 @@ class FloatingLabelTextField extends StatelessWidget {
                             .black,
                         fontSize: 15.sp),
                     jakartaFont: JakartaStyle.bold),
-            cursorColor:
-                ThemeManagerPlus.of<AppTheme>(context).currentTheme.primaryGreen,
+            cursorColor: ThemeManagerPlus.of<AppTheme>(context)
+                .currentTheme
+                .primaryGreen,
             decoration: InputDecoration(
               // border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.h)),
               // focusedBorder: OutlineInputBorder(
@@ -121,20 +123,24 @@ class FloatingLabelTextField extends StatelessWidget {
               //           width: 3,
               //         ))
               //     : null,
-              fillColor:
-              ThemeManagerPlus.of<AppTheme>(context).currentTheme.textFieldGrey,
+              fillColor: ThemeManagerPlus.of<AppTheme>(context)
+                  .currentTheme
+                  .textFieldGrey,
               filled: true,
               contentPadding: contentPadding != null
                   ? contentPadding
                   : EdgeInsets.symmetric(vertical: 12.h, horizontal: 15.w),
               // labelText: floatingLabelText,
-              hintText: isRequired ? (floatingLabelText + "*") : floatingLabelText,
-              hintStyle: AppTextStyle.jakartaStyle(
-                  withTextStyle: TextStyle(
-                      color:
-                          ThemeManagerPlus.of<AppTheme>(context).currentTheme.grey,
-                      fontSize: 14.sp),
-                  jakartaFont: JakartaStyle.light),
+              hintText:
+                  isRequired ? (floatingLabelText + "*") : floatingLabelText,
+              hintStyle: labelTextStyle ??
+                  AppTextStyle.jakartaStyle(
+                      withTextStyle: TextStyle(
+                          color: ThemeManagerPlus.of<AppTheme>(context)
+                              .currentTheme
+                              .grey,
+                          fontSize: 14.sp),
+                      jakartaFont: JakartaStyle.light),
               errorStyle: AppTextStyle.jakartaStyle(
                   withTextStyle:
                       TextStyle(fontSize: 14.sp, color: Color(0xFFff0000)),

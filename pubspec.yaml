@@ -2,7 +2,7 @@ name: nutriya
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -46,7 +46,7 @@ dependencies:
   provider: ^6.0.5
   fluttertoast: ^8.2.2
   flutter_svg: ^2.0.7
-#  flutter_local_notifications: ^17.2.2
+  #  flutter_local_notifications: ^17.2.2
   app_settings: ^5.1.1
   get_it: ^7.6.4
   # catcher: ^0.7.0
@@ -136,27 +136,28 @@ dependencies:
   syncfusion_flutter_gauges: ^29.2.9
   syncfusion_flutter_charts: ^29.2.10
   syncfusion_flutter_datepicker: ^29.2.11
-#  google_mlkit_image_labeling:
+  #  google_mlkit_image_labeling:
   flutter_ruler_picker: ^1.0.6
   arc_progress_bar_new:
-#  image: ^4.1.3
-#  tflite_flutter:
-#    path: ./flutter-tflite
-#  tflite_flutter_helper:
+  #  image: ^4.1.3
+  #  tflite_flutter:
+  #    path: ./flutter-tflite
+  #  tflite_flutter_helper:
 
-    #  image_picker: ^0.8.6
-    # tflite_flutter:
+  #  image_picker: ^0.8.6
+  # tflite_flutter:
 
-    # tflite: ^1.1.2
+  # tflite: ^1.1.2
   image_picker:
-#  feature_discovery:
-#    path: feature_discovery-0.14.2
+  #  feature_discovery:
+  #    path: feature_discovery-0.14.2
   # feature_discovery: ^0.14.2
-#  google_mobile_ads:
-#  flutter_link_previewer: ^3.2.2
-#  flutter_chat_types:
+  #  google_mobile_ads:
+  #  flutter_link_previewer: ^3.2.2
+  #  flutter_chat_types:
   encrypt: ^5.0.3
   google_mlkit_image_labeling: ^0.14.1
+  smooth_page_indicator: ^1.2.1
 
 dependency_overrides:
   intl: ^0.18.1
@@ -175,6 +176,7 @@ flutter:
     - assets/model/bird_species_classifier.tflite
     - assets/model/labels.txt
     - assets/images/
+    - assets/lottie/
 
   uses-material-design: true
 
@@ -208,7 +210,6 @@ flutter:
         - asset: assets/fonts/outfit_bold.ttf
           weight: 700
 
-
     - family: PlusJakartaSans
       fonts:
         - asset: assets/fonts/jakarta_light.ttf
@@ -224,4 +225,3 @@ flutter:
           weight: 600
         - asset: assets/fonts/jakarta_bold.ttf
           weight: 700
-

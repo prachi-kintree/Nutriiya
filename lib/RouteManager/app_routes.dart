@@ -10,11 +10,15 @@ const String routeVerifiedSuccess = "/verifiedSuccess";
 const String routeProfileCreatedSuccess = "/profileCreatedSuccess";
 const String routeMemberAddedSuccess = "/memberAddedSuccess";
 const String routeLoginBasicDetail = "/loginBasicDetails";
+const String routePersonalizeCaloriesIndicator = "/personalizeCalories";
+const String routeCaloriesPlanReady = "/CaloriesPlanReady";
 
 const String routeUserProgress = "/userProgress";
 const String routeHistory = "/history";
 const String routeAccount = "/account";
 const String routeSubscription = "/subscription";
+const String routeSubscriptionDone = "/subscriptionDone";
+const String routeMySubScriptionScreen = "/mySubscription";
 const String routeBmiReport = "/bmiReport";
 
 // Dashboard Route
@@ -106,3 +110,35 @@ const String routeIngredientSearch = "/IngredientSearch";
 const String routeFoodCart = "/FoodCart";
 const String routeMealDetailScreen = "/MealDetailScreen";
 const String routeMealCameraScreen = "/MealCameraScreen";
+
+// profile screens
+const String routeHelpSupportScreen = "/HelpSupportScreen";
+const String routeFaqHelpScreen = "/FaqHelpScreen";
+const String routeContactHelpScreen = "/ContactHelpScreen";
+const String routeFeedbackHelpScreen = "/FeedbackHelpScreen";
+
+// security
+const String routeSecurityScreen = "/SecurityScreen";
+
+// goal setting
+const String routeGoalSettingScreen = "/GoalSettingScreen";
+const String routeStepEditScreen = "/StepEditScreen";
+
+// change preferences
+const String routeChangePreferencesScreen = "/ChangePreferencesScreen";
+const String routeDietScreen = "/DietScreen";
+const String routeWhatsYourGoalScreen = "/WhatsYourGoalScreen";
+const String routeRegionalFoodScreen = "/RegionalFoodScreen";
+const String routeShopScreen = "/ShopScreen";
+const String routeRealReasonScreen = "/RealReasonScreen";
+const String routeAnyOtherGoalScreen = "/AnyOtherGoalScreen";
+const String routeJourneyProgressScreen = "/JourneyProgressScreen";
+const String routeStayOnTrackScreen = "/StayOnTrackScreen";
+const String routeTimeBudgetScreen = "/TimeBudgetScreen";
+const String routeBuildStreakScreen = "/BuildStreakScreen";
+const String routeCarvingsHitScreen = "/CarvingHitsScreen";
+const String routeBigWinsScreen = "/BigWinsScreen";
+const String routeWorkRhythmScreen = "/WorkRhythmScreen";
+const String routeConnectWatch = "/ConnectWatchScreen";
+const String routeFitnessActivity = "/FitnessActivityScreen";
+const String routeWalkingScreen = "/WalkingStatisticScreen";

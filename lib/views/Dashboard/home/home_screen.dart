@@ -9,14 +9,22 @@ import 'package:nutriya/viewmodel/dashboard/scanner/food_logger_viewmodel.dart';
 import 'package:nutriya/viewmodel/dashboard/scanner/meal_search_screen_viewmodel.dart';
 import 'package:nutriya/views/widget/bottom_sheets/common_bottomsheet.dart';
 import 'package:provider/provider.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:theme_manager_plus/theme_manager_plus.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
   Widget build(BuildContext context) {
+    final controller = PageController(viewportFraction: 0.95, keepPage: true);
+
     List<Meals> meals = [
       // Meals(svgSandwich, "Breakfast", "Recommended : 481 kcal"),
       // Meals(svgPaneerCurry, "Lunch", "Recommended : 577 kcal"),
@@ -45,189 +53,501 @@ class HomeScreen extends StatelessWidget {
                   colors: [Color(0xffFFFFFF), Color(0xffEDEDED)],
                   begin: Alignment.topCenter)),
           child: Padding(
-            padding: EdgeInsets.all(15.0.w),
+            // padding: EdgeInsets.all(15.0.w),
+            padding: EdgeInsets.all(0.0.w),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 20.sBH,
-                Row(
-                  children: [
-                    Text("${DateTime.now().getGreeting()} Raj",
-                        style: AppTextStyle.jakartaStyle(
-                            withTextStyle: TextStyle(
-                                fontSize: 24.sp, color: Color(0xff09020F)),
-                            jakartaFont: JakartaStyle.bold)),
-                    10.sBW,
-                    SvgPicture.asset(
-                      svgMorningIcon,
-                      height: 24.h,
-                    ),
-                    const Spacer(),
-                    Image.asset(pngProfileImg)
-                  ],
+                Padding(
+                  padding: EdgeInsets.only(top: 15.w, left: 15.w, right: 15.w),
+                  child: Row(
+                    children: [
+                      Text("${DateTime.now().getGreeting()} Raj",
+                          style: AppTextStyle.jakartaStyle(
+                              withTextStyle: TextStyle(
+                                  fontSize: 24.sp, color: Color(0xff09020F)),
+                              jakartaFont: JakartaStyle.bold)),
+                      10.sBW,
+                      SvgPicture.asset(
+                        svgMorningIcon,
+                        height: 24.h,
+                      ),
+                      const Spacer(),
+                      Image.asset(pngProfileImg)
+                    ],
+                  ),
                 ),
                 20.sBH,
-                Container(
-                  height: 200.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16.0.r),
-                    color: ThemeManagerPlus.of<AppTheme>(context)
-                        .currentTheme
-                        .leafGreen!
-                        .withOpacity(0.4),
-                  ),
-                  child: Stack(
+                SizedBox(
+                  height: 180.h,
+                  width: 1.sw,
+                  child: PageView(
+                    // allowImplicitScrolling: true,
+                    controller: controller,
+
                     children: [
-                      SfRadialGauge(
-                        animationDuration: 4000,
-                        enableLoadingAnimation: true,
-                        axes: <RadialAxis>[
-                          RadialAxis(
-                            showLabels: false,
-                            showTicks: false,
-                            startAngle: 160,
-                            endAngle: 20,
-                            radiusFactor: 0.7,
-                            canScaleToFit: true,
-                            axisLineStyle: AxisLineStyle(
-                              thickness: 0.2.w,
+                      Container(
+                        height: 180.h,
+                        margin: EdgeInsets.only(left: 15.w, right: 15.w),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16.0.r),
+                          color: ThemeManagerPlus.of<AppTheme>(context)
+                              .currentTheme
+                              .leafGreen!
+                              .withOpacity(0.4),
+                        ),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 140.h,
+                              child: Stack(
+                                fit: StackFit.loose,
+                                children: [
+                                  Positioned(
+                                    top: -70.h,
+                                    left: 20.w,
+                                    right: 20.w,
+                                    child: SfRadialGauge(
+                                      animationDuration: 4000,
+                                      enableLoadingAnimation: true,
+                                      axes: <RadialAxis>[
+                                        RadialAxis(
+                                          showLabels: false,
+                                          showTicks: false,
+                                          startAngle: 160,
+                                          endAngle: 20,
+                                          radiusFactor: 0.7,
+                                          canScaleToFit: true,
+                                          axisLineStyle: AxisLineStyle(
+                                            thickness: 0.2.w,
+                                            color:
+                                                ThemeManagerPlus.of<AppTheme>(
+                                                        context)
+                                                    .currentTheme
+                                                    .leafGreen!,
+                                            thicknessUnit: GaugeSizeUnit.factor,
+                                            cornerStyle: CornerStyle.bothCurve,
+                                          ),
+                                          pointers: <GaugePointer>[
+                                            RangePointer(
+                                                color: ThemeManagerPlus.of<
+                                                        AppTheme>(context)
+                                                    .currentTheme
+                                                    .primaryGreen,
+                                                value: 50.0,
+                                                width: 0.2.w,
+                                                sizeUnit: GaugeSizeUnit.factor,
+                                                cornerStyle:
+                                                    CornerStyle.bothCurve)
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Positioned(
+                                    top: -30.h,
+                                    left: 20.w,
+                                    right: 20.w,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        65.sBH,
+                                        SvgPicture.asset(svgCaloriesBurn),
+                                        5.sBH,
+                                        Text("Calories",
+                                            style: AppTextStyle.outfitStyle(
+                                                withTextStyle: TextStyle(
+                                                    fontSize: 14.sp,
+                                                    color: Colors.black),
+                                                outfitFont:
+                                                    OutfitFontStyle.medium)),
+                                        5.sBH,
+                                        RichText(
+                                            text: TextSpan(children: [
+                                          TextSpan(
+                                              text: '539',
+                                              style: AppTextStyle.outfitStyle(
+                                                  withTextStyle: TextStyle(
+                                                      fontSize: 32.sp,
+                                                      color: Colors.black),
+                                                  outfitFont:
+                                                      OutfitFontStyle.medium)),
+                                          TextSpan(
+                                              text: 'kcal',
+                                              style: AppTextStyle.outfitStyle(
+                                                  withTextStyle: TextStyle(
+                                                      fontSize: 16.sp,
+                                                      color: Colors.black),
+                                                  outfitFont:
+                                                      OutfitFontStyle.medium))
+                                        ])),
+                                        Text("of 725 kcal",
+                                            style: AppTextStyle.outfitStyle(
+                                                withTextStyle: TextStyle(
+                                                    fontSize: 16.sp,
+                                                    color: Colors.black),
+                                                outfitFont:
+                                                    OutfitFontStyle.medium)),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Divider(
                               color: ThemeManagerPlus.of<AppTheme>(context)
                                   .currentTheme
-                                  .leafGreen!,
-                              thicknessUnit: GaugeSizeUnit.factor,
-                              cornerStyle: CornerStyle.bothCurve,
+                                  .primaryGreen,
+                              height: 0.5.h,
+                              indent: 20.w,
+                              endIndent: 20.w,
                             ),
-                            pointers: <GaugePointer>[
-                              RangePointer(
-                                  color: ThemeManagerPlus.of<AppTheme>(context)
-                                      .currentTheme
-                                      .primaryGreen,
-                                  value: 50.0,
-                                  width: 0.2.w,
-                                  sizeUnit: GaugeSizeUnit.factor,
-                                  cornerStyle: CornerStyle.bothCurve)
-                            ],
-                          )
-                        ],
+                            Expanded(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text("View Details",
+                                      style: AppTextStyle.outfitStyle(
+                                          withTextStyle: TextStyle(
+                                              fontSize: 14.sp,
+                                              color:
+                                                  ThemeManagerPlus.of<AppTheme>(
+                                                          context)
+                                                      .currentTheme
+                                                      .primaryGreen),
+                                          outfitFont: OutfitFontStyle.medium)),
+                                  5.sBW,
+                                  SvgPicture.asset(svgNextArrowGreen),
+                                  20.sBW,
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                      Align(
-                        alignment: Alignment.center,
+                      Container(
+                        height: 180.h,
+                        margin: EdgeInsets.only(left: 15.w, right: 15.w),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16.0.r),
+                          color: Color(0xffFFEAD9),
+                        ),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            65.sBH,
-                            SvgPicture.asset(svgCaloriesBurn),
-                            5.sBH,
-                            Text("Calories",
-                                style: AppTextStyle.outfitStyle(
-                                    withTextStyle: TextStyle(
-                                        fontSize: 14.sp, color: Colors.black),
-                                    outfitFont: OutfitFontStyle.medium)),
-                            5.sBH,
-                            RichText(
-                                text: TextSpan(children: [
-                              TextSpan(
-                                  text: '539',
-                                  style: AppTextStyle.outfitStyle(
-                                      withTextStyle: TextStyle(
-                                          fontSize: 32.sp, color: Colors.black),
-                                      outfitFont: OutfitFontStyle.medium)),
-                              TextSpan(
-                                  text: 'kcal',
-                                  style: AppTextStyle.outfitStyle(
-                                      withTextStyle: TextStyle(
-                                          fontSize: 16.sp, color: Colors.black),
-                                      outfitFont: OutfitFontStyle.medium))
-                            ])),
-                            Text("of 725 kcal",
-                                style: AppTextStyle.outfitStyle(
-                                    withTextStyle: TextStyle(
-                                        fontSize: 16.sp, color: Colors.black),
-                                    outfitFont: OutfitFontStyle.medium)),
+                            SizedBox(
+                              height: 140.h,
+                              child: Stack(
+                                fit: StackFit.loose,
+                                children: [
+                                  Positioned(
+                                    top: -70.h,
+                                    left: 20.w,
+                                    right: 20.w,
+                                    child: SfRadialGauge(
+                                      animationDuration: 4000,
+                                      enableLoadingAnimation: true,
+                                      axes: <RadialAxis>[
+                                        RadialAxis(
+                                          showLabels: false,
+                                          showTicks: false,
+                                          startAngle: 160,
+                                          endAngle: 20,
+                                          radiusFactor: 0.7,
+                                          canScaleToFit: true,
+                                          axisLineStyle: AxisLineStyle(
+                                            thickness: 0.2.w,
+                                            color: Color(0xffFFB173),
+                                            thicknessUnit: GaugeSizeUnit.factor,
+                                            cornerStyle: CornerStyle.bothCurve,
+                                          ),
+                                          pointers: <GaugePointer>[
+                                            RangePointer(
+                                                color: Color(0xffFF7300),
+                                                value: 50.0,
+                                                width: 0.2.w,
+                                                sizeUnit: GaugeSizeUnit.factor,
+                                                cornerStyle:
+                                                    CornerStyle.bothCurve)
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Positioned(
+                                    top: -30.h,
+                                    left: 20.w,
+                                    right: 20.w,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        65.sBH,
+                                        SvgPicture.asset(svgCaloriesBurn),
+                                        5.sBH,
+                                        Text("Calories",
+                                            style: AppTextStyle.outfitStyle(
+                                                withTextStyle: TextStyle(
+                                                    fontSize: 14.sp,
+                                                    color: Colors.black),
+                                                outfitFont:
+                                                    OutfitFontStyle.medium)),
+                                        5.sBH,
+                                        RichText(
+                                            text: TextSpan(children: [
+                                          TextSpan(
+                                              text: '539',
+                                              style: AppTextStyle.outfitStyle(
+                                                  withTextStyle: TextStyle(
+                                                      fontSize: 32.sp,
+                                                      color: Colors.black),
+                                                  outfitFont:
+                                                      OutfitFontStyle.medium)),
+                                          TextSpan(
+                                              text: 'kcal',
+                                              style: AppTextStyle.outfitStyle(
+                                                  withTextStyle: TextStyle(
+                                                      fontSize: 16.sp,
+                                                      color: Colors.black),
+                                                  outfitFont:
+                                                      OutfitFontStyle.medium))
+                                        ])),
+                                        Text("of 725 kcal",
+                                            style: AppTextStyle.outfitStyle(
+                                                withTextStyle: TextStyle(
+                                                    fontSize: 16.sp,
+                                                    color: Colors.black),
+                                                outfitFont:
+                                                    OutfitFontStyle.medium)),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Divider(
+                              color: Color(0xffFF7300),
+                              height: 0.5.h,
+                              indent: 20.w,
+                              endIndent: 20.w,
+                            ),
+                            Expanded(
+                              child: InkWell(
+                                onTap: () {
+                                  appNavigator.pushNamed(routeFitnessActivity);
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text("View Details",
+                                        style: AppTextStyle.outfitStyle(
+                                            withTextStyle: TextStyle(
+                                                fontSize: 14.sp,
+                                                color: Color(0xffFF7300)),
+                                            outfitFont:
+                                                OutfitFontStyle.medium)),
+                                    5.sBW,
+                                    SvgPicture.asset(
+                                      svgNextArrowGreen,
+                                      color: Color(0xffFF7300),
+                                    ),
+                                    20.sBW,
+                                  ],
+                                ),
+                              ),
+                            )
                           ],
                         ),
                       )
                     ],
                   ),
                 ),
+                5.sBH,
+                Align(
+                    alignment: Alignment.center,
+                    child: SmoothPageIndicator(
+                      controller: controller,
+                      count: 2,
+                      effect: ExpandingDotsEffect(
+                          dotHeight: 4.h,
+                          dotWidth: 4.h,
+                          activeDotColor: Color(0xff42A004)),
+                    )),
                 20.sBH,
-                Material(
-                  elevation: 2,
-                  borderRadius: BorderRadius.circular(16.0.r),
-                  child: Container(
-                    height: 140.h,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: 16.w, top: 7.h, right: 16.w),
-                          child: Text("Eaten",
-                              style: AppTextStyle.outfitStyle(
-                                  withTextStyle: TextStyle(
-                                      fontSize: 16.sp,
-                                      color: Color(0xff09020F)),
-                                  outfitFont: OutfitFontStyle.medium)),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            ProgressIndicator(
-                                bgColor: Colors.grey[300]!,
-                                fgColor: Color(0xffFF7300),
-                                limit: "100",
-                                current: "84",
-                                title: "Protein"),
-                            ProgressIndicator(
-                                bgColor: Colors.grey[300]!,
-                                fgColor: Color(0xffEE5A5A),
-                                limit: "224",
-                                current: "178",
-                                title: "Carbs"),
-                            ProgressIndicator(
-                                bgColor: Colors.grey[300]!,
-                                fgColor: Color(0xff7FD3FF),
-                                limit: "128",
-                                current: "70",
-                                title: "Fat")
-                          ],
-                        ),
-                      ],
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: 15.w,
+                  ),
+                  child: Material(
+                    elevation: 0.5,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(16.0.r),
+                        bottomLeft: Radius.circular(16.0.r)),
+                    child: SizedBox(
+                      height: 140.h,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // Padding(
+                          //   padding: EdgeInsets.only(
+                          //       left: 16.w, top: 7.h, right: 16.w),
+                          //   child: Text("Eaten",
+                          //       style: AppTextStyle.outfitStyle(
+                          //           withTextStyle: TextStyle(
+                          //               fontSize: 16.sp,
+                          //               color: Color(0xff09020F)),
+                          //           outfitFont: OutfitFontStyle.medium)),
+                          // ),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                ProgressIndicator(
+                                    bgColor: Colors.grey[300]!,
+                                    fgColor: Color(0xff4A90E2),
+                                    limit: "100",
+                                    current: "84",
+                                    title: "Protein"),
+                                ProgressIndicator(
+                                    bgColor: Colors.grey[300]!,
+                                    fgColor: Color(0xff7ED321),
+                                    limit: "224",
+                                    current: "178",
+                                    title: "Carbs"),
+                                ProgressIndicator(
+                                    bgColor: Colors.grey[300]!,
+                                    fgColor: Color(0xffF5A623),
+                                    limit: "128",
+                                    current: "70",
+                                    title: "Fat"),
+                                ProgressIndicator(
+                                    bgColor: Colors.grey[300]!,
+                                    fgColor: Color(0xffFFC600),
+                                    limit: "8000",
+                                    current: "5304",
+                                    measurementValue: '',
+                                    title: "Steps"),
+                                ProgressIndicator(
+                                    measurementValue: "G",
+                                    bgColor: Colors.grey[300]!,
+                                    fgColor: Color(0xff7FD3FF),
+                                    limit: "10",
+                                    current: "6",
+                                    title: "Water"),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-                20.sBH,
-                Text("Log your meals",
-                    style: AppTextStyle.jakartaStyle(
-                        withTextStyle: TextStyle(
-                            fontSize: 20.sp, color: Color(0xff09020F)),
-                        jakartaFont: JakartaStyle.bold)),
                 10.sBH,
-                Consumer<MealSearchScreenViewmodel>(
-                  builder: (context, value, child) {
-                    return SizedBox(
-                        // height: 330.h,
-                        child:
-                            //  ListView.builder(
-                            //   padding: EdgeInsets.zero,
-                            //   shrinkWrap: true,
-                            //   itemCount: meals.length,
-                            //   physics: const NeverScrollableScrollPhysics(),
-                            //   itemBuilder: (context, index) {
-                            //     return LogMealsWidget(
-                            //         list:
-                            //         icon: meals[index].icon!,
-                            //         title: meals[index].title!,
-                            //         subtitle: meals[index].subtitle!);
-                            //   },
-                            // ),
-                            ListView(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      children: [
-                        LogMealsWidget(
+                Container(
+                  margin: EdgeInsets.only(left: 15.w, right: 15.w),
+                  height: 220.h,
+                  padding: EdgeInsets.only(
+                    left: 15.w,
+                  ),
+                  decoration: BoxDecoration(
+                      color: Color(0xffD9ECCD),
+                      borderRadius: BorderRadius.circular(16.0.r)),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                          bottom: -4.h,
+                          right: 10.w,
+                          child: Image.asset(pngConnectWatchImage)),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          15.sBH,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              InkWell(
+                                  onTap: () {
+                                    appNavigator.goBack();
+                                  },
+                                  child: SvgPicture.asset(svgCancel)),
+                              20.sBW
+                            ],
+                          ),
+                          15.sBH,
+                          Text("Sync your fitness watch \nto stay on track",
+                              style: AppTextStyle.jakartaStyle(
+                                  withTextStyle: TextStyle(
+                                      fontSize: 22.sp,
+                                      color: Color(0xff09020F)),
+                                  jakartaFont: JakartaStyle.bold)),
+                          20.sBH,
+                          Text(
+                              "Lorem ipsum is simply dummy text \nLorem ipsum is simply dummy text",
+                              style: AppTextStyle.jakartaStyle(
+                                  withTextStyle: TextStyle(
+                                      fontSize: 12.sp,
+                                      color: Color(0xff09020F)),
+                                  jakartaFont: JakartaStyle.bold)),
+                          20.sBH,
+                          CustomButton(
+                              onPressed: (startLoading, stopLoading, btnState) {
+                                appNavigator.pushNamed(routeConnectWatch);
+                              },
+                              buttonColor: Colors.white,
+                              height: 40.h,
+                              width: 145.w,
+                              buttonTextStyle: AppTextStyle.outfitStyle(
+                                  withTextStyle: TextStyle(
+                                      fontSize: 12.sp, color: Colors.black),
+                                  outfitFont: OutfitFontStyle.medium),
+                              buttonText: 'Connect Your Watch'),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                20.sBH,
+                Padding(
+                  padding: EdgeInsets.only(left: 20.w, right: 15.w),
+                  child: Text("Log your meals",
+                      style: AppTextStyle.jakartaStyle(
+                          withTextStyle: TextStyle(
+                              fontSize: 20.sp, color: Color(0xff09020F)),
+                          jakartaFont: JakartaStyle.bold)),
+                ),
+                10.sBH,
+                Padding(
+                  padding: EdgeInsets.only(left: 10.w, right: 10.w),
+                  child: Consumer<MealSearchScreenViewmodel>(
+                    builder: (context, value, child) {
+                      return SizedBox(
+                          // height: 330.h,
+                          child:
+                              //  ListView.builder(
+                              //   padding: EdgeInsets.zero,
+                              //   shrinkWrap: true,
+                              //   itemCount: meals.length,
+                              //   physics: const NeverScrollableScrollPhysics(),
+                              //   itemBuilder: (context, index) {
+                              //     return LogMealsWidget(
+                              //         list:
+                              //         icon: meals[index].icon!,
+                              //         title: meals[index].title!,
+                              //         subtitle: meals[index].subtitle!);
+                              //   },
+                              // ),
+                              ListView(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: [
+                          LogMealsWidget(
                             onAddTap: () {
                               openBottomSheet(
                                   context: context,
@@ -362,8 +682,9 @@ class HomeScreen extends StatelessWidget {
                             list: value.breakfastList,
                             icon: meals[0].icon!,
                             title: meals[0].title!,
-                            subtitle: meals[0].subtitle!),
-                        LogMealsWidget(
+                            // subtitle: meals[0].subtitle
+                          ),
+                          LogMealsWidget(
                             onAddTap: () {
                               context
                                   .read<FoodLoggerViewmodel>()
@@ -372,8 +693,9 @@ class HomeScreen extends StatelessWidget {
                             list: value.lunchList,
                             icon: meals[1].icon!,
                             title: meals[1].title!,
-                            subtitle: meals[1].subtitle!),
-                        LogMealsWidget(
+                            // subtitle: meals[1].subtitle!
+                          ),
+                          LogMealsWidget(
                             onAddTap: () {
                               context
                                   .read<FoodLoggerViewmodel>()
@@ -382,8 +704,9 @@ class HomeScreen extends StatelessWidget {
                             list: value.dinnerList,
                             icon: meals[2].icon!,
                             title: meals[2].title!,
-                            subtitle: meals[2].subtitle!),
-                        LogMealsWidget(
+                            // subtitle: meals[2].subtitle!
+                          ),
+                          LogMealsWidget(
                             onAddTap: () {
                               context
                                   .read<FoodLoggerViewmodel>()
@@ -392,19 +715,27 @@ class HomeScreen extends StatelessWidget {
                             list: value.snackList,
                             icon: meals[3].icon!,
                             title: meals[3].title!,
-                            subtitle: meals[3].subtitle!),
-                      ],
-                    ));
-                  },
+                            // subtitle: meals[3].subtitle!
+                          ),
+                        ],
+                      ));
+                    },
+                  ),
                 ),
                 10.sBH,
-                Text("Water",
-                    style: AppTextStyle.jakartaStyle(
-                        withTextStyle: TextStyle(
-                            fontSize: 20.sp, color: Color(0xff09020F)),
-                        jakartaFont: JakartaStyle.bold)),
+                Padding(
+                  padding: EdgeInsets.only(top: 15.w, left: 15.w, right: 15.w),
+                  child: Text("Water",
+                      style: AppTextStyle.jakartaStyle(
+                          withTextStyle: TextStyle(
+                              fontSize: 20.sp, color: Color(0xff09020F)),
+                          jakartaFont: JakartaStyle.bold)),
+                ),
                 10.sBH,
-                const WaterTracker(),
+                Padding(
+                  padding: EdgeInsets.only(top: 15.w, left: 15.w, right: 15.w),
+                  child: const WaterTracker(),
+                ),
                 20.sBH
               ],
             ),
@@ -420,12 +751,12 @@ class LogMealsWidget extends StatelessWidget {
       {super.key,
       required this.icon,
       required this.title,
-      required this.subtitle,
+      // required this.subtitle,
       this.list = const [],
       required this.onAddTap});
   final String icon;
   final String title;
-  final String subtitle;
+  // final String subtitle;
   final List<SuggestedFood> list;
   final VoidCallback onAddTap;
 
@@ -441,7 +772,7 @@ class LogMealsWidget extends StatelessWidget {
             // height: 70.h,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -457,14 +788,19 @@ class LogMealsWidget extends StatelessWidget {
                                 withTextStyle: TextStyle(
                                     fontSize: 18.sp, color: Color(0xff09020F)),
                                 outfitFont: OutfitFontStyle.regular)),
-                        5.sBH,
-                        Text(subtitle,
-                            style: AppTextStyle.outfitStyle(
-                                withTextStyle: TextStyle(
-                                    fontSize: 14.sp, color: Color(0xff09020F)),
-                                outfitFont: OutfitFontStyle.regular)),
+                        // 5.sBH,
+                        // Text(subtitle,
+                        //     style: AppTextStyle.outfitStyle(
+                        //         withTextStyle: TextStyle(
+                        //             fontSize: 14.sp, color: Color(0xff09020F)),
+                        //         outfitFont: OutfitFontStyle.regular)),
                       ],
                     ),
+                    // Text(title,
+                    //     style: AppTextStyle.outfitStyle(
+                    //         withTextStyle: TextStyle(
+                    //             fontSize: 18.sp, color: Color(0xff09020F)),
+                    //         outfitFont: OutfitFontStyle.regular)),
                     const Spacer(),
                     InkWell(
                         onTap: onAddTap,
@@ -670,20 +1006,23 @@ class ProgressIndicator extends StatelessWidget {
     required this.limit,
     required this.current,
     required this.title,
+    this.measurementValue = 'g',
   });
   final Color bgColor;
   final Color fgColor;
   final String limit;
   final String current;
   final String title;
+  final String measurementValue;
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        SizedBox(
-          height: 110.w,
-          width: 110.w,
+        Container(
+          margin: EdgeInsets.all(2),
+          height: 100.w,
+          width: 100.w,
           child: SfRadialGauge(
             animationDuration: 2000,
             enableLoadingAnimation: true,
@@ -695,10 +1034,10 @@ class ProgressIndicator extends StatelessWidget {
                   maximum: double.parse(limit),
                   startAngle: 270.0,
                   endAngle: 270.0,
-                  radiusFactor: 0.7,
+                  radiusFactor: 0.9,
                   canScaleToFit: true,
                   axisLineStyle: AxisLineStyle(
-                    thickness: 0.2.w,
+                    thickness: 0.12.w,
                     color: bgColor,
                     thicknessUnit: GaugeSizeUnit.factor,
                     cornerStyle: CornerStyle.startCurve,
@@ -707,7 +1046,7 @@ class ProgressIndicator extends StatelessWidget {
                     RangePointer(
                         color: fgColor,
                         value: double.parse(current),
-                        width: 0.2.w,
+                        width: 0.12.w,
                         sizeUnit: GaugeSizeUnit.factor,
                         cornerStyle: CornerStyle.endCurve)
                   ],
@@ -724,7 +1063,7 @@ class ProgressIndicator extends StatelessWidget {
                                         fontSize: 20.sp,
                                         color: Color(0xff09020F)),
                                     outfitFont: OutfitFontStyle.medium)),
-                            Text("$limit g",
+                            Text("/ $limit $measurementValue",
                                 style: AppTextStyle.outfitStyle(
                                     withTextStyle: TextStyle(
                                         fontSize: 10.sp,

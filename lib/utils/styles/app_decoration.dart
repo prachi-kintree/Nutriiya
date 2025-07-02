@@ -16,9 +16,30 @@ class AppDecoration {
   static List<BoxShadow> addShadow() {
     return [
       BoxShadow(
-          color: Colors.grey.withOpacity(0.2),
-          blurRadius: 1.0,
-          offset: Offset(0.0, 2.0)),
+        color: Color(0xff7D7D7D).withOpacity(0.1),
+        offset: Offset(1, 0),
+        blurRadius: 2,
+      ),
+      BoxShadow(
+        color: Color(0xff7D7D7D).withOpacity(0.09),
+        offset: Offset(4, 0),
+        blurRadius: 4,
+      ),
+      BoxShadow(
+        color: Color(0xff7D7D7D).withOpacity(0.05),
+        offset: const Offset(8, 0),
+        blurRadius: 5,
+      ),
+      BoxShadow(
+        color: Color(0xff7D7D7D).withOpacity(0.01),
+        offset: Offset(15, 0),
+        blurRadius: 6,
+      ),
+      BoxShadow(
+        color: Color(0xff7D7D7D).withOpacity(0.00),
+        offset: Offset(23, 0),
+        blurRadius: 7,
+      ),
     ];
   }
 
@@ -73,6 +94,10 @@ class AppDecoration {
         textColor: Colors.white,
         fontSize: 16.0);
   }
+
+  Gradient scaffoldGradient = const LinearGradient(
+      colors: [Color(0xffFFFFFF), Color(0xffEDEDED)],
+      begin: Alignment.topCenter);
 
   void commonDialog(
       {required String title,
@@ -149,9 +174,10 @@ class AppDecoration {
                         alignment: Alignment.center,
                         padding: EdgeInsets.symmetric(horizontal: 15.w),
                         decoration: BoxDecoration(
-                          border: Border.all(color: ThemeManagerPlus.of<AppTheme>(context)
-                              .currentTheme
-                              .purple_500!),
+                            border: Border.all(
+                                color: ThemeManagerPlus.of<AppTheme>(context)
+                                    .currentTheme
+                                    .purple_500!),
                             color: ThemeManagerPlus.of<AppTheme>(context)
                                 .currentTheme
                                 .feeling_bg_light_pink,
@@ -159,7 +185,8 @@ class AppDecoration {
                         child: RichText(
                             textAlign: TextAlign.center,
                             text: TextSpan(
-                                text: boldtextMsg?.capitalizeFirstLetter() ?? "",
+                                text:
+                                    boldtextMsg?.capitalizeFirstLetter() ?? "",
                                 style: AppTextStyle.jakartaStyle(
                                     withTextStyle: TextStyle(
                                         color: Colors.black, fontSize: 14.sp),
@@ -169,7 +196,8 @@ class AppDecoration {
                                     text: lighttextMsg ?? "",
                                     style: AppTextStyle.jakartaStyle(
                                         withTextStyle: TextStyle(
-                                            color: Colors.black, fontSize: 14.sp),
+                                            color: Colors.black,
+                                            fontSize: 14.sp),
                                         jakartaFont: JakartaStyle.regular),
                                   )
                                 ]))),
@@ -190,7 +218,8 @@ class AppDecoration {
                           children: [
                             Expanded(
                               child: CustomOutlinedButton(
-                                buttonText: "$primaryBtnName " ?? LocaleKeys.yes.tr(),
+                                buttonText:
+                                    "$primaryBtnName " ?? LocaleKeys.yes.tr(),
                                 onPressed: onPrimaryBtnTap,
                                 height: 30.h,
                                 width: 300.w,
@@ -210,7 +239,9 @@ class AppDecoration {
                             ),
                             SizedBox(
                               height: 50.h,
-                              child: VerticalDivider(thickness: 0.8.w,width: 0.8.w,
+                              child: VerticalDivider(
+                                  thickness: 0.8.w,
+                                  width: 0.8.w,
                                   color: Theme.of(context).dividerColor),
                             ),
                             Expanded(
@@ -241,7 +272,6 @@ class AppDecoration {
                           onPressed: onPrimaryBtnTap,
                           height: 30.h,
                           width: 300.w,
-
                           buttonColor: primaryBtnColor ?? Colors.white,
                           buttonTextStyle: AppTextStyle.jakartaStyle(
                               withTextStyle: TextStyle(

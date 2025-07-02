@@ -5,6 +5,7 @@ import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:nutriya/utils/app_string/app_image_path.dart';
 import 'package:nutriya/views/Onboarding/user_detail/widgets/dietary_prefernces.dart';
 import 'package:nutriya/views/Onboarding/user_detail/widgets/grocery_behavior.dart';
+import 'package:nutriya/views/Onboarding/user_detail/widgets/personalization_calories_calculation_screen.dart';
 import 'package:nutriya/views/Onboarding/user_detail/widgets/regional_food_preferences.dart';
 import 'package:nutriya/views/Onboarding/user_detail/widgets/user_basic_details_form.dart';
 import 'package:nutriya/views/Onboarding/user_detail/widgets/your_goal.dart';
@@ -100,6 +101,7 @@ class _CommonBaseState extends State<CommonBase> {
         return RegionalFoodPreferences(controller: controller);
       case 6:
         return GroceryBehaviour(controller: controller);
+
       // return NudgeBottomSheet(
       //   bottomSheetType: BottomSheetType.statustracker,
       //   isThumps: false,

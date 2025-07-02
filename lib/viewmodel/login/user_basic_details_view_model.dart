@@ -52,7 +52,8 @@ class UserBasicDetailsViewModel extends ChangeNotifier {
       currentPage++;
       notifyListeners();
     } else {
-      appNavigator.pushReplacementNamed(routeIntro);
+      appNavigator.pushReplacementNamed(routePersonalizeCaloriesIndicator);
+      // appNavigator.pushReplacementNamed(routeIntro);
     }
   }
 
@@ -226,12 +227,12 @@ class UserBasicDetailsViewModel extends ChangeNotifier {
 // }
 
 // Case 1
-/// If the user is already register and get the auth token and store
-/// it in local data using local data manager
-/// if the user has not added the member take him to add member else to dashborad
+  /// If the user is already register and get the auth token and store
+  /// it in local data using local data manager
+  /// if the user has not added the member take him to add member else to dashborad
 
-/// Case 2
-/// If the user is a new user and once the otp is verified take him to add basic detail page
+  /// Case 2
+  /// If the user is a new user and once the otp is verified take him to add basic detail page
 
 // validateOtp(
 //     {required Function startLoading, required Function stopLoading}) async {

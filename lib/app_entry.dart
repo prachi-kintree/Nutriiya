@@ -31,7 +31,6 @@ import 'RouteManager/navigator_service.dart';
 import 'RouteManager/route_manager.dart';
 import 'extension/shadow_texfield_border.dart';
 
-
 final RouteObserver<ModalRoute> routeObserver = RouteObserver<ModalRoute>();
 
 // https://medium.getwidget.dev/effective-error-handling-in-flutter-tips-and-techniques-2bf9298a02e7
@@ -80,90 +79,87 @@ class _AppEntryState extends State<AppEntry> {
           child: RestartApp(builder: (context, route) {
             print("Restart app with ${route}");
             return MultiProvider(
-              providers: AppProvider.shared.getProvider(),
-              child:
-            //     // ConnectionAwareApp(
-            //   //     connectivityStyle: NoConnectivityStyle.CUSTOM,
-            //   //     // noInternetText: AppDecoration.showToast(
-            //   //     //     message: "No Internet Connection"),
-            //   //     offlineWidget: CustomNoInternetWrapper(builder: (context) {
-            //   //       AppDecoration.showToast(message: LocaleKeys.no_internet_connection.tr());
-            //   //       // return SizedBox.shrink();
-            //   //       return CustomNoInternet();
-            //   //     }),
-            //   //     builder: (context, connectionKey) {
-            //   //       appNavigator.setNavigationKey(connectionKey);
-            //   //       print("Building");
-            //   //       return
-            //
-            //           Builder(builder: (context) {
-            //           // context
-            //           //     .read<FormAdditionInfoViewModel>()
-            //           //     .getLanguagesKnowData();
-            //           // // context
-            //           // //    .read<WillPersonalFormViewModel>()
-            //           // //    .getDesignationsList();
-            //           // context
-            //           //     .read<FormAdditionInfoViewModel>()
-            //           //     .getOccupations();
-            //           // context
-            //           //     .read<FormEducationDetailsViewModel>()
-            //           //     .getEducationList();
-            //
-            //           print("Calling regional list");
-                     MaterialApp(
-                          scrollBehavior:
-                              ScrollConfiguration.of(context).copyWith(
-                            overscroll: false,
-                          ),
-                          debugShowCheckedModeBanner: false,
-                          builder: (context, widget) {
-                            Widget error = const Text('...rendering error...',
-                                style: TextStyle(
-                                  color: Colors.transparent,
-                                  decoration:
-                                      TextDecoration.none, // Removes underline
-                                ));
-                            if (widget is Scaffold || widget is Navigator) {
-                              error = Scaffold(body: Center(child: error));
-                            }
-                            ErrorWidget.builder = (errorDetails) => error;
-                            if (widget != null) return widget;
-                            throw ('widget is null');
-                          },
-                          initialRoute: route,
-                          navigatorKey: appNavigator.navigationKey,
-                          onGenerateRoute: AppRouteManager.shared.generateRoute,
-                          localizationsDelegates: context.localizationDelegates,
-                          supportedLocales: context.supportedLocales,
-                          locale: context.locale,
-                          navigatorObservers: [routeObserver],
-                          theme: ThemeData(
-                            useMaterial3: false,
-                            primaryColor: Color(0xFF943F7F),
-                            splashColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            bottomSheetTheme: BottomSheetThemeData(
-                                backgroundColor: Colors.transparent),
-                            textSelectionTheme: TextSelectionThemeData(),
-                            inputDecorationTheme: InputDecorationTheme(
-                              border: DecoratedInputBorder(
-                                  child: UnderlineInputBorder(
-                                      borderRadius: BorderRadius.circular(5),
-                                      borderSide: BorderSide(
-                                        width: 0,
-                                        style: BorderStyle.none,
-                                      )),
-                                  shadow: BoxShadow(
-                                    color: Colors.black.withOpacity(0.15),
-                                    blurRadius: 5.0,
-                                    offset: Offset(0.0, 1.0),
-                                  )),
-                            ),
-                          ),
-                          title: 'Kintree',
-
-                      ));
+                providers: AppProvider.shared.getProvider(),
+                child:
+                    //     // ConnectionAwareApp(
+                    //   //     connectivityStyle: NoConnectivityStyle.CUSTOM,
+                    //   //     // noInternetText: AppDecoration.showToast(
+                    //   //     //     message: "No Internet Connection"),
+                    //   //     offlineWidget: CustomNoInternetWrapper(builder: (context) {
+                    //   //       AppDecoration.showToast(message: LocaleKeys.no_internet_connection.tr());
+                    //   //       // return SizedBox.shrink();
+                    //   //       return CustomNoInternet();
+                    //   //     }),
+                    //   //     builder: (context, connectionKey) {
+                    //   //       appNavigator.setNavigationKey(connectionKey);
+                    //   //       print("Building");
+                    //   //       return
+                    //
+                    //           Builder(builder: (context) {
+                    //           // context
+                    //           //     .read<FormAdditionInfoViewModel>()
+                    //           //     .getLanguagesKnowData();
+                    //           // // context
+                    //           // //    .read<WillPersonalFormViewModel>()
+                    //           // //    .getDesignationsList();
+                    //           // context
+                    //           //     .read<FormAdditionInfoViewModel>()
+                    //           //     .getOccupations();
+                    //           // context
+                    //           //     .read<FormEducationDetailsViewModel>()
+                    //           //     .getEducationList();
+                    //
+                    //           print("Calling regional list");
+                    MaterialApp(
+                  scrollBehavior: ScrollConfiguration.of(context).copyWith(
+                    overscroll: false,
+                  ),
+                  debugShowCheckedModeBanner: false,
+                  builder: (context, widget) {
+                    Widget error = const Text('...rendering error...',
+                        style: TextStyle(
+                          color: Colors.transparent,
+                          decoration: TextDecoration.none, // Removes underline
+                        ));
+                    if (widget is Scaffold || widget is Navigator) {
+                      error = Scaffold(body: Center(child: error));
+                    }
+                    ErrorWidget.builder = (errorDetails) => error;
+                    if (widget != null) return widget;
+                    throw ('widget is null');
+                  },
+                  initialRoute: route,
+                  navigatorKey: appNavigator.navigationKey,
+                  onGenerateRoute: AppRouteManager.shared.generateRoute,
+                  localizationsDelegates: context.localizationDelegates,
+                  supportedLocales: context.supportedLocales,
+                  locale: context.locale,
+                  navigatorObservers: [routeObserver],
+                  theme: ThemeData(
+                    useMaterial3: false,
+                    primaryColor: Color(0xFF943F7F),
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    bottomSheetTheme: BottomSheetThemeData(
+                        backgroundColor: Colors.transparent),
+                    textSelectionTheme: TextSelectionThemeData(),
+                    inputDecorationTheme: InputDecorationTheme(
+                      border: DecoratedInputBorder(
+                          child: UnderlineInputBorder(
+                              borderRadius: BorderRadius.circular(5),
+                              borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.none,
+                              )),
+                          shadow: BoxShadow(
+                            color: Colors.black.withOpacity(0.15),
+                            blurRadius: 5.0,
+                            offset: Offset(0.0, 1.0),
+                          )),
+                    ),
+                  ),
+                  title: 'Kintree',
+                ));
             //         })
             //       // }),
             // );

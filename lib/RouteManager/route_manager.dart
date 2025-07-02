@@ -1,15 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:nutriya/extension/extension_string.dart';
+import 'package:nutriya/views/Account/goal_settings/change_preferences/any_other_goal_screen.dart';
+import 'package:nutriya/views/Account/goal_settings/change_preferences/big_wins_screen.dart';
+import 'package:nutriya/views/Account/goal_settings/change_preferences/build_streak_screen.dart';
+import 'package:nutriya/views/Account/goal_settings/change_preferences/carving_hits_screen.dart';
+import 'package:nutriya/views/Account/goal_settings/change_preferences/change_preferences_main_screen.dart';
+import 'package:nutriya/views/Account/goal_settings/change_preferences/dietary_screen.dart';
+import 'package:nutriya/views/Account/goal_settings/change_preferences/journey_progress_screen.dart';
+import 'package:nutriya/views/Account/goal_settings/change_preferences/reason_screen.dart';
+import 'package:nutriya/views/Account/goal_settings/change_preferences/regional_food_screen.dart';
+import 'package:nutriya/views/Account/goal_settings/change_preferences/shop_preferences_screen.dart';
+import 'package:nutriya/views/Account/goal_settings/change_preferences/stay_on_track_screen.dart';
+import 'package:nutriya/views/Account/goal_settings/change_preferences/time_budget_screen.dart';
+import 'package:nutriya/views/Account/goal_settings/change_preferences/whats_your_goal_screen.dart';
+import 'package:nutriya/views/Account/goal_settings/change_preferences/work_rhythm_screen.dart';
+import 'package:nutriya/views/Account/goal_settings/goal_setting_main_screen.dart';
+import 'package:nutriya/views/Account/goal_settings/steps_goal_edit_screen.dart';
+import 'package:nutriya/views/Account/help/contact_support/contact_support_screen.dart';
+import 'package:nutriya/views/Account/help/faq/faq_screen.dart';
+import 'package:nutriya/views/Account/help/feedback/feedback_screen.dart';
+import 'package:nutriya/views/Account/help/help_support_main_screen.dart';
+import 'package:nutriya/views/Account/security/security_main_screen.dart';
+import 'package:nutriya/views/Account/subscription/my_subscription_plan_screen.dart';
+import 'package:nutriya/views/Account/subscription/subscription_done.dart';
+import 'package:nutriya/views/Dashboard/home/connect_watch_screen.dart';
+import 'package:nutriya/views/Dashboard/home/fitness_activity_screen.dart';
+import 'package:nutriya/views/Dashboard/home/walking_statistic_screen.dart';
+import 'package:nutriya/views/Onboarding/user_detail/widgets/calories_plan_ready_screen.dart';
+import 'package:nutriya/views/Onboarding/user_detail/widgets/personalization_calories_calculation_screen.dart';
 import 'package:nutriya/views/User_Progress/user_progress.dart';
+import 'package:nutriya/views/dashboard/Scanner/camera_scanner_screen.dart';
+import 'package:nutriya/views/dashboard/Scanner/food_cart_screen.dart';
+import 'package:nutriya/views/dashboard/Scanner/ingredient_search_screen.dart';
+import 'package:nutriya/views/dashboard/Scanner/meal_detail_screen.dart';
+import 'package:nutriya/views/dashboard/Scanner/meal_search_screen.dart';
 import 'package:nutriya/views/dashboard/dashboard_screen.dart';
 import '../Injector/app_injector.dart';
 import '../utils/LocalData/local_data_manager.dart';
 import '../utils/animations/page_route_animation.dart';
 import '../utils/styles/app_decoration.dart';
-import '../viewmodel/dashboard/scanner/camera_scanner_screen.dart';
-import '../viewmodel/dashboard/scanner/ingredient_search_screen.dart';
-import '../viewmodel/dashboard/scanner/meal_detail_screen.dart';
-import '../viewmodel/dashboard/scanner/meal_search_screen.dart';
 import '../views/Account/amount_page.dart';
 import '../views/Account/subscription/subscription_plan.dart';
 import '../views/History/history_listing_page.dart';
@@ -21,7 +50,8 @@ import '../views/Onboarding/login/sign_in_screen.dart';
 import '../views/Onboarding/user_detail/user_details_screen.dart';
 import '../views/Onboarding/user_detail/widgets/bmi_report.dart';
 import '../views/splash/splash_screen.dart';
-import '../views/widgets/food_details/common_food_details.dart';
+import '../views/widgets/food_details/common_food_details.dart'
+    hide FoodCartScreen;
 import 'app_routes.dart';
 import 'deep_link_helper.dart';
 
@@ -81,16 +111,31 @@ class AppRouteManager {
         return FadeInRoute(page: const UserDetailsScreen(), settings: settings);
       case routeBmiReport:
         return FadeInRoute(page: const BmiReport(), settings: settings);
+      case routePersonalizeCaloriesIndicator:
+        return FadeInRoute(
+            page: const PersonalizationCaloriesCalculationScreen(),
+            settings: settings);
+      case routeCaloriesPlanReady:
+        return FadeInRoute(
+            page: const CaloriesPlanReadyScreen(), settings: settings);
       case routeIntro:
         return FadeInRoute(page: const IntroScreen(), settings: settings);
-        case routeUserProgress:
-        return FadeInRoute(page: const UserProgressScreen(), settings: settings);
-        case routeHistory:
+      case routeUserProgress:
+        return FadeInRoute(
+            page: const UserProgressScreen(), settings: settings);
+      case routeHistory:
         return FadeInRoute(page: const HistoryScreen(), settings: settings);
       case routeAccount:
         return FadeInRoute(page: const AccountPage(), settings: settings);
       case routeSubscription:
-        return FadeInRoute(page: const SubscriptionPlanPage(), settings: settings);
+        return FadeInRoute(
+            page: const SubscriptionPlanPage(), settings: settings);
+      case routeSubscriptionDone:
+        return FadeInRoute(
+            page: const SubscriptionDonePage(), settings: settings);
+      case routeMySubScriptionScreen:
+        return FadeInRoute(
+            page: const MySubscriptionPlanScreen(), settings: settings);
         // return FadeInRoute(page: UserDetailsScreen(), settings: settings);
         return FadeInRoute(page: DashboardScreen(), settings: settings);
       case routeMealSearch:
@@ -105,6 +150,55 @@ class AppRouteManager {
         return FadeInRoute(page: CameraScannerScreen(), settings: settings);
       case routeDashboard:
         return FadeInRoute(page: DashboardScreen(), settings: settings);
+      case routeHelpSupportScreen:
+        return FadeInRoute(page: HelpSupportMainScreen(), settings: settings);
+      case routeFaqHelpScreen:
+        return FadeInRoute(page: FaqHelpScreen(), settings: settings);
+      case routeContactHelpScreen:
+        return FadeInRoute(page: ContactSupportScreen(), settings: settings);
+      case routeFeedbackHelpScreen:
+        return FadeInRoute(page: FeedbackScreen(), settings: settings);
+      case routeSecurityScreen:
+        return FadeInRoute(page: SecurityMainScreen(), settings: settings);
+      case routeGoalSettingScreen:
+        return FadeInRoute(page: GoalSettingMainScreen(), settings: settings);
+      case routeStepEditScreen:
+        return FadeInRoute(page: StepsGoalEditScreen(), settings: settings);
+      case routeChangePreferencesScreen:
+        return FadeInRoute(
+            page: ChangePreferencesMainScreen(), settings: settings);
+      case routeDietScreen:
+        return FadeInRoute(page: DietaryScreen(), settings: settings);
+      case routeWhatsYourGoalScreen:
+        return FadeInRoute(page: WhatsYourGoalScreen(), settings: settings);
+      case routeRegionalFoodScreen:
+        return FadeInRoute(page: RegionalFoodScreen(), settings: settings);
+      case routeShopScreen:
+        return FadeInRoute(page: ShopScreen(), settings: settings);
+      case routeRealReasonScreen:
+        return FadeInRoute(page: RealReasonScreen(), settings: settings);
+      case routeAnyOtherGoalScreen:
+        return FadeInRoute(page: AnyOtherGoalScreen(), settings: settings);
+      case routeJourneyProgressScreen:
+        return FadeInRoute(page: JourneyProgressScreen(), settings: settings);
+      case routeStayOnTrackScreen:
+        return FadeInRoute(page: StayOnTrackScreen(), settings: settings);
+      case routeTimeBudgetScreen:
+        return FadeInRoute(page: TimeBudgetScreen(), settings: settings);
+      case routeBuildStreakScreen:
+        return FadeInRoute(page: BuildStreakScreen(), settings: settings);
+      case routeCarvingsHitScreen:
+        return FadeInRoute(page: CarvingHitsScreen(), settings: settings);
+      case routeBigWinsScreen:
+        return FadeInRoute(page: BigWinsScreen(), settings: settings);
+      case routeWorkRhythmScreen:
+        return FadeInRoute(page: WorkRhythmScreen(), settings: settings);
+      case routeConnectWatch:
+        return FadeInRoute(page: ConnectWatchScreen(), settings: settings);
+      case routeFitnessActivity:
+        return FadeInRoute(page: FitnessActivityScreen(), settings: settings);
+      case routeWalkingScreen:
+        return FadeInRoute(page: WalkingStatisticScreen(), settings: settings);
       // case routeProgress:
       //   return FadeInRoute(page: ProgressScreen(), settings: settings);
       // case routeCreatePost:

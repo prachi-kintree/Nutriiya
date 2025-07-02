@@ -187,7 +187,8 @@ String pngcensusBanner = "assets/images/census_banner.png";
 String svgCensusEdit = "assets/images/census_edit.svg";
 String pngThankYou = "assets/images/thank_you.png";
 // Animations
-String lottieSuccess = "assets/lottiefiles/success.json";
+// String lottieSuccess = "assets/lottiefiles/success.json";
+String lottieSuccess = "assets/lottie/success.json";
 
 // create post
 String svgCreatePost = "assets/images/create_post.svg";
@@ -331,7 +332,6 @@ String svgProgressInsights = "assets/images/progress_insights.svg";
 String svgSubsTick = "assets/images/tick.svg";
 String svgCancel = "assets/images/cancel.svg";
 
-
 String pngDalChawal = "assets/images/dal-chawal.png";
 String pngPavBhaji = "assets/images/pav-bhaji.png";
 String misalPav = "assets/images/misal-pav.webp";
@@ -398,3 +398,26 @@ String pngProfileImg = "assets/images/profile_img.png";
 String svgScanFood = "assets/images/scan_food.svg";
 String svgLogFood = "assets/images/log_food.svg";
 String svgScanDashboard = "assets/images/scan_dashboard_icon.svg";
+String svgFlashIcon = "assets/images/flash_icon.svg";
+String svgWhatsappIcon = "assets/images/whatsapp_icon.svg";
+String svgEmailIcon = "assets/images/email_icon.svg";
+String svgWorstEmojiIcon = "assets/images/worst_emoji_icon.svg";
+String svgBadEmojiIcon = "assets/images/bad_emoji_icon.svg";
+String svgOkayEmojiIcon = "assets/images/okay_emoji_icon.svg";
+String svgGoodEmojiIcon = "assets/images/good_emoji.svg";
+String svgBestEmojiIcon = "assets/images/best_emoji_icon.svg";
+String svgGreenCheckIcon2 = "assets/images/green_check_2.svg";
+String svgNextArrowGreen = "assets/images/next_green_long_arrow.svg";
+String svgFitBitIcon = "assets/images/fibit_icon.svg";
+String svgGoogleFitIcon = "assets/images/google_fit_icon.svg";
+String svgGarminIcon = "assets/images/garmin_icon.svg";
+String pngConnectWatchImage = "assets/images/connect_watch_img.png";
+
+// new icons
+String svgDatePicker = "assets/images/datetime_picker_icon.svg";
+String svgSteps = "assets/images/steps_icon.svg";
+String svgDistance = "assets/images/distance_icon.svg";
+String svgDuration = "assets/images/duration_icon.svg";
+String svgAverageHR = "assets/images/average_hr_icon.svg";
+String svgMaxHr = "assets/images/max_hr_icon.svg";
+String svgWalking = "assets/images/walking_icon.svg";
