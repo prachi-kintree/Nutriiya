@@ -47,7 +47,7 @@ class MemeberCard extends StatelessWidget {
                 ),
                 Text(
                   memberName,
-                  style: AppTextStyle.jakartaStyle(
+                  style: AppTextStyle.outfitStyle(
                       withTextStyle: TextStyle(
                           color: isSelectable
                               ? ThemeManagerPlus.of<AppTheme>(context)
@@ -57,7 +57,7 @@ class MemeberCard extends StatelessWidget {
                                   .currentTheme
                                   .disabledGrey,
                           fontSize: 16.sp),
-                      jakartaFont: JakartaStyle.bold),
+                      outfitFont: OutfitFontStyle.bold),
                 )
               ],
             ),

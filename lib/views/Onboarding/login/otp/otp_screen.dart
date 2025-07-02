@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:nutriya/RouteManager/app_routes.dart';
 import 'package:nutriya/RouteManager/navigator_service.dart';
 
@@ -15,17 +16,23 @@ import '../../../../translation/locale_keys.g.dart';
 import '../../../../viewmodel/login/login_view_model.dart';
 import '../../../widget/gradient_scaffold.dart';
 
-
 class OtpScreen extends StatelessWidget {
   const OtpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Stack(
-          children: [CustomGradientBackground(), OtpWidget()],
+          children: [
+            CustomGradientBackground(),
+            OtpWidget(
+                contact: "9876543210",
+                onTapNext: () {
+                  appNavigator.pushReplacementNamed(routeSelectUserLanguage);
+                })
+          ],
         ),
       ),
     );
@@ -33,7 +40,15 @@ class OtpScreen extends StatelessWidget {
 }
 
 class OtpWidget extends StatelessWidget {
-  const OtpWidget({super.key});
+  final VoidCallback onTapNext;
+  final bool forEmail;
+  final String contact;
+
+  const OtpWidget(
+      {super.key,
+      required this.onTapNext,
+      this.forEmail = false,
+      required this.contact});
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +75,11 @@ class OtpWidget extends StatelessWidget {
                       child: RichText(
                           text: TextSpan(children: [
                         TextSpan(
-                            text: "We have just sent a code to 9876543210 ",
+                            text:
+                                "${forEmail ? "We’ve sent a 4-digit code to" : "We have just sent a code to"} $contact  ",
                             style: AppTextStyle.outfitStyle(
                                 withTextStyle: TextStyle(
-                                    fontSize: 15.sp,
+                                    fontSize: 14.sp,
                                     color:
                                         ThemeManagerPlus.of<AppTheme>(context)
                                             .currentTheme
@@ -71,10 +87,7 @@ class OtpWidget extends StatelessWidget {
                                 outfitFont: OutfitFontStyle.regular)),
                         WidgetSpan(
                           child: InkWell(
-                              child: Icon(
-                                Icons.edit,
-                                size: 15.h,
-                              ),
+                              child: SvgPicture.asset(svgEditIcon),
                               onTap: () {
                                 appNavigator.goBack();
                               }),
@@ -91,18 +104,16 @@ class OtpWidget extends StatelessWidget {
                             controller: controller.otpController,
                             currentCode: controller.otpController.text,
                             onCodeChanged: (value) {
-                              if(value?.isNotEmpty ?? false) {
+                              if (value?.isNotEmpty ?? false) {
                                 controller.enteredOtp = value ?? "";
                                 if ((value?.length ?? 0) >= 4) {
                                   try {
                                     FocusScope.of(context).unfocus();
-                                    appNavigator.pushReplacementNamed(routeSelectUserLanguage);
+                                    onTapNext();
                                     // controller.invalidOtp();
                                   } catch (e) {}
                                 } else {}
                               }
-
-
                             },
                             // },
                             cursor: Cursor(
@@ -138,7 +149,6 @@ class OtpWidget extends StatelessWidget {
                       ),
                     ),
 
-
                     Visibility(
                         visible: controller.showInvalidOtp,
                         child: Padding(
@@ -147,17 +157,16 @@ class OtpWidget extends StatelessWidget {
                             controller.enteredOtp.isEmpty
                                 ? "${LocaleKeys.error_empty_otp.tr()} "
                                 : controller.enteredOtp.length < 4
-                                ? LocaleKeys.enter_otp_text.tr(namedArgs: {
-                              'digit': 4
-                                  .toString()
-                            })
-                                : LocaleKeys.error_incorrect_passcode.tr(),
+                                    ? LocaleKeys.enter_otp_text
+                                        .tr(namedArgs: {'digit': 4.toString()})
+                                    : LocaleKeys.error_incorrect_passcode.tr(),
                             style: AppTextStyle.outfitStyle(
                                 withTextStyle: TextStyle(
-                                  fontSize: 15.sp,
-                                    color: ThemeManagerPlus.of<AppTheme>(context)
-                                        .currentTheme
-                                        .secondaryOrange),
+                                    fontSize: 15.sp,
+                                    color:
+                                        ThemeManagerPlus.of<AppTheme>(context)
+                                            .currentTheme
+                                            .secondaryOrange),
                                 outfitFont: OutfitFontStyle.medium),
                           ),
                         )),
@@ -177,17 +186,16 @@ class OtpWidget extends StatelessWidget {
                     ResendOtpText(
                       onResend: () {},
                     ),
-                    10.sBH,
-                    // CustomButton(
-                    //     buttonText: "Verify",
-                    //     padding: EdgeInsets.only(top: 10.h),
-                    //     buttonTextStyle: AppTextStyle.jakartaStyle(
-                    //         withTextStyle: TextStyle(fontSize: 16.sp),
-                    //         jakartaFont: JakartaStyle.regular),
-                    //     width: 500.w,
-                    //     onPressed: (startLoading, stopLoading, btnState) {},
-                    //     isDisabled: false,
-                    //     disableElevation: false),
+                    CustomButton(
+                        buttonText: "Verify",
+                        padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
+                        buttonTextStyle: AppTextStyle.outfitStyle(
+                            withTextStyle: TextStyle(fontSize: 16.sp),
+                            outfitFont: OutfitFontStyle.medium),
+                        width: 500.w,
+                        onPressed: (startLoading, stopLoading, btnState) {},
+                        isDisabled: false,
+                        disableElevation: false),
                   ],
                 ),
               ),

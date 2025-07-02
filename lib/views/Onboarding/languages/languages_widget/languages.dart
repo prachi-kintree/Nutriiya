@@ -2,10 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nutriya/extension/extension_sized_box.dart';
+import 'package:theme_manager_plus/theme_manager_plus.dart';
 import '../../../../Injector/app_injector.dart';
 
 import '../../../../utils/LocalData/local_data_manager.dart';
 import '../../../../utils/styles/app_text_styles.dart';
+import '../../../../utils/theme/theme_model.dart';
 
 class LanguagePage extends StatefulWidget {
   LanguagePage({super.key});
@@ -129,8 +131,12 @@ class _LanguagePageState extends State<LanguagePage> {
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: currentSelected == language ? Colors.red: Colors.transparent,
-                          border: Border.all(width: 4,color: currentSelected == language ? Colors.red:  Colors.grey)
+                          color: currentSelected == language ? ThemeManagerPlus.of<AppTheme>(context)
+                              .currentTheme
+                              .primaryGreen: Colors.transparent,
+                          border: Border.all(width: 4,color: currentSelected == language ? ThemeManagerPlus.of<AppTheme>(context)
+                              .currentTheme
+                              .primaryGreen!:  Colors.grey)
                         ),
 
                         // backgroundColor: hexToColor(language.circleBgColor),

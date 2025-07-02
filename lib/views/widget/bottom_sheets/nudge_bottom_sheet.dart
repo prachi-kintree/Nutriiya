@@ -90,6 +90,7 @@ class NudgeBottomSheet extends StatelessWidget {
                       itemBuilder: (context, index) {
                         SelectableFieldItem currentPref = primaryGoals[index];
                         return SelectableFieldWidget(
+                          isSelected: false,
                             selectableFieldItem: currentPref);
                       }),
                 )

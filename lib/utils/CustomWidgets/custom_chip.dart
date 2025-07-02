@@ -15,9 +15,9 @@ Widget buildChip(
     labelPadding: EdgeInsets.all(4.0),
     label: Text(
       label,
-      style: AppTextStyle.jakartaStyle(
+      style: AppTextStyle.outfitStyle(
           withTextStyle: TextStyle(color: Colors.black),
-          jakartaFont: JakartaStyle.medium),
+          outfitFont: OutfitFontStyle.medium),
     ),
     deleteIcon: isForView
         ? null

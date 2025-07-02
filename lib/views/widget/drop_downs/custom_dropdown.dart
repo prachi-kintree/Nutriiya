@@ -9,8 +9,11 @@ import '../../../utils/theme/theme_model.dart';
 
 class CustomDropdown extends StatefulWidget {
   final List<String> options;
+  final double? height;
+  final double? width;
+  final double? trailingIconSize;
   final String selectedValue;
-  const CustomDropdown({required this.options, required this.selectedValue});
+  const CustomDropdown({required this.options, required this.selectedValue, this.height, this.width, this.trailingIconSize});
   @override
   _CustomDropdownState createState() => _CustomDropdownState();
 }
@@ -85,7 +88,7 @@ class _CustomDropdownState extends State<CustomDropdown>
                                 TextStyle(fontSize: 16.sp, color: Colors.black),
                             outfitFont: OutfitFontStyle.regular)),
                   ),
-                  if (option != "Other (Add manually)")
+                  if (option != widget.options[widget.options.length -1])
                     const Divider(
                       height: 0,
                       thickness: 1,
@@ -108,8 +111,8 @@ class _CustomDropdownState extends State<CustomDropdown>
           GestureDetector(
             onTap: toggleDropdown,
             child: Container(
-              width: double.infinity,
-              height: 50.h,
+              width: widget.width ?? double.infinity,
+              height: widget.height ?? 50.h,
               margin: EdgeInsets.only(bottom: 10.h),
               decoration: BoxDecoration(
                 color: ThemeManagerPlus.of<AppTheme>(context)
@@ -127,7 +130,7 @@ class _CustomDropdownState extends State<CustomDropdown>
                               TextStyle(fontSize: 16.sp, color: Colors.black),
                           outfitFont: OutfitFontStyle.regular)),
                   SvgPicture.asset(isOpen ? svgDropUp : svgDropDown,
-                      height: 8.h)
+                      height: widget.trailingIconSize ?? 8.h)
                 ],
               ),
             ),

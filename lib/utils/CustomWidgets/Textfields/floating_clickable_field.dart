@@ -20,6 +20,8 @@ class FloatingClickableTextField extends StatelessWidget {
   List<TextInputFormatter>? fieldFormatter;
   bool isForMobile;
   Function(bool)? isvalid;
+  TextStyle? textStyle;
+  TextStyle? floatingLabelStyle;
   String? initialValue;
   bool shouldAutoFocus;
   EdgeInsets? contentPadding;
@@ -37,6 +39,7 @@ class FloatingClickableTextField extends StatelessWidget {
       this.isPaddingThere = true,
       this.key,
       this.textController,
+        this.textStyle,
       this.contentPadding,
       this.shouldAutoFocus = false,
       this.textValidator,
@@ -48,6 +51,7 @@ class FloatingClickableTextField extends StatelessWidget {
       this.trailingIcon,
       this.isDisable = false,
       this.enabledBorderWidth,
+      this.floatingLabelStyle,
       this.onTextFieldClick,
       this.onValueChanged});
 
@@ -65,17 +69,16 @@ class FloatingClickableTextField extends StatelessWidget {
           autofocus: shouldAutoFocus,
           controller: textController,
           enabled: false,
-
           onChanged: onValueChanged,
           keyboardType: textInputType,
           validator: textValidator,
           inputFormatters: [RemoveEmojiInputFormatter()],
-          style: AppTextStyle.jakartaStyle(
+          style: textStyle ?? AppTextStyle.outfitStyle(
               withTextStyle: TextStyle(
                   color:
                       ThemeManagerPlus.of<AppTheme>(context).currentTheme.black,
                   fontSize: 15.sp),
-              jakartaFont: JakartaStyle.bold),
+              outfitFont: OutfitFontStyle.bold),
           cursorColor:
               ThemeManagerPlus.of<AppTheme>(context).currentTheme.primaryGreen,
           decoration: InputDecoration(
@@ -111,17 +114,17 @@ class FloatingClickableTextField extends StatelessWidget {
                 : EdgeInsets.symmetric(vertical: 12.h, horizontal: 15.w),
             hintText:
                 isRequired ? (floatingLabelText + "*") : floatingLabelText,
-            hintStyle: AppTextStyle.jakartaStyle(
+            hintStyle: floatingLabelStyle ?? AppTextStyle.outfitStyle(
                 withTextStyle: TextStyle(
                     color: ThemeManagerPlus.of<AppTheme>(context)
                         .currentTheme
                         .grey,
                     fontSize: 14.sp),
-                jakartaFont: JakartaStyle.light),
-            errorStyle: AppTextStyle.jakartaStyle(
+                outfitFont: OutfitFontStyle.light),
+            errorStyle: AppTextStyle.outfitStyle(
                 withTextStyle:
                     TextStyle(fontSize: 14.sp, color: Color(0xFFff0000)),
-                jakartaFont: JakartaStyle.regular),
+                outfitFont: OutfitFontStyle.regular),
           ),
         ),
       ),

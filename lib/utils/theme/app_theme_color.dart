@@ -131,6 +131,7 @@ AppTheme lightTheme = AppTheme(
   secondaryOrange: Color(0xFFFF7300),
   subtitleGrey: Color(0xff5E5F60),
   lightSecondary: Color(0xffFFB173),
+  light_black_text_color: Color(0xff131313),
 );
 
 AppTheme Darktheme = AppTheme(
@@ -225,7 +226,7 @@ AppTheme Darktheme = AppTheme(
   document_size_text_color_send: Color(0xFFbabbc2),
   document_size_text_color_receive: Color(0xFF808081),
   black_text: Color(0x00292929),
-  light_black_text_color: Color(0xFF454545),
+  light_black_text_color: Color(0xff131313),
   medium_grey: Color(0xFF595959).withOpacity(0.1),
   media_bottom_sheet_document_size_text_color: Color(0xFFaeaeae),
   chat_remove_member: Color(0xFFe14e1f),

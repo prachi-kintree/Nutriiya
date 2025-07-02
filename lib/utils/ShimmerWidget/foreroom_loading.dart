@@ -69,9 +69,9 @@ class ForeRoomShimmer extends StatelessWidget {
                   child: Text(
                     //"KINTREE",
                     "",
-                    style: AppTextStyle.jakartaStyle(
+                    style: AppTextStyle.outfitStyle(
                         withTextStyle: TextStyle(fontSize: 30.sp),
-                        jakartaFont: JakartaStyle.bold),
+                        outfitFont: OutfitFontStyle.bold),
                   ),
                 ),
               ),

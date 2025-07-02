@@ -235,7 +235,7 @@ class _ResendOtpTextState extends State<ResendOtpText> {
                 ),
               ),
               TextSpan(
-                text: "[Resend]",
+                text: "Resend",
                 style: AppTextStyle.outfitStyle(
                   withTextStyle: TextStyle(
                     fontSize: 15.sp,

@@ -31,26 +31,26 @@ class ResetPasswordFormWidget extends StatelessWidget {
                 padding: EdgeInsetsDirectional.only(start: 10.w),
                 child: Text(
                   LocaleKeys.reset_header.tr(),
-                  style: AppTextStyle.jakartaStyle(
+                  style: AppTextStyle.outfitStyle(
                       withTextStyle: TextStyle(
                           color: ThemeManagerPlus.of<AppTheme>(context)
                               .currentTheme
                               .purple_500,
                           fontSize: 25.sp),
-                      jakartaFont: JakartaStyle.bold),
+                      outfitFont: OutfitFontStyle.bold),
                 ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.only(start: 10.w, top: 10),
                 child: Text(
                   "(You're just one step away)",
-                  style: AppTextStyle.jakartaStyle(
+                  style: AppTextStyle.outfitStyle(
                       withTextStyle: TextStyle(
                           color: ThemeManagerPlus.of<AppTheme>(context)
                               .currentTheme
                               .light_black_text_color,
                           fontSize: 14.sp),
-                      jakartaFont: JakartaStyle.regular),
+                      outfitFont: OutfitFontStyle.regular),
                 ),
               ),
               20.sBH,
@@ -119,13 +119,13 @@ class ResetPasswordFormWidget extends StatelessWidget {
                     }
                   },
                   buttonText: LocaleKeys.reset_header.tr(),
-                  buttonTextStyle: AppTextStyle.jakartaStyle(
+                  buttonTextStyle: AppTextStyle.outfitStyle(
                     withTextStyle: TextStyle(
                         color: ThemeManagerPlus.of<AppTheme>(context)
                             .currentTheme
                             .white,
                         fontSize: 15.sp),
-                    jakartaFont: JakartaStyle.bold,
+                    outfitFont: OutfitFontStyle.bold,
                   ),
                 ),
               )

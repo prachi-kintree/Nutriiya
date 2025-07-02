@@ -33,12 +33,12 @@ class _ProfileImageSelectionWidgetState
         Text(
           'Choose a picture',
           textAlign: TextAlign.center,
-          style: AppTextStyle.jakartaStyle(
+          style: AppTextStyle.outfitStyle(
             withTextStyle: TextStyle(
                 color:
                     ThemeManagerPlus.of<AppTheme>(context).currentTheme.black,
                 fontSize: 24.sp),
-            jakartaFont: JakartaStyle.semibold,
+            outfitFont: OutfitFontStyle.semibold,
           ),
         ),
         // 38.sBW,
@@ -47,12 +47,12 @@ class _ProfileImageSelectionWidgetState
         Text(
           '(Upload your image or select from below avatars for your profile picture)',
           textAlign: TextAlign.center,
-          style: AppTextStyle.jakartaStyle(
+          style: AppTextStyle.outfitStyle(
             withTextStyle: TextStyle(
                 color:
                     ThemeManagerPlus.of<AppTheme>(context).currentTheme.black,
                 fontSize: 12.sp),
-            jakartaFont: JakartaStyle.regular,
+            outfitFont: OutfitFontStyle.regular,
           ),
         ),
 
@@ -225,7 +225,7 @@ class _ProfileImageSelectionWidgetState
             child: Text(
               'Skip',
               textAlign: TextAlign.right,
-              style: AppTextStyle.jakartaStyle(
+              style: AppTextStyle.outfitStyle(
                 withTextStyle: TextStyle(
                     color: ThemeManagerPlus.of<AppTheme>(context)
                         .currentTheme
@@ -233,7 +233,7 @@ class _ProfileImageSelectionWidgetState
                     decoration: TextDecoration.underline,
                     decorationStyle: TextDecorationStyle.solid,
                     fontSize: 15.sp),
-                jakartaFont: JakartaStyle.medium,
+                outfitFont: OutfitFontStyle.medium,
               ),
             ),
           ),

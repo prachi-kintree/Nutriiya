@@ -22,14 +22,14 @@ class YourGoal extends StatefulWidget {
 class _YourGoalState extends State<YourGoal> {
   List<SelectableFieldItem> primaryGoals = [
     SelectableFieldItem(
-        icon: svgLoseWeight, dietType: "Lose Weight", isSelected: false),
+        icon: svgLoseWeight, type: "Lose Weight", isSelected: false),
     SelectableFieldItem(
-        icon: svgGainMuscle, dietType: "Gain Muscle", isSelected: false),
+        icon: svgGainMuscle, type: "Gain Muscle", isSelected: false),
     SelectableFieldItem(
-        icon: svgManageDiabetes, dietType: "Manage Diabetes", isSelected: false),
+        icon: svgManageDiabetes, type: "Manage Diabetes", isSelected: false),
     SelectableFieldItem(
         icon: svgTrophy,
-        dietType: "Maintain a healthy lifestyle",
+        type: "Maintain a healthy lifestyle",
         isSelected: false)
   ];
 
@@ -59,15 +59,20 @@ class _YourGoalState extends State<YourGoal> {
     return Column(
       children: [
         10.sBH,
-        SizedBox(
-          height: primaryGoals.length * 60.h,
-          child: ListView.builder(
-              itemCount: primaryGoals.length,
-              itemBuilder: (context, index) {
-                SelectableFieldItem currentPref = primaryGoals[index];
-                return SelectableFieldWidget(selectableFieldItem: currentPref);
-              }),
-        ),
+        ListView.builder(
+            itemCount: primaryGoals.length,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              SelectableFieldItem currentPref = primaryGoals[index];
+              return InkWell(
+                  onTap: () {
+                    widget.controller.addGoalPreference(selectedItem: currentPref);
+                  },
+                  child: SelectableFieldWidget(selectableFieldItem: currentPref,
+                      isSelected: widget.controller.selectedGoalItem?.type ==
+                          currentPref.type));
+            }),
         10.sBH,
 
         const CustomDropdown(
@@ -84,20 +89,21 @@ class _YourGoalState extends State<YourGoal> {
           ],
           selectedValue: 'Any existing conditions?',
         ),
+        70.sBH
         // 10.sBH,
 
-        CustomButton(
-            buttonText: "Continue",
-            padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
-            buttonTextStyle: AppTextStyle.outfitStyle(
-                withTextStyle: TextStyle(fontSize: 16.sp),
-                outfitFont: OutfitFontStyle.medium),
-            width: 500.w,
-            onPressed: (startLoading, stopLoading, btnState) {
-              widget.controller.changeCurrentPage();
-            },
-            isDisabled: false,
-            disableElevation: false),
+          // CustomButton(
+          //     buttonText: "Continue",
+          //     padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
+          //     buttonTextStyle: AppTextStyle.outfitStyle(
+          //         withTextStyle: TextStyle(fontSize: 16.sp),
+          //         outfitFont: OutfitFontStyle.medium),
+          //     width: 500.w,
+          //     onPressed: (startLoading, stopLoading, btnState) {
+          //       widget.controller.changeCurrentPage();
+          //     },
+          //     isDisabled: false,
+          //     disableElevation: false),
       ],
     );
   }

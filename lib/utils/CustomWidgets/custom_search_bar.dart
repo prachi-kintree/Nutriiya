@@ -57,13 +57,13 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
                   controller: widget.textController,
                   onChanged: widget.onValueChanged,
                   inputFormatters: [RemoveEmojiInputFormatter()],
-                  style: AppTextStyle.jakartaStyle(
+                  style: AppTextStyle.outfitStyle(
                       withTextStyle: TextStyle(
                           color: ThemeManagerPlus.of<AppTheme>(context)
                               .currentTheme
                               .black,
                           fontSize: 15.sp),
-                      jakartaFont: JakartaStyle.bold),
+                      outfitFont: OutfitFontStyle.bold),
                   cursorColor: ThemeManagerPlus.of<AppTheme>(context)
                       .currentTheme
                       .purple_500,
@@ -75,17 +75,17 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
                     hintText: widget.isRequired
                         ? (widget.floatingLabelText + "*")
                         : widget.floatingLabelText,
-                    hintStyle: AppTextStyle.jakartaStyle(
+                    hintStyle: AppTextStyle.outfitStyle(
                         withTextStyle: TextStyle(
                             color: ThemeManagerPlus.of<AppTheme>(context)
                                 .currentTheme
                                 .grey,
                             fontSize: 14.sp),
-                        jakartaFont: JakartaStyle.light),
-                    errorStyle: AppTextStyle.jakartaStyle(
+                        outfitFont: OutfitFontStyle.light),
+                    errorStyle: AppTextStyle.outfitStyle(
                         withTextStyle: TextStyle(
                             fontSize: 14.sp, color: Color(0xFFff0000)),
-                        jakartaFont: JakartaStyle.regular),
+                        outfitFont: OutfitFontStyle.regular),
                   ),
                 ),
               ),

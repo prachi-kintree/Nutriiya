@@ -54,10 +54,10 @@ class HomeScreen extends StatelessWidget {
                 Row(
                   children: [
                     Text("${DateTime.now().getGreeting()} Raj",
-                        style: AppTextStyle.jakartaStyle(
+                        style: AppTextStyle.outfitStyle(
                             withTextStyle: TextStyle(
                                 fontSize: 24.sp, color: Color(0xff09020F)),
-                            jakartaFont: JakartaStyle.bold)),
+                            outfitFont: OutfitFontStyle.bold)),
                     10.sBW,
                     SvgPicture.asset(
                       svgMorningIcon,
@@ -199,10 +199,10 @@ class HomeScreen extends StatelessWidget {
                 ),
                 20.sBH,
                 Text("Log your meals",
-                    style: AppTextStyle.jakartaStyle(
+                    style: AppTextStyle.outfitStyle(
                         withTextStyle: TextStyle(
                             fontSize: 20.sp, color: Color(0xff09020F)),
-                        jakartaFont: JakartaStyle.bold)),
+                        outfitFont: OutfitFontStyle.bold)),
                 10.sBH,
                 Consumer<MealSearchScreenViewmodel>(
                   builder: (context, value, child) {
@@ -399,10 +399,10 @@ class HomeScreen extends StatelessWidget {
                 ),
                 10.sBH,
                 Text("Water",
-                    style: AppTextStyle.jakartaStyle(
+                    style: AppTextStyle.outfitStyle(
                         withTextStyle: TextStyle(
                             fontSize: 20.sp, color: Color(0xff09020F)),
-                        jakartaFont: JakartaStyle.bold)),
+                        outfitFont: OutfitFontStyle.bold)),
                 10.sBH,
                 const WaterTracker(),
                 20.sBH

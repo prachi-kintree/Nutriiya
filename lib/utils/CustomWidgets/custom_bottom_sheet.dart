@@ -175,10 +175,10 @@ showListAlertDialogue<T>(
                               height: 40.h,
                               child: Text(
                                 displayOptions[index],
-                                style: AppTextStyle.jakartaStyle(
+                                style: AppTextStyle.outfitStyle(
                                     withTextStyle:
                                         TextStyle(color: Colors.black),
-                                    jakartaFont: JakartaStyle.medium),
+                                    outfitFont: OutfitFontStyle.medium),
                               ),
                             ),
                           ),
@@ -260,13 +260,13 @@ showAppDialog(
                         },
                         child: Text(buttonLeftText,
                             textAlign: TextAlign.center,
-                            style: AppTextStyle.jakartaStyle(
+                            style: AppTextStyle.outfitStyle(
                               withTextStyle: TextStyle(
                                   color: ThemeManagerPlus.of<AppTheme>(context)
                                       .currentTheme
                                       .black,
                                   fontSize: 15.sp),
-                              jakartaFont: JakartaStyle.medium,
+                              outfitFont: OutfitFontStyle.medium,
                             )),
                       ),
                     ),
@@ -284,13 +284,13 @@ showAppDialog(
                         },
                         child: Text(buttonRightText,
                             textAlign: TextAlign.center,
-                            style: AppTextStyle.jakartaStyle(
+                            style: AppTextStyle.outfitStyle(
                               withTextStyle: TextStyle(
                                   color: ThemeManagerPlus.of<AppTheme>(context)
                                       .currentTheme
                                       .button_color,
                                   fontSize: 15.sp),
-                              jakartaFont: JakartaStyle.medium,
+                              outfitFont: OutfitFontStyle.medium,
                             )),
                       ),
                     ),
@@ -351,13 +351,13 @@ showCommonBottomSheet(
               if (header != null) ...[
                 Text(
                   header,
-                  style: AppTextStyle.jakartaStyle(
+                  style: AppTextStyle.outfitStyle(
                       withTextStyle: TextStyle(
                           color: ThemeManagerPlus.of<AppTheme>(context)
                               .currentTheme
                               .light_black,
                           fontSize: 16.sp),
-                      jakartaFont: JakartaStyle.semibold),
+                      outfitFont: OutfitFontStyle.semibold),
                 ),
               ] else ...[
                 SizedBox()
@@ -368,13 +368,13 @@ showCommonBottomSheet(
                 ),
                 Text(
                   subHeader,
-                  style: AppTextStyle.jakartaStyle(
+                  style: AppTextStyle.outfitStyle(
                       withTextStyle: TextStyle(
                           color: ThemeManagerPlus.of<AppTheme>(context)
                               .currentTheme
                               .post_create,
                           fontSize: 12.sp),
-                      jakartaFont: JakartaStyle.medium),
+                      outfitFont: OutfitFontStyle.medium),
                 ),
               ] else ...[
                 SizedBox()
@@ -485,14 +485,14 @@ showNotificationBottomSheet(
                 Text(
                   header,
                   textAlign: TextAlign.center,
-                  style: AppTextStyle.jakartaStyle(
+                  style: AppTextStyle.outfitStyle(
                       withTextStyle: TextStyle(
                           color: headerTextColor ??
                               ThemeManagerPlus.of<AppTheme>(context)
                                   .currentTheme
                                   .light_black,
                           fontSize: 16.sp),
-                      jakartaFont: JakartaStyle.semibold),
+                      outfitFont: OutfitFontStyle.semibold),
                 ),
               ] else ...[
                 SizedBox()
@@ -503,13 +503,13 @@ showNotificationBottomSheet(
                 ),
                 Text(
                   subHeader,
-                  style: AppTextStyle.jakartaStyle(
+                  style: AppTextStyle.outfitStyle(
                       withTextStyle: TextStyle(
                           color: ThemeManagerPlus.of<AppTheme>(context)
                               .currentTheme
                               .post_create,
                           fontSize: 12.sp),
-                      jakartaFont: JakartaStyle.medium),
+                      outfitFont: OutfitFontStyle.medium),
                 ),
               ] else ...[
                 SizedBox()
@@ -637,7 +637,7 @@ class AddMembersBottomSheet extends StatelessWidget {
                 ),
           Text(
             tile.title,
-            style: AppTextStyle.jakartaStyle(
+            style: AppTextStyle.outfitStyle(
                 withTextStyle: TextStyle(
                     color: tile.isAlreadyAdded
                         ? ThemeManagerPlus.of<AppTheme>(context)
@@ -647,7 +647,7 @@ class AddMembersBottomSheet extends StatelessWidget {
                             .currentTheme
                             .light_black_text_color,
                     fontSize: 14.sp),
-                jakartaFont: JakartaStyle.medium),
+                outfitFont: OutfitFontStyle.medium),
           )
         ],
       ),
@@ -702,7 +702,7 @@ class CommonBottomSheetOptionsModel extends StatelessWidget {
                   children: [
                     Text(
                       tile.title,
-                      style: AppTextStyle.jakartaStyle(
+                      style: AppTextStyle.outfitStyle(
                           withTextStyle: TextStyle(
                               color: tile.titleColor != null
                                   ? tile.titleColor
@@ -710,12 +710,12 @@ class CommonBottomSheetOptionsModel extends StatelessWidget {
                                       .currentTheme
                                       .light_black,
                               fontSize: 16.sp),
-                          jakartaFont: JakartaStyle.semibold),
+                          outfitFont: OutfitFontStyle.semibold),
                     ),
                     if (tile.subtitle != '_') ...[
                       Text(
                         tile.subtitle,
-                        style: AppTextStyle.jakartaStyle(
+                        style: AppTextStyle.outfitStyle(
                             withTextStyle: TextStyle(
                                 color: tile.subtitleColor != null
                                     ? tile.subtitleColor
@@ -723,7 +723,7 @@ class CommonBottomSheetOptionsModel extends StatelessWidget {
                                         .currentTheme
                                         .post_create,
                                 fontSize: 12.sp),
-                            jakartaFont: JakartaStyle.medium),
+                            outfitFont: OutfitFontStyle.medium),
                       ),
                       SizedBox(
                         height: 2.h,
@@ -798,7 +798,7 @@ class BottomSheetOptionsModel extends StatelessWidget {
                   children: [
                     Text(
                       tile.title,
-                      style: AppTextStyle.jakartaStyle(
+                      style: AppTextStyle.outfitStyle(
                           withTextStyle: TextStyle(
                               color: tile.titleColor != null
                                   ? tile.titleColor
@@ -806,12 +806,12 @@ class BottomSheetOptionsModel extends StatelessWidget {
                                       .currentTheme
                                       .light_black,
                               fontSize: 16.sp),
-                          jakartaFont: JakartaStyle.semibold),
+                          outfitFont: OutfitFontStyle.semibold),
                     ),
                     if (tile.subtitle != '_') ...[
                       Text(
                         tile.subtitle,
-                        style: AppTextStyle.jakartaStyle(
+                        style: AppTextStyle.outfitStyle(
                             withTextStyle: TextStyle(
                                 color: tile.subtitleColor != null
                                     ? tile.subtitleColor
@@ -819,7 +819,7 @@ class BottomSheetOptionsModel extends StatelessWidget {
                                         .currentTheme
                                         .post_create,
                                 fontSize: 12.sp),
-                            jakartaFont: JakartaStyle.medium),
+                            outfitFont: OutfitFontStyle.medium),
                       ),
                       SizedBox(
                         height: 2.h,

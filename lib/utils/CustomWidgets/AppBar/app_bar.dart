@@ -57,9 +57,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   children: [
                     Text(
                       'You will earn ',
-                      style: AppTextStyle.jakartaStyle(
+                      style: AppTextStyle.outfitStyle(
                           withTextStyle: TextStyle(color: Colors.black),
-                          jakartaFont: JakartaStyle.regular),
+                          outfitFont: OutfitFontStyle.regular),
                     ),
                     SizedBox(
                       width: 15.w,
@@ -68,9 +68,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ),
                     Text(
                       ' ${kinCoins} Kincoins ',
-                      style: AppTextStyle.jakartaStyle(
+                      style: AppTextStyle.outfitStyle(
                           withTextStyle: TextStyle(color: Colors.black),
-                          jakartaFont: JakartaStyle.regular),
+                          outfitFont: OutfitFontStyle.regular),
                     ),
                   ],
                 ),
@@ -111,13 +111,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: hideBackButton ? 0 : null,
       title: Text(
         appBarTitle,
-        style: AppTextStyle.jakartaStyle(
+        style: AppTextStyle.outfitStyle(
             withTextStyle: TextStyle(
                 color:
                     ThemeManagerPlus.of<AppTheme>(context).currentTheme.black,
                 fontSize: 16.sp,
                 letterSpacing: 0.5),
-            jakartaFont: JakartaStyle.bold),
+            outfitFont: OutfitFontStyle.bold),
       ),
     );
   }

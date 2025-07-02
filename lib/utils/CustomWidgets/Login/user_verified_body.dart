@@ -23,13 +23,13 @@ class UserVerifiedBodyWidget extends StatelessWidget {
         40.sBH,
         Text(knowUserMore,
             textAlign: TextAlign.center,
-            style: AppTextStyle.jakartaStyle(
+            style: AppTextStyle.outfitStyle(
                 withTextStyle: TextStyle(
                     color: ThemeManagerPlus.of<AppTheme>(context)
                         .currentTheme
                         .black,
                     fontSize: 22.sp),
-                jakartaFont: JakartaStyle.semibold)),
+                outfitFont: OutfitFontStyle.semibold)),
         Spacer(),
         Padding(
           padding: EdgeInsets.only(left:10.w, right: 10.w, bottom: 30.h),
@@ -41,12 +41,12 @@ class UserVerifiedBodyWidget extends StatelessWidget {
             width: 500.h,
             height: 45.h,
             buttonText: btnCreateProfile,
-            buttonTextStyle: AppTextStyle.jakartaStyle(
+            buttonTextStyle: AppTextStyle.outfitStyle(
               withTextStyle: TextStyle(
                   color:
                       ThemeManagerPlus.of<AppTheme>(context).currentTheme.white,
                   fontSize: 15.sp),
-              jakartaFont: JakartaStyle.bold,
+              outfitFont: OutfitFontStyle.bold,
             ),
           ),
         ),

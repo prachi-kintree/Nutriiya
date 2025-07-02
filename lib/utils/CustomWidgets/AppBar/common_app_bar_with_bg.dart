@@ -121,14 +121,14 @@ class CommonAppBarWithBg extends StatelessWidget
                     postBtnTitle!,
                     maxLines: 1,
                     textAlign: TextAlign.center,
-                    style: AppTextStyle.jakartaStyle(
+                    style: AppTextStyle.outfitStyle(
                         withTextStyle: TextStyle(
                             color:
                             ThemeManagerPlus.of<AppTheme>(context)
                                 .currentTheme
                                 .purple_500,
                             fontSize: 14.sp),
-                        jakartaFont: JakartaStyle.semibold),
+                        outfitFont: OutfitFontStyle.semibold),
                   ),
                 ),
               ),
@@ -225,14 +225,14 @@ class CommonAppBarWithBg extends StatelessWidget
                   ? Text(
                       '',
                       textAlign: TextAlign.left,
-                      style: AppTextStyle.jakartaStyle(
+                      style: AppTextStyle.outfitStyle(
                           withTextStyle: TextStyle(
                             color: ThemeManagerPlus.of<AppTheme>(context)
                                 .currentTheme
                                 .white,
                             fontSize: 10.sp,
                           ),
-                          jakartaFont: JakartaStyle.semibold),
+                          outfitFont: OutfitFontStyle.semibold),
                     )
                   : SizedBox.shrink(),
               Padding(
@@ -240,14 +240,14 @@ class CommonAppBarWithBg extends StatelessWidget
                 child: Text(
                   appBarTitle,
                   textAlign: TextAlign.left,
-                  style: AppTextStyle.jakartaStyle(
+                  style: AppTextStyle.outfitStyle(
                       withTextStyle: TextStyle(
                         color: ThemeManagerPlus.of<AppTheme>(context)
                             .currentTheme
                             .white,
                         fontSize: 20.sp,
                       ),
-                      jakartaFont: JakartaStyle.semibold),
+                      outfitFont: OutfitFontStyle.semibold),
                 ),
               ),
               showBottom
@@ -261,14 +261,14 @@ class CommonAppBarWithBg extends StatelessWidget
                           //     .feeling_bg_light_pink,
                           child: Text(
                             bottomTitle1!,
-                            style: AppTextStyle.jakartaStyle(
+                            style: AppTextStyle.outfitStyle(
                                 withTextStyle: TextStyle(
                                     color:
                                         ThemeManagerPlus.of<AppTheme>(context)
                                             .currentTheme
                                             .white,
                                     fontSize: 14.sp),
-                                jakartaFont: JakartaStyle.medium),
+                                outfitFont: OutfitFontStyle.medium),
                           ),
                         )
                       : Container(
@@ -283,14 +283,14 @@ class CommonAppBarWithBg extends StatelessWidget
                             children: [
                               Text(
                                 '${LocaleKeys.you_will_earn.tr()} ',
-                                style: AppTextStyle.jakartaStyle(
+                                style: AppTextStyle.outfitStyle(
                                     withTextStyle: TextStyle(
                                         color: ThemeManagerPlus.of<AppTheme>(
                                                 context)
                                             .currentTheme
                                             .white,
                                         fontSize: 14.sp),
-                                    jakartaFont: JakartaStyle.medium),
+                                    outfitFont: OutfitFontStyle.medium),
                               ),
                               SizedBox(
                                 width: 15.w,
@@ -298,15 +298,15 @@ class CommonAppBarWithBg extends StatelessWidget
                                 child: Image.asset(pngKintreeCoins),
                               ),
                               Text(
-                                ' ${kinCoins} ${LocaleKeys.kincoins.tr()} ',
-                                style: AppTextStyle.jakartaStyle(
+                                ' $kinCoins ${LocaleKeys.kincoins.tr()} ',
+                                style: AppTextStyle.outfitStyle(
                                     withTextStyle: TextStyle(
                                         color: ThemeManagerPlus.of<AppTheme>(
                                                 context)
                                             .currentTheme
                                             .white,
                                         fontSize: 14.sp),
-                                    jakartaFont: JakartaStyle.medium),
+                                    outfitFont: OutfitFontStyle.medium),
                               ),
                             ],
                           ),

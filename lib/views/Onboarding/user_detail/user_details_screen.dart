@@ -8,40 +8,77 @@ import 'package:nutriya/views/Onboarding/user_detail/widgets/grocery_behavior.da
 import 'package:nutriya/views/Onboarding/user_detail/widgets/regional_food_preferences.dart';
 import 'package:nutriya/views/Onboarding/user_detail/widgets/user_basic_details_form.dart';
 import 'package:nutriya/views/Onboarding/user_detail/widgets/your_goal.dart';
+import 'package:nutriya/views/Onboarding/user_detail/widgets/your_height.dart';
 import 'package:nutriya/views/Onboarding/user_detail/widgets/your_target_weight.dart';
+import 'package:nutriya/views/Onboarding/user_detail/widgets/your_weight.dart';
 import 'package:nutriya/views/widget/bottom_sheets/nudge_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import 'package:theme_manager_plus/theme_manager_plus.dart';
 
+import '../../../RouteManager/app_routes.dart';
+import '../../../RouteManager/navigator_service.dart';
 import '../../../translation/locale_keys.g.dart';
+import '../../../utils/CustomWidgets/Button/custom_button.dart';
+import '../../../utils/styles/app_text_styles.dart';
 import '../../../utils/theme/theme_model.dart';
 import '../../../viewmodel/login/user_basic_details_view_model.dart';
 import '../../widget/gradient_scaffold.dart';
 
 class UserDetailsScreen extends StatelessWidget {
-  const UserDetailsScreen({super.key});
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  UserDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Stack(
-          children: [CustomGradientBackground(), CommonBase()],
+          children: [CustomGradientBackground(), CommonBase(formKey: formKey)],
         ),
       ),
+      bottomSheet: Consumer<UserBasicDetailsViewModel>(
+          builder: (context, controller, child) {
+        return Padding(
+          padding: EdgeInsets.symmetric(vertical: 25.h, horizontal: 15.w),
+          child: CustomButton(
+              buttonText: "Continue",
+              padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
+              buttonTextStyle: AppTextStyle.outfitStyle(
+                  withTextStyle: TextStyle(fontSize: 16.sp),
+                  outfitFont: OutfitFontStyle.medium),
+              width: 500.w,
+              onPressed: (startLoading, stopLoading, btnState) {
+                if (formKey.currentState?.validate() ?? false) {
+                  if (controller.currentPage == 1) {
+                    appNavigator.pushNamed(routeBmiReport);
+                  } else {
+                    controller.changeCurrentPage();
+                  }
+
+            }
+
+
+                // widget.controller.changeCurrentPage();
+              },
+              isDisabled: false,
+              disableElevation: false),
+        );
+      }),
     );
   }
 }
 
 class CommonBase extends StatefulWidget {
-  const CommonBase({super.key});
+  final GlobalKey<FormState> formKey;
+  const CommonBase({super.key, required this.formKey});
 
   @override
   State<CommonBase> createState() => _CommonBaseState();
 }
 
 class _CommonBaseState extends State<CommonBase> {
+
   @override
   Widget build(BuildContext context) {
     return Consumer<UserBasicDetailsViewModel>(
@@ -78,7 +115,8 @@ class _CommonBaseState extends State<CommonBase> {
                   topLeft: Radius.circular(50),
                 ),
               ),
-              child: _getCurrentBody(controller),
+              child: Form(
+                  key: widget.formKey, child: _getCurrentBody(controller)),
             ),
           )
         ],
@@ -90,15 +128,19 @@ class _CommonBaseState extends State<CommonBase> {
     switch (controller.currentPage) {
       case 1:
         return UserBasicDetailForm(controller: controller);
-      case 2:
-        return DietaryPreferences(controller: controller);
-      case 3:
-        return YourGoal(controller: controller);
+        case 2:
+        return YourHeight(controller: controller);
+        case 3:
+        return YourWeight(controller: controller);
       case 4:
-        return YourTargetWeight(controller: controller);
+        return DietaryPreferences(controller: controller);
       case 5:
-        return RegionalFoodPreferences(controller: controller);
+        return YourGoal(controller: controller);
       case 6:
+        return YourTargetWeight(controller: controller);
+      case 7:
+        return RegionalFoodPreferences(controller: controller);
+      case 8:
         return GroceryBehaviour(controller: controller);
       // return NudgeBottomSheet(
       //   bottomSheetType: BottomSheetType.statustracker,

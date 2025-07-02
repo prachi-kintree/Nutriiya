@@ -19,9 +19,9 @@ class KintreeTextShimmer extends StatelessWidget {
         highlightColor: Colors.grey[100]!,
         child: Text(
           "",
-          style: AppTextStyle.jakartaStyle(
+          style: AppTextStyle.outfitStyle(
               withTextStyle: TextStyle(fontSize: 18.sp),
-              jakartaFont: JakartaStyle.bold),
+              outfitFont: OutfitFontStyle.bold),
         ),
       ),
     );

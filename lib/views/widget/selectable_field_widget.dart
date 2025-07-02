@@ -12,10 +12,12 @@ class SelectableFieldWidget extends StatelessWidget {
   double? height;
   double? width;
   SelectableFieldItem selectableFieldItem;
+  bool isSelected;
 
   SelectableFieldWidget({
     super.key,
     this.height,
+    required this.isSelected,
     this.width,
     required this.selectableFieldItem,
   });
@@ -34,14 +36,15 @@ class SelectableFieldWidget extends StatelessWidget {
             .currentTheme
             .selectable_field_color,
         border: Border.all(
-            color: selectableFieldItem.isSelected
+          width: 2,
+            color: isSelected
                 ? ThemeManagerPlus.of<AppTheme>(context)
                     .currentTheme
                     .primaryGreen!
                 : Colors.transparent),
       ),
       child: ListTile(title: Text(
-        selectableFieldItem.dietType,
+        selectableFieldItem.type,
         style: AppTextStyle.outfitStyle(
             withTextStyle: TextStyle(fontSize: 16.sp, color: Colors.black),
             outfitFont: OutfitFontStyle.regular),

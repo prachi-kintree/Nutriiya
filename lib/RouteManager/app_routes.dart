@@ -16,6 +16,14 @@ const String routeHistory = "/history";
 const String routeAccount = "/account";
 const String routeSubscription = "/subscription";
 const String routeBmiReport = "/bmiReport";
+const String routePersonalInfo = "/personalInfo";
+const String routePersonalInfoForm = "/personalInfoForm";
+const String routeNotificationSetting = "/notificationSettings";
+const String routeLanguages = "/languages";
+const String routeReminderList = "/reminderList";
+const String routeFoodReminder = "/foodReminder";
+const String routeWaterReminder = "/waterReminder";
+const String routeUnitsMeasures = "/unit&measures";
 
 // Dashboard Route
 const String routeDashboard = "/dashBoard";

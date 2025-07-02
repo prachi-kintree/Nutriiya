@@ -125,13 +125,13 @@ class _CustomCalenderState extends State<CustomCalender> {
               : []),
       child: Text(
         text,
-        style: AppTextStyle.jakartaStyle(
+        style: AppTextStyle.outfitStyle(
             withTextStyle: TextStyle(
                 color: condition
                     ? ThemeManagerPlus.of<AppTheme>(context).currentTheme.white
                     : Colors.grey,
                 fontSize: 18.sp),
-            jakartaFont: JakartaStyle.bold),
+            outfitFont: OutfitFontStyle.bold),
       ),
     );
   }

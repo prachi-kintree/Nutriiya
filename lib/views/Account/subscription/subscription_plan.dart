@@ -182,7 +182,9 @@ class _PricingToggleState extends State<PricingToggle> {
                         ? ThemeManagerPlus.of<AppTheme>(context)
                             .currentTheme
                             .primaryGreen!
-                        : const Color(0xff131313).withOpacity(0.3),
+                        : ThemeManagerPlus.of<AppTheme>(context)
+                        .currentTheme
+                        .light_black_text_color!.withOpacity(0.3),
                     width: 1,
                   ),
                   boxShadow: [
@@ -206,7 +208,9 @@ class _PricingToggleState extends State<PricingToggle> {
                                     ? ThemeManagerPlus.of<AppTheme>(context)
                                         .currentTheme
                                         .primaryGreen
-                                    : Color(0xff131313)),
+                                    : ThemeManagerPlus.of<AppTheme>(context)
+                                    .currentTheme
+                                    .light_black_text_color),
                             outfitFont: OutfitFontStyle.regular)),
                     SizedBox(height: 4),
                     Text("₹ 200.00",
@@ -217,7 +221,9 @@ class _PricingToggleState extends State<PricingToggle> {
                                     ? ThemeManagerPlus.of<AppTheme>(context)
                                         .currentTheme
                                         .primaryGreen
-                                    : Color(0xff131313)),
+                                    : ThemeManagerPlus.of<AppTheme>(context)
+                                    .currentTheme
+                                    .light_black_text_color),
                             outfitFont: OutfitFontStyle.regular)),
                     Spacer(),
                     Text("Billed Monthly",
@@ -228,7 +234,9 @@ class _PricingToggleState extends State<PricingToggle> {
                                     ? ThemeManagerPlus.of<AppTheme>(context)
                                         .currentTheme
                                         .primaryGreen
-                                    : Color(0xff131313)),
+                                    : ThemeManagerPlus.of<AppTheme>(context)
+                                    .currentTheme
+                                    .light_black_text_color),
                             outfitFont: OutfitFontStyle.regular)),
                   ],
                 ),
@@ -271,7 +279,9 @@ class _PricingToggleState extends State<PricingToggle> {
                         ? ThemeManagerPlus.of<AppTheme>(context)
                             .currentTheme
                             .primaryGreen!
-                        : const Color(0xff131313).withOpacity(0.3),
+                        : ThemeManagerPlus.of<AppTheme>(context)
+                        .currentTheme
+                        .light_black_text_color!.withOpacity(0.3),
                     width: 1,
                   ),
                   boxShadow: [
@@ -296,7 +306,9 @@ class _PricingToggleState extends State<PricingToggle> {
                                     ? ThemeManagerPlus.of<AppTheme>(context)
                                         .currentTheme
                                         .primaryGreen
-                                    : Color(0xff131313)),
+                                    : ThemeManagerPlus.of<AppTheme>(context)
+                                    .currentTheme
+                                    .light_black_text_color),
                             outfitFont: OutfitFontStyle.regular)),
                     SizedBox(height: 4),
                     Text("₹ 2200.00",
@@ -307,7 +319,9 @@ class _PricingToggleState extends State<PricingToggle> {
                                     ? ThemeManagerPlus.of<AppTheme>(context)
                                         .currentTheme
                                         .primaryGreen
-                                    : Color(0xff131313)),
+                                    : ThemeManagerPlus.of<AppTheme>(context)
+                                    .currentTheme
+                                    .light_black_text_color),
                             outfitFont: OutfitFontStyle.regular)),
                     SizedBox(height: 4),
                     Text("Save ₹ 200.00",
@@ -318,7 +332,9 @@ class _PricingToggleState extends State<PricingToggle> {
                                     ? ThemeManagerPlus.of<AppTheme>(context)
                                         .currentTheme
                                         .primaryGreen
-                                    : Color(0xff131313)),
+                                    : ThemeManagerPlus.of<AppTheme>(context)
+                                    .currentTheme
+                                    .light_black_text_color),
                             outfitFont: OutfitFontStyle.regular)),
                     Spacer(),
                     Text("Free 1 Week Trial",
@@ -329,7 +345,9 @@ class _PricingToggleState extends State<PricingToggle> {
                                     ? ThemeManagerPlus.of<AppTheme>(context)
                                         .currentTheme
                                         .primaryGreen
-                                    : Color(0xff131313)),
+                                    : ThemeManagerPlus.of<AppTheme>(context)
+                                    .currentTheme
+                                    .light_black_text_color),
                             outfitFont: OutfitFontStyle.regular)),
                   ],
                 ),

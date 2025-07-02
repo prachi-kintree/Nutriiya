@@ -22,11 +22,11 @@ class GroceryBehaviour extends StatefulWidget {
 class _GroceryBehaviourState extends State<GroceryBehaviour> {
   List<SelectableFieldItem> groceryBehaviors = [
     SelectableFieldItem(
-        icon: svgOnlineShopping, dietType: "Online", isSelected: false),
+        icon: svgOnlineShopping, type: "Online", isSelected: false),
     SelectableFieldItem(
-        icon: svgOfflineShopping, dietType: "Offline", isSelected: false),
+        icon: svgOfflineShopping, type: "Offline", isSelected: false),
     SelectableFieldItem(
-        icon: svgShoppingBucket, dietType: "A bit of both", isSelected: false),
+        icon: svgShoppingBucket, type: "A bit of both", isSelected: false),
   ];
 
   @override
@@ -61,12 +61,66 @@ class _GroceryBehaviourState extends State<GroceryBehaviour> {
               itemCount: groceryBehaviors.length,
               itemBuilder: (context, index) {
                 SelectableFieldItem currentPref = groceryBehaviors[index];
-                return SelectableFieldWidget(selectableFieldItem: currentPref);
+                return InkWell(
+                    onTap: () {
+                      widget.controller.addGroceryPreference(selectedItem: currentPref);
+                    },
+                    child: SelectableFieldWidget(selectableFieldItem: currentPref,
+                        isSelected: widget.controller.selectedGroceryItem?.type ==
+                            currentPref.type));
               }),
         ),
         10.sBH,
         const CustomDropdown(
           options: [
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             "Daily",
             "A few times a week",
             "Rarely",
@@ -76,20 +130,20 @@ class _GroceryBehaviourState extends State<GroceryBehaviour> {
           ],
           selectedValue: 'How often do you cook at home?',
         ),
-        100.sBH,
-
-        CustomButton(
-            buttonText: "Continue",
-            padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
-            buttonTextStyle: AppTextStyle.outfitStyle(
-                withTextStyle: TextStyle(fontSize: 16.sp),
-                outfitFont: OutfitFontStyle.medium),
-            width: 500.w,
-            onPressed: (startLoading, stopLoading, btnState) {
-              widget.controller.changeCurrentPage();
-            },
-            isDisabled: false,
-            disableElevation: false),
+        // 100.sBH,
+        //
+        // CustomButton(
+        //     buttonText: "Continue",
+        //     padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
+        //     buttonTextStyle: AppTextStyle.outfitStyle(
+        //         withTextStyle: TextStyle(fontSize: 16.sp),
+        //         outfitFont: OutfitFontStyle.medium),
+        //     width: 500.w,
+        //     onPressed: (startLoading, stopLoading, btnState) {
+        //       widget.controller.changeCurrentPage();
+        //     },
+        //     isDisabled: false,
+        //     disableElevation: false),
       ],
     );
   }

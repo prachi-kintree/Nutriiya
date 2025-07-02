@@ -22,18 +22,18 @@ class RegionalFoodPreferences extends StatefulWidget {
 class _RegionalFoodPreferencesState extends State<RegionalFoodPreferences> {
   List<SelectableFieldItem> regionalFoodPrefs = [
     SelectableFieldItem(
-        icon: svgNorthIndian, dietType: "North Indian", isSelected: false),
+        icon: svgNorthIndian, type: "North Indian", isSelected: false),
     SelectableFieldItem(
-        icon: svgSouthIndian, dietType: "South Indian", isSelected: false),
+        icon: svgSouthIndian, type: "South Indian", isSelected: false),
     SelectableFieldItem(
-        icon: svgEastIndian, dietType: "East Indian", isSelected: false),
+        icon: svgEastIndian, type: "East Indian", isSelected: false),
     SelectableFieldItem(
         icon: svgCentralIndian,
-        dietType: "Central Indian",
+        type: "Central Indian",
         isSelected: false),
     SelectableFieldItem(
         icon: svgWestIndian,
-        dietType: "West Indian",
+        type: "West Indian",
         isSelected: false),
   ];
 
@@ -70,23 +70,29 @@ class _RegionalFoodPreferencesState extends State<RegionalFoodPreferences> {
               itemCount: regionalFoodPrefs.length,
               itemBuilder: (context, index) {
                 SelectableFieldItem currentPref = regionalFoodPrefs[index];
-                return SelectableFieldWidget(selectableFieldItem: currentPref);
+                return InkWell(
+                    onTap: () {
+                      widget.controller.addRegionalPreference(selectedItem: currentPref);
+                    },
+                    child: SelectableFieldWidget(selectableFieldItem: currentPref,
+                      isSelected: widget.controller.selectedRegionalItem?.type ==
+                          currentPref.type));
               }),
         ),
-        10.sBH,
+        // 10.sBH,
 
-        CustomButton(
-            buttonText: "Continue",
-            padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
-            buttonTextStyle: AppTextStyle.outfitStyle(
-                withTextStyle: TextStyle(fontSize: 16.sp),
-                outfitFont: OutfitFontStyle.medium),
-            width: 500.w,
-            onPressed: (startLoading, stopLoading, btnState) {
-              widget.controller.changeCurrentPage();
-            },
-            isDisabled: false,
-            disableElevation: false),
+        // CustomButton(
+        //     buttonText: "Continue",
+        //     padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
+        //     buttonTextStyle: AppTextStyle.outfitStyle(
+        //         withTextStyle: TextStyle(fontSize: 16.sp),
+        //         outfitFont: OutfitFontStyle.medium),
+        //     width: 500.w,
+        //     onPressed: (startLoading, stopLoading, btnState) {
+        //       widget.controller.changeCurrentPage();
+        //     },
+        //     isDisabled: false,
+        //     disableElevation: false),
       ],
     );
   }

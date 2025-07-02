@@ -53,12 +53,12 @@ class GenderWidget extends StatelessWidget {
                   padding: EdgeInsetsDirectional.only(start: 10.w),
                   child: Text(
                     LocaleKeys.error_empty_gender_2.tr(),
-                    style: AppTextStyle.jakartaStyle(
+                    style: AppTextStyle.outfitStyle(
                         withTextStyle: TextStyle(
                             color: ThemeManagerPlus.of<AppTheme>(context)
                                 .currentTheme
                                 .error),
-                        jakartaFont: JakartaStyle.medium),
+                        outfitFont: OutfitFontStyle.medium),
                   ),
                 )),
           ],
@@ -107,7 +107,7 @@ class Gender extends StatelessWidget {
                 ),
                 Text(
                   genderTile,
-                  style: AppTextStyle.jakartaStyle(
+                  style: AppTextStyle.outfitStyle(
                       withTextStyle: TextStyle(
                           color: isSelected ? ThemeManagerPlus.of<AppTheme>(context)
                               .currentTheme
@@ -115,7 +115,7 @@ class Gender extends StatelessWidget {
                               .currentTheme
                               .light_black_text_color,
                           fontSize: 16.sp),
-                      jakartaFont: JakartaStyle.medium),
+                      outfitFont: OutfitFontStyle.medium),
                 )
               ],
             ),

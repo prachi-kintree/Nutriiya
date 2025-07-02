@@ -48,7 +48,7 @@ class Languages extends StatelessWidget {
           20.sBH,
 
           LanguagePage(),
-          Spacer(),
+          const Spacer(),
 
           CustomButton(
               buttonText: "Continue",

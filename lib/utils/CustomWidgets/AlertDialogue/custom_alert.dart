@@ -40,10 +40,10 @@ void showActionCancelAlert(
           Text(
             alertTitle ?? "Alert",
             textAlign: TextAlign.center,
-            style: AppTextStyle.jakartaStyle(
+            style: AppTextStyle.outfitStyle(
                 withTextStyle:
                     TextStyle(color: alertTitleColor, fontSize: 16.sp),
-                jakartaFont: JakartaStyle.bold),
+                outfitFont: OutfitFontStyle.bold),
           ),
           // SizedBox(
           //   height: 8.h,
@@ -60,9 +60,9 @@ void showActionCancelAlert(
             child: Text(
               alertDescription ?? "Are You Sure",
               textAlign: TextAlign.center,
-              style: AppTextStyle.jakartaStyle(
+              style: AppTextStyle.outfitStyle(
                   withTextStyle: TextStyle(color: alertDescriptionColor),
-                  jakartaFont: JakartaStyle.medium),
+                  outfitFont: OutfitFontStyle.medium),
             ),
           ),
           // SizedBox(
@@ -93,13 +93,13 @@ void showActionCancelAlert(
                       "${cancelBtnText ?? LocaleKeys.education_delete_cancel_button}"
                           .toUpperCase(),
                       textAlign: TextAlign.center,
-                      style: AppTextStyle.jakartaStyle(
+                      style: AppTextStyle.outfitStyle(
                           withTextStyle: TextStyle(
                               color: ThemeManagerPlus.of<AppTheme>(context)
                                   .currentTheme
                                   .black,
                               fontSize: buttonFontSize.sp),
-                          jakartaFont: JakartaStyle.semibold),
+                          outfitFont: OutfitFontStyle.semibold),
                     ),
                   ),
                 ),
@@ -116,13 +116,13 @@ void showActionCancelAlert(
                     "${actionBtnText ?? LocaleKeys.popup_ok_button.tr()}"
                         .toUpperCase(),
                     textAlign: TextAlign.center,
-                    style: AppTextStyle.jakartaStyle(
+                    style: AppTextStyle.outfitStyle(
                         withTextStyle: TextStyle(
                             color: ThemeManagerPlus.of<AppTheme>(context)
                                 .currentTheme
                                 .button_color,
                             fontSize: buttonFontSize.sp),
-                        jakartaFont: JakartaStyle.semibold),
+                        outfitFont: OutfitFontStyle.semibold),
                   ),
                 ),
               )

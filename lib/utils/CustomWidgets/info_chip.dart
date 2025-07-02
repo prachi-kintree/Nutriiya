@@ -37,20 +37,20 @@ class InfoChip extends StatelessWidget {
             isRequired
                 ? getRequiredLabel(
                     title,
-                    style: AppTextStyle.jakartaStyle(
+                    style: AppTextStyle.outfitStyle(
                         withTextStyle: TextStyle(
                             color: ThemeManagerPlus.of<AppTheme>(context)
                                 .currentTheme
                                 .grey),
-                        jakartaFont: JakartaStyle.regular),
+                        outfitFont: OutfitFontStyle.regular),
                   )
                 : Text(title,
-                    style: AppTextStyle.jakartaStyle(
+                    style: AppTextStyle.outfitStyle(
                         withTextStyle: TextStyle(
                             color: ThemeManagerPlus.of<AppTheme>(context)
                                 .currentTheme
                                 .grey),
-                        jakartaFont: JakartaStyle.regular)),
+                        outfitFont: OutfitFontStyle.regular)),
             if (titleIcon != null) ...[
               SizedBox(
                 width: 5.w,
@@ -68,14 +68,14 @@ class InfoChip extends StatelessWidget {
           child: Stack(
             children: [
               Tooltip(
-                textStyle: AppTextStyle.jakartaStyle(
+                textStyle: AppTextStyle.outfitStyle(
                     withTextStyle: TextStyle(
                         color: ThemeManagerPlus.of<AppTheme>(context)
                             .currentTheme
                             .purple_500,
                         // overflow: TextOverflow.ellipsis,
                         fontSize: 13.sp),
-                    jakartaFont: JakartaStyle.regular),
+                    outfitFont: OutfitFontStyle.regular),
                 decoration: BoxDecoration(
                     color: ThemeManagerPlus.of<AppTheme>(context)
                         .currentTheme
@@ -87,14 +87,14 @@ class InfoChip extends StatelessWidget {
                 child: Text(
                   truncateTextWithEllipsis(description),
                   maxLines: 1,
-                  style: AppTextStyle.jakartaStyle(
+                  style: AppTextStyle.outfitStyle(
                       withTextStyle: TextStyle(
                           color: ThemeManagerPlus.of<AppTheme>(context)
                               .currentTheme
                               .black,
                           overflow: TextOverflow.ellipsis,
                           fontSize: 15.sp),
-                      jakartaFont: JakartaStyle.bold),
+                      outfitFont: OutfitFontStyle.bold),
                 ),
               ),
               Visibility(

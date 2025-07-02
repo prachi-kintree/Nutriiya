@@ -59,13 +59,13 @@ class _FloatingLabelPasswordFieldState
             onChanged: widget.onValueChanged,
             validator: widget.textValidator,
             obscureText: !isPassword,
-            style: AppTextStyle.jakartaStyle(
+            style: AppTextStyle.outfitStyle(
                 withTextStyle: TextStyle(
                     color: ThemeManagerPlus.of<AppTheme>(context)
                         .currentTheme
                         .black,
                     fontSize: 15.sp),
-                jakartaFont: JakartaStyle.bold),
+                outfitFont: OutfitFontStyle.bold),
             cursorColor:
                 ThemeManagerPlus.of<AppTheme>(context).currentTheme.purple_500,
             inputFormatters: [RemoveEmojiInputFormatter()],
@@ -121,17 +121,17 @@ class _FloatingLabelPasswordFieldState
               contentPadding:
                   EdgeInsets.symmetric(vertical: 12.h, horizontal: 15.w),
               hintText: widget.floatingLabelText + "*",
-              hintStyle: AppTextStyle.jakartaStyle(
+              hintStyle: AppTextStyle.outfitStyle(
                   withTextStyle: TextStyle(
                       color: ThemeManagerPlus.of<AppTheme>(context)
                           .currentTheme
                           .grey,
                       fontSize: 14.sp),
-                  jakartaFont: JakartaStyle.light),
-              errorStyle: AppTextStyle.jakartaStyle(
+                  outfitFont: OutfitFontStyle.light),
+              errorStyle: AppTextStyle.outfitStyle(
                   withTextStyle:
                       TextStyle(fontSize: 14.sp, color: Color(0xFFff0000)),
-                  jakartaFont: JakartaStyle.regular),
+                  outfitFont: OutfitFontStyle.regular),
             ),
           ),
         ),

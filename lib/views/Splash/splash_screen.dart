@@ -112,10 +112,10 @@ class _SplashScreenState extends State<SplashScreen>
                     child: Text(
                       'India’s First AI Nutrition\nCoach for Every Plate.',
                       textAlign: TextAlign.center,
-                      style: AppTextStyle.lufgaStyle(
+                      style: AppTextStyle.outfitStyle(
                           withTextStyle:
                               TextStyle(fontSize: 22.sp, color: Colors.black),
-                          lufgaFont: LufgaFontStyle.semibold),
+                          outfitFont: OutfitFontStyle.semibold),
                     ),
                   ),
                 ),

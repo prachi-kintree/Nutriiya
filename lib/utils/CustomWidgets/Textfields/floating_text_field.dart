@@ -18,6 +18,7 @@ class FloatingLabelTextField extends StatelessWidget {
   bool isRequired;
   bool hasBorder;
   TextStyle? textStyle;
+  TextStyle? floatingLabelStyle;
   String? Function(String?)? textValidator;
   List<TextInputFormatter>? fieldFormatter;
   bool isForMobile;
@@ -37,6 +38,7 @@ class FloatingLabelTextField extends StatelessWidget {
       {required this.floatingLabelText,
       this.textInputType = TextInputType.text,
       this.isPaddingThere = true,
+      this.floatingLabelStyle,
       this.hintText,
       this.key,
       this.readOnly = false,
@@ -82,25 +84,25 @@ class FloatingLabelTextField extends StatelessWidget {
             maxLength: maxLimit,
             inputFormatters: [RemoveEmojiInputFormatter()],
             style: textStyle ??
-                AppTextStyle.jakartaStyle(
+                AppTextStyle.outfitStyle(
                     withTextStyle: TextStyle(
                         color: ThemeManagerPlus.of<AppTheme>(context)
                             .currentTheme
                             .black,
                         fontSize: 15.sp),
-                    jakartaFont: JakartaStyle.bold),
+                    outfitFont: OutfitFontStyle.bold),
             cursorColor:
                 ThemeManagerPlus.of<AppTheme>(context).currentTheme.primaryGreen,
             decoration: InputDecoration(
               // border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.h)),
-              // focusedBorder: OutlineInputBorder(
-              //     borderRadius: BorderRadius.circular(20.h),
-              //     borderSide: BorderSide(
-              //         width: enabledBorderWidth ?? 1,
-              //         color: ThemeManagerPlus.of<AppTheme>(context)
-              //             .currentTheme
-              //             .purple_500!
-              //             .withOpacity(0.5))),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(21),
+                  borderSide: BorderSide(
+                      width: enabledBorderWidth ?? 1,
+                      color: ThemeManagerPlus.of<AppTheme>(context)
+                          .currentTheme
+                          .primaryGreen!
+                          )),
               enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(color: Colors.transparent),
                   borderRadius: BorderRadius.circular(21)),
@@ -129,16 +131,16 @@ class FloatingLabelTextField extends StatelessWidget {
                   : EdgeInsets.symmetric(vertical: 12.h, horizontal: 15.w),
               // labelText: floatingLabelText,
               hintText: isRequired ? (floatingLabelText + "*") : floatingLabelText,
-              hintStyle: AppTextStyle.jakartaStyle(
+              hintStyle: floatingLabelStyle ?? AppTextStyle.outfitStyle(
                   withTextStyle: TextStyle(
                       color:
                           ThemeManagerPlus.of<AppTheme>(context).currentTheme.grey,
                       fontSize: 14.sp),
-                  jakartaFont: JakartaStyle.light),
-              errorStyle: AppTextStyle.jakartaStyle(
+                  outfitFont: OutfitFontStyle.light),
+              errorStyle: AppTextStyle.outfitStyle(
                   withTextStyle:
                       TextStyle(fontSize: 14.sp, color: Color(0xFFff0000)),
-                  jakartaFont: JakartaStyle.regular),
+                  outfitFont: OutfitFontStyle.regular),
             ),
           ),
         ],

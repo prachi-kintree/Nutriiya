@@ -25,11 +25,11 @@ List<TextSpan> extractText({
     textSpan.add(
       TextSpan(
         text: linkString,
-        style: AppTextStyle.jakartaStyle(
+        style: AppTextStyle.outfitStyle(
             withTextStyle: TextStyle(color: clickableItemColor, fontSize: 16.sp
                 // Add your text style here for links
                 ),
-            jakartaFont: JakartaStyle.regular),
+            outfitFont: OutfitFontStyle.regular),
         recognizer: TapGestureRecognizer()
           ..onTap = () async {
             // Handle the link tap event here
@@ -44,11 +44,11 @@ List<TextSpan> extractText({
     textSpan.add(
       TextSpan(
         text: hashtag,
-        style: AppTextStyle.jakartaStyle(
+        style: AppTextStyle.outfitStyle(
             withTextStyle: TextStyle(color: clickableItemColor, fontSize: 16.sp
                 // Add your text style here for links
                 ),
-            jakartaFont: JakartaStyle.regular),
+            outfitFont: OutfitFontStyle.regular),
         recognizer: TapGestureRecognizer()
           ..onTap = () {
             // Handle the hashtag tap event here
@@ -63,11 +63,11 @@ List<TextSpan> extractText({
     textSpan.add(
       TextSpan(
         text: normalText,
-        style: AppTextStyle.jakartaStyle(
+        style: AppTextStyle.outfitStyle(
             withTextStyle: TextStyle(color: Color(0xFF777777), fontSize: 14.sp
                 // Add your text style here for links
                 ),
-            jakartaFont: JakartaStyle.regular),
+            outfitFont: OutfitFontStyle.regular),
       ),
     );
     return normalText;

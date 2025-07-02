@@ -89,9 +89,9 @@ class _VideoThumbnailWidgetState extends State<VideoThumbnailWidget> {
                 child: Text(
                   // "KINTREE",
                   "",
-                  style: AppTextStyle.jakartaStyle(
+                  style: AppTextStyle.outfitStyle(
                       withTextStyle: TextStyle(fontSize: 20.sp),
-                      jakartaFont: JakartaStyle.bold),
+                      outfitFont: OutfitFontStyle.bold),
                 ),
               ),
             );

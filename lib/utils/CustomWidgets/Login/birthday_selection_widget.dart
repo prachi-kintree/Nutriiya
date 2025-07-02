@@ -23,23 +23,23 @@ class BirthdaySelectionWidget extends StatelessWidget {
       Text(
         userInfoHead2,
         textAlign: TextAlign.center,
-        style: AppTextStyle.jakartaStyle(
+        style: AppTextStyle.outfitStyle(
             withTextStyle: TextStyle(
                 color:
                 ThemeManagerPlus.of<AppTheme>(context).currentTheme.black,
                 fontSize: 24.sp),
-            jakartaFont: JakartaStyle.semibold),
+            outfitFont: OutfitFontStyle.semibold),
       ),
       12.sBH,
       Text(
         userInfoSubHead2,
         textAlign: TextAlign.center,
-        style: AppTextStyle.jakartaStyle(
+        style: AppTextStyle.outfitStyle(
             withTextStyle: TextStyle(
                 color:
                 ThemeManagerPlus.of<AppTheme>(context).currentTheme.black,
                 fontSize: 12.sp),
-            jakartaFont: JakartaStyle.regular),
+            outfitFont: OutfitFontStyle.regular),
       ),
 
 

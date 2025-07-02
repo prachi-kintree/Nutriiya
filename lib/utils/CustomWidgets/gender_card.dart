@@ -39,13 +39,13 @@ class GenderCard extends StatelessWidget {
                 ),
                 Text(
                   genderTile,
-                  style: AppTextStyle.jakartaStyle(
+                  style: AppTextStyle.outfitStyle(
                       withTextStyle: TextStyle(
                           color: ThemeManagerPlus.of<AppTheme>(context)
                               .currentTheme
                               .grey,
                           fontSize: 16.sp),
-                      jakartaFont: JakartaStyle.medium),
+                      outfitFont: OutfitFontStyle.medium),
                 )
               ],
             ),

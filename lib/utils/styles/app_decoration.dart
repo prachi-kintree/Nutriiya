@@ -42,6 +42,36 @@ class AppDecoration {
     );
   }
 
+  static List<BoxShadow> commonBoxShadow() {
+    return [
+      BoxShadow(
+        color: Color(0xff7D7D7D).withOpacity(0.1),
+        offset: Offset(1, 0),
+        blurRadius: 2,
+      ),
+      BoxShadow(
+        color: Color(0xff7D7D7D).withOpacity(0.09),
+        offset: Offset(4, 0),
+        blurRadius: 4,
+      ),
+      BoxShadow(
+        color: Color(0xff7D7D7D).withOpacity(0.05),
+        offset: const Offset(8, 0),
+        blurRadius: 5,
+      ),
+      BoxShadow(
+        color: Color(0xff7D7D7D).withOpacity(0.01),
+        offset: Offset(15, 0),
+        blurRadius: 6,
+      ),
+      BoxShadow(
+        color: Color(0xff7D7D7D).withOpacity(0.00),
+        offset: Offset(23, 0),
+        blurRadius: 7,
+      ),
+    ];
+  }
+
   static Widget addCustomDivider(
       {required BuildContext context,
       Color? color,
@@ -116,13 +146,13 @@ class AppDecoration {
                   ),
                   Text(
                     title ?? "",
-                    style: AppTextStyle.jakartaStyle(
+                    style: AppTextStyle.outfitStyle(
                         withTextStyle: TextStyle(
                             fontSize: 24.sp,
                             color: ThemeManagerPlus.of<AppTheme>(context)
                                 .currentTheme
                                 .button_color),
-                        jakartaFont: JakartaStyle.bold),
+                        outfitFont: OutfitFontStyle.bold),
                   ),
                   SizedBox(
                     height: 5.h,
@@ -130,14 +160,14 @@ class AppDecoration {
                   Text(
                     subtitle ?? '',
                     textAlign: TextAlign.center,
-                    style: AppTextStyle.jakartaStyle(
+                    style: AppTextStyle.outfitStyle(
                         withTextStyle: TextStyle(
                           fontSize: 12.sp,
                           // color: ThemeManagerPlus.of<AppTheme>(context)
                           //     .currentTheme
                           //     .black
                         ),
-                        jakartaFont: JakartaStyle.regular),
+                        outfitFont: OutfitFontStyle.regular),
                   ),
                   SizedBox(
                     height: 5.h,
@@ -149,9 +179,10 @@ class AppDecoration {
                         alignment: Alignment.center,
                         padding: EdgeInsets.symmetric(horizontal: 15.w),
                         decoration: BoxDecoration(
-                          border: Border.all(color: ThemeManagerPlus.of<AppTheme>(context)
-                              .currentTheme
-                              .purple_500!),
+                            border: Border.all(
+                                color: ThemeManagerPlus.of<AppTheme>(context)
+                                    .currentTheme
+                                    .purple_500!),
                             color: ThemeManagerPlus.of<AppTheme>(context)
                                 .currentTheme
                                 .feeling_bg_light_pink,
@@ -159,18 +190,20 @@ class AppDecoration {
                         child: RichText(
                             textAlign: TextAlign.center,
                             text: TextSpan(
-                                text: boldtextMsg?.capitalizeFirstLetter() ?? "",
-                                style: AppTextStyle.jakartaStyle(
+                                text:
+                                    boldtextMsg?.capitalizeFirstLetter() ?? "",
+                                style: AppTextStyle.outfitStyle(
                                     withTextStyle: TextStyle(
                                         color: Colors.black, fontSize: 14.sp),
-                                    jakartaFont: JakartaStyle.bold),
+                                    outfitFont: OutfitFontStyle.bold),
                                 children: [
                                   TextSpan(
                                     text: lighttextMsg ?? "",
-                                    style: AppTextStyle.jakartaStyle(
+                                    style: AppTextStyle.outfitStyle(
                                         withTextStyle: TextStyle(
-                                            color: Colors.black, fontSize: 14.sp),
-                                        jakartaFont: JakartaStyle.regular),
+                                            color: Colors.black,
+                                            fontSize: 14.sp),
+                                        outfitFont: OutfitFontStyle.regular),
                                   )
                                 ]))),
                   ),
@@ -190,14 +223,15 @@ class AppDecoration {
                           children: [
                             Expanded(
                               child: CustomOutlinedButton(
-                                buttonText: "$primaryBtnName " ?? LocaleKeys.yes.tr(),
+                                buttonText:
+                                    "$primaryBtnName " ?? LocaleKeys.yes.tr(),
                                 onPressed: onPrimaryBtnTap,
                                 height: 30.h,
                                 width: 300.w,
                                 // width: 100.w,
                                 borderColor: Color(0xFFFFFFFF),
                                 buttonColor: Colors.transparent,
-                                buttonTextStyle: AppTextStyle.jakartaStyle(
+                                buttonTextStyle: AppTextStyle.outfitStyle(
                                     withTextStyle: TextStyle(
                                       color: primaryBtnTextColor ??
                                           ThemeManagerPlus.of<AppTheme>(context)
@@ -205,12 +239,14 @@ class AppDecoration {
                                               .black,
                                       fontSize: 14.sp,
                                     ),
-                                    jakartaFont: JakartaStyle.semibold),
+                                    outfitFont: OutfitFontStyle.semibold),
                               ),
                             ),
                             SizedBox(
                               height: 50.h,
-                              child: VerticalDivider(thickness: 0.8.w,width: 0.8.w,
+                              child: VerticalDivider(
+                                  thickness: 0.8.w,
+                                  width: 0.8.w,
                                   color: Theme.of(context).dividerColor),
                             ),
                             Expanded(
@@ -223,7 +259,7 @@ class AppDecoration {
                                 // width: 150.w,
                                 borderColor: Colors.transparent,
                                 buttonColor: secondaryBtnColor ?? Colors.white,
-                                buttonTextStyle: AppTextStyle.jakartaStyle(
+                                buttonTextStyle: AppTextStyle.outfitStyle(
                                     withTextStyle: TextStyle(
                                       color: secondaryBtnTextColor ??
                                           ThemeManagerPlus.of<AppTheme>(context)
@@ -231,7 +267,7 @@ class AppDecoration {
                                               .white,
                                       fontSize: 14.sp,
                                     ),
-                                    jakartaFont: JakartaStyle.semibold),
+                                    outfitFont: OutfitFontStyle.semibold),
                               ),
                             )
                           ],
@@ -241,9 +277,8 @@ class AppDecoration {
                           onPressed: onPrimaryBtnTap,
                           height: 30.h,
                           width: 300.w,
-
                           buttonColor: primaryBtnColor ?? Colors.white,
-                          buttonTextStyle: AppTextStyle.jakartaStyle(
+                          buttonTextStyle: AppTextStyle.outfitStyle(
                               withTextStyle: TextStyle(
                                 color: primaryBtnTextColor ??
                                     ThemeManagerPlus.of<AppTheme>(context)
@@ -251,7 +286,7 @@ class AppDecoration {
                                         .black,
                                 fontSize: 14.sp,
                               ),
-                              jakartaFont: JakartaStyle.semibold),
+                              outfitFont: OutfitFontStyle.semibold),
                         )
                 ],
               ),

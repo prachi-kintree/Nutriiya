@@ -10,7 +10,6 @@ import '../../../../utils/CustomWidgets/Button/custom_button.dart';
 import '../../../../utils/styles/app_text_styles.dart';
 import '../../../widget/gradient_scaffold.dart';
 
-
 class BmiReport extends StatefulWidget {
   // final UserBasicDetailsViewModel controller;
 
@@ -22,7 +21,9 @@ class BmiReport extends StatefulWidget {
 
 class _BmiReportState extends State<BmiReport> {
   List<Legend> legends = [
-    Legend(color: const Color(0xff1A96F0), legendDesc: "Very severely underweight"),
+    Legend(
+        color: const Color(0xff1A96F0),
+        legendDesc: "Very severely underweight"),
     Legend(color: const Color(0xff00A9F1), legendDesc: "Severely underweight"),
     Legend(color: const Color(0xff00BCD3), legendDesc: "Underweight"),
     Legend(color: const Color(0xff4AAF57), legendDesc: "Normal"),
@@ -31,6 +32,7 @@ class _BmiReportState extends State<BmiReport> {
     Legend(color: const Color(0xffFF5726), legendDesc: "Obese Class II"),
     Legend(color: const Color(0xffF54336), legendDesc: "Obese Class III"),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,22 +59,21 @@ class _BmiReportState extends State<BmiReport> {
                   _userBMIMeter(),
                   const Spacer(),
                   Consumer<UserBasicDetailsViewModel>(
-                    builder: (context, controller, child) {
-                      return CustomButton(
-                          buttonText: "Next",
-                          padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
-                          buttonTextStyle: AppTextStyle.outfitStyle(
-                              withTextStyle: TextStyle(fontSize: 16.sp),
-                              outfitFont: OutfitFontStyle.medium),
-                          width: 500.w,
-                          onPressed: (startLoading, stopLoading, btnState) {
-                            controller.changeCurrentPage();
-                            appNavigator.goBack();
-                          },
-                          isDisabled: false,
-                          disableElevation: false);
-                    }
-                  ),
+                      builder: (context, controller, child) {
+                    return CustomButton(
+                        buttonText: "Next",
+                        padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
+                        buttonTextStyle: AppTextStyle.outfitStyle(
+                            withTextStyle: TextStyle(fontSize: 16.sp),
+                            outfitFont: OutfitFontStyle.medium),
+                        width: 500.w,
+                        onPressed: (startLoading, stopLoading, btnState) {
+                          controller.changeCurrentPage();
+                          appNavigator.goBack();
+                        },
+                        isDisabled: false,
+                        disableElevation: false);
+                  }),
                 ],
               ),
             ),
@@ -216,7 +217,7 @@ class _BmiReportState extends State<BmiReport> {
               gradient: const LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  stops: [0.55,1.0],
+                  stops: [0.55, 1.0],
                   colors: [Colors.green, Colors.white]),
             )
           ],
@@ -242,27 +243,27 @@ class _BmiReportState extends State<BmiReport> {
       padding: EdgeInsets.only(left: 15.w),
       child: Column(
         spacing: 5.h,
-        children: legends.map((e) => Row(
-          children: [
-            Container(
-              height: 20.h,
-            width: 20.w,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: e.color
-              ),
-            ),
-            20.sBW,
-            Text(e.legendDesc, style: AppTextStyle.outfitStyle(
-                withTextStyle: TextStyle(fontSize: 16.sp),
-                outfitFont: OutfitFontStyle.medium))
-          ],
-        )).toList(),
+        children: legends
+            .map((e) => Row(
+                  children: [
+                    Container(
+                      height: 20.h,
+                      width: 20.w,
+                      decoration:
+                          BoxDecoration(shape: BoxShape.circle, color: e.color),
+                    ),
+                    20.sBW,
+                    Text(e.legendDesc,
+                        style: AppTextStyle.outfitStyle(
+                            withTextStyle: TextStyle(fontSize: 16.sp),
+                            outfitFont: OutfitFontStyle.medium))
+                  ],
+                ))
+            .toList(),
       ),
     );
   }
 }
-
 
 class Legend {
   final Color color;

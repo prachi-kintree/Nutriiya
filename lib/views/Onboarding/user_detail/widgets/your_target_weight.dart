@@ -121,19 +121,19 @@ class _YourTargetWeightState extends State<YourTargetWeight> {
             return "${rulerScaleValue.toInt()}";
           },
         ),
-        Spacer(),
-        CustomButton(
-            buttonText: "Continue",
-            padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
-            buttonTextStyle: AppTextStyle.outfitStyle(
-                withTextStyle: TextStyle(fontSize: 16.sp),
-                outfitFont: OutfitFontStyle.medium),
-            width: 500.w,
-            onPressed: (startLoading, stopLoading, btnState) {
-              widget.controller.changeCurrentPage();
-            },
-            isDisabled: false,
-            disableElevation: false)
+        // Spacer(),
+        // CustomButton(
+        //     buttonText: "Continue",
+        //     padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
+        //     buttonTextStyle: AppTextStyle.outfitStyle(
+        //         withTextStyle: TextStyle(fontSize: 16.sp),
+        //         outfitFont: OutfitFontStyle.medium),
+        //     width: 500.w,
+        //     onPressed: (startLoading, stopLoading, btnState) {
+        //       widget.controller.changeCurrentPage();
+        //     },
+        //     isDisabled: false,
+        //     disableElevation: false)
       ],
     );
   }

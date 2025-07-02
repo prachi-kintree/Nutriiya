@@ -126,13 +126,13 @@ class ForgotPasswordOrUsernameWidget extends StatelessWidget {
                         width: 500.h,
                         height: 37.h,
                         buttonText: LocaleKeys.button_continue.tr(),
-                        buttonTextStyle: AppTextStyle.jakartaStyle(
+                        buttonTextStyle: AppTextStyle.outfitStyle(
                           withTextStyle: TextStyle(
                               color: ThemeManagerPlus.of<AppTheme>(context)
                                   .currentTheme
                                   .white,
                               fontSize: 15.sp),
-                          jakartaFont: JakartaStyle.bold,
+                          outfitFont: OutfitFontStyle.bold,
                         ),
                       ),
                     ),
@@ -161,10 +161,10 @@ class ForgotPasswordOrUsernameWidget extends StatelessWidget {
                         .purple_700,
                     buttonText:
                         'Continue with Email ID',
-                        buttonTextStyle: AppTextStyle.jakartaStyle(
+                        buttonTextStyle: AppTextStyle.outfitStyle(
                           withTextStyle: TextStyle(
                               color: Color(0xFF242424), fontSize: 15.sp),
-                          jakartaFont: JakartaStyle.bold,
+                          outfitFont: OutfitFontStyle.bold,
                         ),
                       ),
                     ),

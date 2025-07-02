@@ -33,7 +33,7 @@ String svgCopy = "assets/images/copy_icon.svg";
 
 // Social
 
-String svgWhatsapp = "assets/images/whatsapp.svg";
+// String svgWhatsapp = "assets/images/whatsapp.svg";
 String svgFacebook = "assets/images/facebookcircle.svg";
 String svgSnapchat = "assets/images/snapchat.svg";
 String svgInstagram = "assets/images/instagram.svg";
@@ -59,7 +59,7 @@ String svgPostFilled = "assets/images/post_filled.svg";
 String svgCancelForeroom = "assets/images/cancel_foreroom.svg";
 // Foreroom
 String svgCameraOutlined = "assets/images/camera_outlined.svg";
-String svgEditIcon = "assets/images/edit_icon.svg";
+String svgEditIcon = "assets/images/edit.svg";
 String svgLockIcon = "assets/images/lock_icon.svg";
 String svgEvent = "assets/images/event_icon.svg";
 String svgPoll = "assets/images/poll_icon.svg";
@@ -286,6 +286,7 @@ String svgCameraOrange = "assets/images/camera_orange.svg";
 String svgFemaleIcon = "assets/images/female_icon.svg";
 String svgMaleIcon = "assets/images/male_icon.svg";
 String svgCalenderIcon = "assets/images/calender_icon.svg";
+String svgEatAllFood = "assets/images/eat_all_food.svg";
 String svgVeganDiet = "assets/images/vegan_diet.svg";
 String svgJainDiet = "assets/images/jain_diet.svg";
 String svgKetoDiet = "assets/images/keto_diet.svg";
@@ -330,6 +331,9 @@ String svgPlans = "assets/images/plans.svg";
 String svgProgressInsights = "assets/images/progress_insights.svg";
 String svgSubsTick = "assets/images/tick.svg";
 String svgCancel = "assets/images/cancel.svg";
+String svgWhatsapp = "assets/images/whatsapp_icon.svg";
+String svgSms = "assets/images/sms_icon.svg";
+String svgGmail = "assets/images/gmail_icon.svg";
 
 
 String pngDalChawal = "assets/images/dal-chawal.png";

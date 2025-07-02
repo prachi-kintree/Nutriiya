@@ -36,13 +36,13 @@ class OtpCustomWidget extends StatelessWidget {
             padding: EdgeInsetsDirectional.only(start: 10.w),
             child: Text(
               otpHead,
-              style: AppTextStyle.jakartaStyle(
+              style: AppTextStyle.outfitStyle(
                   withTextStyle: TextStyle(
                       color: ThemeManagerPlus.of<AppTheme>(context)
                           .currentTheme
                           .purple_500,
                       fontSize: 24.sp),
-                  jakartaFont: JakartaStyle.bold),
+                  outfitFont: OutfitFontStyle.bold),
             ),
           ),
           Padding(
@@ -142,13 +142,13 @@ class OtpCustomWidget extends StatelessWidget {
                       ThemeManagerPlus.of<AppTheme>(context)
                           .currentTheme
                           .grey!),
-                  textStyle: AppTextStyle.jakartaStyle(
+                  textStyle: AppTextStyle.outfitStyle(
                     withTextStyle: TextStyle(
                         color: ThemeManagerPlus.of<AppTheme>(context)
                             .currentTheme
                             .black,
                         fontSize: 12.h),
-                    jakartaFont: JakartaStyle.medium,
+                    outfitFont: OutfitFontStyle.medium,
                   ),
                   // FixedColorBuilder(
                   //     ThemeManagerPlus.of<AppTheme>(context)
@@ -198,12 +198,12 @@ class OtpCustomWidget extends StatelessWidget {
           ),
           Text(
             LocaleKeys.not_received_otp.tr(),
-            style: AppTextStyle.jakartaStyle(
+            style: AppTextStyle.outfitStyle(
               withTextStyle: TextStyle(
                   color: ThemeManagerPlus.of<AppTheme>(context)
                       .currentTheme
                       .black),
-              jakartaFont: JakartaStyle.medium,
+              outfitFont: OutfitFontStyle.medium,
             ),
           ),
           ResendOtpText(
@@ -235,13 +235,13 @@ class OtpCustomWidget extends StatelessWidget {
                 //     startLoading: startLoading, stopLoading: stopLoading);
               },
               buttonText: LocaleKeys.verif_verify_button.tr(),
-              buttonTextStyle: AppTextStyle.jakartaStyle(
+              buttonTextStyle: AppTextStyle.outfitStyle(
                 withTextStyle: TextStyle(
                     color: ThemeManagerPlus.of<AppTheme>(context)
                         .currentTheme
                         .white,
                     fontSize: 17.sp),
-                jakartaFont: JakartaStyle.semibold,
+                outfitFont: OutfitFontStyle.semibold,
               ),
             ),
           ),
@@ -266,13 +266,13 @@ class ForgotUsernameOrPassOtpWidget extends StatelessWidget {
             padding: EdgeInsetsDirectional.only(start: 10.w),
             child: Text(
               otpHead,
-              style: AppTextStyle.jakartaStyle(
+              style: AppTextStyle.outfitStyle(
                   withTextStyle: TextStyle(
                       color: ThemeManagerPlus.of<AppTheme>(context)
                           .currentTheme
                           .purple_500,
                       fontSize: 24.sp),
-                  jakartaFont: JakartaStyle.bold),
+                  outfitFont: OutfitFontStyle.bold),
             ),
           ),
           Padding(
@@ -446,12 +446,12 @@ class ForgotUsernameOrPassOtpWidget extends StatelessWidget {
 
           Text(
             LocaleKeys.not_received_otp.tr(),
-            style: AppTextStyle.jakartaStyle(
+            style: AppTextStyle.outfitStyle(
               withTextStyle: TextStyle(
                   color: ThemeManagerPlus.of<AppTheme>(context)
                       .currentTheme
                       .black),
-              jakartaFont: JakartaStyle.medium,
+              outfitFont: OutfitFontStyle.medium,
             ),
           ),
           ResendOtpText(
@@ -510,13 +510,13 @@ class ForgotUsernameOrPassOtpWidget extends StatelessWidget {
                 // );
               },
               buttonText: LocaleKeys.verif_verify_button.tr(),
-              buttonTextStyle: AppTextStyle.jakartaStyle(
+              buttonTextStyle: AppTextStyle.outfitStyle(
                 withTextStyle: TextStyle(
                     color: ThemeManagerPlus.of<AppTheme>(context)
                         .currentTheme
                         .white,
                     fontSize: 17.sp),
-                jakartaFont: JakartaStyle.semibold,
+                outfitFont: OutfitFontStyle.semibold,
               ),
             ),
           ),

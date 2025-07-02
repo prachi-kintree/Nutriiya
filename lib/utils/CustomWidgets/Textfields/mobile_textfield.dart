@@ -1,17 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nutriya/extension/extension_sized_box.dart';
 import 'package:theme_manager_plus/theme_manager_plus.dart';
-
-
-import '../../../../translation/locale_keys.g.dart';
-import '../../../RouteManager/app_routes.dart';
-import '../../../RouteManager/navigator_service.dart';
-import '../../app_string/app_image_path.dart';
 import '../../styles/app_text_styles.dart';
 import '../../theme/theme_model.dart';
 
@@ -78,13 +69,13 @@ class MobileTextField extends StatelessWidget {
                   keyboardType: const TextInputType.numberWithOptions(
                       signed: true, decimal: true),
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  style: AppTextStyle.jakartaStyle(
+                  style: AppTextStyle.outfitStyle(
                       withTextStyle: TextStyle(
                           color: ThemeManagerPlus.of<AppTheme>(context)
                               .currentTheme
                               .black,
                           fontSize: 15.sp),
-                      jakartaFont: JakartaStyle.bold),
+                      outfitFont: OutfitFontStyle.bold),
                   cursorColor: ThemeManagerPlus.of<AppTheme>(context)
                       .currentTheme
                       .purple_500,
@@ -98,10 +89,10 @@ class MobileTextField extends StatelessWidget {
                     //             .purple_500!
                     //             .withOpacity(0.5))),
                     enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent),
+                        borderSide: const BorderSide(color: Colors.transparent),
                         borderRadius: BorderRadius.circular(21)),
                     border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.transparent),
+                      borderSide: const BorderSide(color: Colors.transparent),
                         borderRadius: BorderRadius.circular(21)),
                     // errorBorder: OutlineInputBorder(
                     //     borderRadius: BorderRadius.circular(20.h),
@@ -144,13 +135,13 @@ class MobileTextField extends StatelessWidget {
                             5.sBW,
                             Text(
                               countryPrefix,
-                              style: AppTextStyle.jakartaStyle(
+                              style: AppTextStyle.outfitStyle(
                                   withTextStyle: TextStyle(
                                       color: ThemeManagerPlus.of<AppTheme>(context)
                                           .currentTheme
                                           .black,
                                       fontSize: 14.sp),
-                                  jakartaFont: JakartaStyle.bold),
+                                  outfitFont: OutfitFontStyle.bold),
                             ),
                             5.sBW,
 
@@ -184,18 +175,18 @@ class MobileTextField extends StatelessWidget {
                         EdgeInsets.symmetric(vertical: 15.h, horizontal: 15.w),
                     hintText:
                         "9876543210",
-                    hintStyle: AppTextStyle.jakartaStyle(
+                    hintStyle: AppTextStyle.outfitStyle(
                         withTextStyle: TextStyle(
                             color: ThemeManagerPlus.of<AppTheme>(context)
                                 .currentTheme
                                 .grey,
                             fontSize: 14.sp),
-                        jakartaFont: JakartaStyle.light),
-                    errorStyle: AppTextStyle.jakartaStyle(
+                        outfitFont: OutfitFontStyle.light),
+                    errorStyle: AppTextStyle.outfitStyle(
                         withTextStyle:
-                            TextStyle(fontSize: 14.sp, color: Color(0xFFff0000)
+                            TextStyle(fontSize: 14.sp, color: const Color(0xFFff0000)
                             ),
-                        jakartaFont: JakartaStyle.regular),
+                        outfitFont: OutfitFontStyle.regular),
                     errorMaxLines: 2
                   ),
                 ),

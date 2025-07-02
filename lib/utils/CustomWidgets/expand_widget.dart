@@ -97,12 +97,12 @@ class _ExpandablePanelState extends State<ExpandablePanel> {
         title: Container(
             child: Text(
           "${widget.title.trim()}",
-          style: AppTextStyle.jakartaStyle(
+          style: AppTextStyle.outfitStyle(
               withTextStyle: TextStyle(
                   color:
                       ThemeManagerPlus.of<AppTheme>(context).currentTheme.black,
                   fontSize: 16.sp),
-              jakartaFont: JakartaStyle.bold),
+              outfitFont: OutfitFontStyle.bold),
         )),
         collapsedTextColor: Colors.black,
         textColor: Colors.black,

@@ -10,11 +10,12 @@ import '../../RouteManager/route_manager.dart';
 import '../../repository/FirebaseAuth/firebase_authservice.dart';
 import '../../repository/LoginService/login_service.dart';
 import '../../utils/crypto/crypto_services.dart';
+import '../../views/Onboarding/user_detail/widgets/dietary_prefernces.dart';
 
 // enum LoginType { email, mobile, username }
 
 class UserBasicDetailsViewModel extends ChangeNotifier {
-  UserBasicDetailsViewModel();
+  // UserBasicDetailsViewModel();
 
   // FirebaseAuthService firebaseAuthService;
   // LoginType loginType = LoginType.mobile;
@@ -33,6 +34,15 @@ class UserBasicDetailsViewModel extends ChangeNotifier {
   // CountryModel? countryData;
   bool isIndianUser = false;
   TextEditingController otpController = TextEditingController();
+  SelectableFieldItem? _selectedDietaryItem;
+  SelectableFieldItem? _selectedGoalItem;
+  SelectableFieldItem? _selectedRegionalItem;
+  SelectableFieldItem? _selectedGroceryItem;
+
+  SelectableFieldItem? get selectedDietaryItem => _selectedDietaryItem;
+  SelectableFieldItem? get selectedGoalItem => _selectedGoalItem;
+  SelectableFieldItem? get selectedRegionalItem => _selectedRegionalItem;
+  SelectableFieldItem? get selectedGroceryItem => _selectedGroceryItem;
 
   // getEnumFromString(String type) {
   //   switch (type) {
@@ -48,12 +58,31 @@ class UserBasicDetailsViewModel extends ChangeNotifier {
   // }
 
   changeCurrentPage() {
-    if (currentPage < 6) {
+    if (currentPage < 8) {
       currentPage++;
       notifyListeners();
     } else {
       appNavigator.pushReplacementNamed(routeIntro);
     }
+  }
+
+  addDietaryPreference({required SelectableFieldItem selectedItem}) {
+    _selectedDietaryItem = selectedItem;
+    notifyListeners();
+  }
+
+  addGoalPreference({required SelectableFieldItem selectedItem}) {
+    _selectedGoalItem = selectedItem;
+    notifyListeners();
+  }
+
+addRegionalPreference({required SelectableFieldItem selectedItem}) {
+    _selectedRegionalItem = selectedItem;
+    notifyListeners();
+  }
+addGroceryPreference({required SelectableFieldItem selectedItem}) {
+  _selectedGroceryItem = selectedItem;
+    notifyListeners();
   }
 
 // requestForResendOtp({Function(String?)? codeRecieved}) async {
