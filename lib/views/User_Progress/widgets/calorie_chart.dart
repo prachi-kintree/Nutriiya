@@ -115,7 +115,7 @@ class _CalorieChartState extends State<CalorieChart> {
               20.sBW,
               CustomPaint(
                 size: const Size(30, 1),
-                painter: DashedLinePainter(color: Color(0xffA1CE50)),
+                painter: DashedLinePainter(color: const Color(0xffA1CE50)),
               ),
               8.sBW,
               Text(
@@ -132,6 +132,7 @@ class _CalorieChartState extends State<CalorieChart> {
             height: 180.h,
             child: selectedFormat == 1
                 ? SfCartesianChart(
+              tooltipBehavior: TooltipBehavior(enable: true),
               plotAreaBorderWidth: 0,
               onMarkerRender: (MarkerRenderArgs args) {
                 final point = data[args.pointIndex ?? 0];
@@ -253,6 +254,7 @@ class _CalorieChartState extends State<CalorieChart> {
               ],
             )
                 : SfCartesianChart(
+              tooltipBehavior: TooltipBehavior(enable: true),
               plotAreaBorderWidth: 0,
               primaryXAxis: const CategoryAxis(
                 isVisible: true,
@@ -260,6 +262,7 @@ class _CalorieChartState extends State<CalorieChart> {
                 majorGridLines: MajorGridLines(width: 0),
                 axisLine: AxisLine(width: 0),
               ),
+
               primaryYAxis: NumericAxis(
                 minimum: 0,
                 maximum: 3000,
@@ -281,6 +284,23 @@ class _CalorieChartState extends State<CalorieChart> {
               ),
               series: <CartesianSeries>[
                 ColumnSeries<CalorieData, String>(
+                  enableTooltip: true,
+
+                  onPointTap: (ChartPointDetails details) {
+                    setState(() {
+                      final tappedIndex = details.pointIndex!;
+                      for (int i = 0; i < data.length; i++) {
+                        data[i] = CalorieData(
+                          day: data[i].day,
+                          calories: data[i].calories,
+                          isSelected: i == tappedIndex,
+                        );
+                      }
+                      print('Tapped index: $tappedIndex');
+                      print('Tapped calories: ${data[tappedIndex].calories}');
+                    });
+
+                  },
                   dataSource: data,
                   xValueMapper: (d, _) => d.day,
                   yValueMapper: (d, _) => d.calories,

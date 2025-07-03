@@ -52,7 +52,7 @@ import '../views/Account/unit_and_measures/unit_and_measures_screen.dart';
 import '../views/History/history_listing_page.dart';
 import '../views/Onboarding/intro/intro_screen.dart';
 import '../views/Onboarding/languages/select_languages.dart';
-import '../views/Onboarding/login/login_screen.dart';
+import '../views/Onboarding/login/sign_up_screen.dart';
 import '../views/Onboarding/login/otp/otp_screen.dart';
 import '../views/Onboarding/login/sign_in_screen.dart';
 import '../views/Onboarding/user_detail/user_details_screen.dart';

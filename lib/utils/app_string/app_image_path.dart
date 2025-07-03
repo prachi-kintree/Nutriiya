@@ -280,6 +280,7 @@ String pngIndianFlag = "assets/images/india.png";
 
 String svgAppleIcon = "assets/images/apple_icon.svg";
 String svgGoogleIcon = "assets/images/google_icon.svg";
+String svgFacebookIcon = "assets/images/facebook.svg";
 String svgPersonIcon = "assets/images/person.svg";
 String svgBackArrow = "assets/images/back_arrow.svg";
 String svgUserImagePlaceholder = "assets/images/user_image_placeholder.svg";

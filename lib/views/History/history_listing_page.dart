@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nutriya/utils/app_string/app_image_path.dart';
 
 import '../../utils/styles/app_text_styles.dart';
+import '../widget/app_bar/common_appbar.dart';
+import '../widget/common_gradient_scaffold.dart';
 import 'history_food_details_page.dart';
 
 class HistoryScreen extends StatelessWidget {
@@ -12,21 +14,9 @@ class HistoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50.h),
-          child: AppBar(
-              elevation: 0,
-              backgroundColor: Colors.transparent,
-            centerTitle: true,
-            title: Text('History',
-              style: AppTextStyle.outfitStyle(
-              withTextStyle:
-              TextStyle(fontSize: 20.sp, color: Colors.black),
-              outfitFont: OutfitFontStyle.semibold),
-          )),
-        ),
-        body: HistoryContent(),
+    return const Scaffold(
+        appBar: CommonAppBar(appBarTitle: "History", isBackbutton: false),
+        body: SafeArea(child: Stack(children: [CommonGradient(), HistoryContent()]))
     );
   }
 }

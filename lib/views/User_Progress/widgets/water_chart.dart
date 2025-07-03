@@ -131,6 +131,7 @@ class _WaterChartState extends State<WaterChart> {
             height: 180.h,
             child: selectedFormat == 1
                 ? SfCartesianChart(
+              tooltipBehavior: TooltipBehavior(enable: true),
               plotAreaBorderWidth: 0,
               onMarkerRender: (MarkerRenderArgs args) {
                 final point = data[args.pointIndex ?? 0];
@@ -252,6 +253,7 @@ class _WaterChartState extends State<WaterChart> {
               ],
             )
                 : SfCartesianChart(
+              tooltipBehavior: TooltipBehavior(enable: true),
               plotAreaBorderWidth: 0,
               primaryXAxis: const CategoryAxis(
                 isVisible: true,
