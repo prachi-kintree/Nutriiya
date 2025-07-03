@@ -1,7 +1,4 @@
-import 'dart:async';
-import 'dart:io';
 
-import 'package:camera/camera.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,13 +9,7 @@ import 'package:nutriya/extension/extension_sized_box.dart';
 import 'package:nutriya/utils/utils.dart';
 import 'package:nutriya/viewmodel/dashboard/dashboard_viewmodel.dart';
 import 'package:nutriya/viewmodel/dashboard/scanner/food_logger_viewmodel.dart';
-// import 'package:nutriya/views/dashboard/Scanner/scanner_screen.dart';
-// import 'package:nutriya/views/dashboard/history/history_screen.dart';
-import 'package:nutriya/views/dashboard/home/home_screen.dart' hide Meals;
-// import 'package:nutriya/views/dashboard/profile/profile_screen.dart';
-// import 'package:nutriya/views/dashboard/progress/progress_screen.dart';
 import 'package:nutriya/views/widget/bottom_sheets/common_bottomsheet.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:theme_manager_plus/theme_manager_plus.dart';
 
