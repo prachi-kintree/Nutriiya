@@ -116,6 +116,7 @@ class SwitchTile extends StatelessWidget {
 class CustomSwitchTile extends StatelessWidget {
   final String title;
   final String? subtitle;
+  final Widget? leadingWidget;
   final bool value;
   final ValueChanged<bool> onToggle;
 
@@ -123,6 +124,7 @@ class CustomSwitchTile extends StatelessWidget {
     super.key,
     required this.title,
     this.subtitle,
+    this.leadingWidget,
     required this.value,
     required this.onToggle,
   });
@@ -131,6 +133,7 @@ class CustomSwitchTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: const EdgeInsets.all(0),
+      leading: leadingWidget,
       title: Container(
         margin: EdgeInsets.only(bottom: 5.h),
         child: Text(title,
@@ -142,7 +145,6 @@ class CustomSwitchTile extends StatelessWidget {
                         .light_black_text_color),
                 outfitFont: OutfitFontStyle.regular)),
       ),
-
       subtitle: subtitle != null
           ? Text(subtitle!,
               style: AppTextStyle.outfitStyle(

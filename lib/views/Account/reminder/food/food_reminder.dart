@@ -100,38 +100,39 @@ class _FoodReminderState extends State<FoodReminder> {
                           10.sBH,
                           ...meals.keys.map((meal) {
                             return Padding(
-                                padding:
-                                     EdgeInsets.symmetric(vertical: 5.h),
+                                padding: EdgeInsets.symmetric(vertical: 5.h),
                                 child: Row(
                                   children: [
-                                    SizedBox(height: 20.h, width: 20.w,
-                                    child: Transform.scale(
-                                        scale: 1.2,
-                                        child: Checkbox(
-                                            value: meals[meal],
-
-                                            splashRadius: 0,
-                                            onChanged: (val) => setState(
+                                    SizedBox(
+                                        height: 20.h,
+                                        width: 20.w,
+                                        child: Transform.scale(
+                                            scale: 1.2,
+                                            child: Checkbox(
+                                                value: meals[meal],
+                                                splashRadius: 0,
+                                                onChanged: (val) => setState(
                                                     () => meals[meal] = val!),
-                                            activeColor:
-                                            ThemeManagerPlus.of<AppTheme>(
-                                                context)
-                                                .currentTheme
-                                                .primaryGreen,
-                                            // shape:
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                              BorderRadius.circular(2.0),
-                                            ),
-                                            side: WidgetStateBorderSide
-                                                .resolveWith(
+                                                activeColor: ThemeManagerPlus
+                                                        .of<AppTheme>(context)
+                                                    .currentTheme
+                                                    .primaryGreen,
+                                                // shape:
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          2.0),
+                                                ),
+                                                side: WidgetStateBorderSide
+                                                    .resolveWith(
                                                   (states) => BorderSide(
-                                                  width: 1.3,
-                                                  color: ThemeManagerPlus.of<
-                                                      AppTheme>(context)
-                                                      .currentTheme
-                                                      .primaryGreen!),
-                                            )))),
+                                                      width: 1.3,
+                                                      color: ThemeManagerPlus
+                                                              .of<AppTheme>(
+                                                                  context)
+                                                          .currentTheme
+                                                          .primaryGreen!),
+                                                )))),
                                     12.sBW,
                                     Expanded(
                                         child: Text(meal,
@@ -210,41 +211,39 @@ class _FoodReminderState extends State<FoodReminder> {
                                     style: AppTextStyle.outfitStyle(
                                         withTextStyle: TextStyle(
                                             fontSize: 12.sp,
-                                            color: ThemeManagerPlus.of<
-                                                AppTheme>(context)
-                                                .currentTheme
-                                                .white),
-                                        outfitFont:
-                                        OutfitFontStyle.regular)),
+                                            color:
+                                                ThemeManagerPlus.of<AppTheme>(
+                                                        context)
+                                                    .currentTheme
+                                                    .white),
+                                        outfitFont: OutfitFontStyle.regular)),
                               ),
                               Text("Stay on Track!",
                                   style: AppTextStyle.outfitStyle(
                                       withTextStyle: TextStyle(
                                           fontSize: 18.sp,
-                                          color: ThemeManagerPlus.of<
-                                              AppTheme>(context)
+                                          color: ThemeManagerPlus.of<AppTheme>(
+                                                  context)
                                               .currentTheme
                                               .black),
-                                      outfitFont:
-                                      OutfitFontStyle.regular)),
+                                      outfitFont: OutfitFontStyle.regular)),
                               SizedBox(height: 4),
                               Text(
                                 "Set your meal times to build a consistent routine and never miss a bite.",
                                 style: AppTextStyle.outfitStyle(
                                     withTextStyle: TextStyle(
                                         fontSize: 14.sp,
-                                        color: ThemeManagerPlus.of<
-                                            AppTheme>(context)
+                                        color: ThemeManagerPlus.of<AppTheme>(
+                                                context)
                                             .currentTheme
                                             .subtitleGrey),
-                                    outfitFont:
-                                    OutfitFontStyle.regular),
+                                    outfitFont: OutfitFontStyle.regular),
                               ),
                             ],
                           ),
                         ),
                         InkWell(
-                          onTap: () => setState(() => showTip = false),
+                            onTap: () => setState(() => showTip = false),
                             child: SvgPicture.asset(svgCancel, height: 10.h))
                       ],
                     ),

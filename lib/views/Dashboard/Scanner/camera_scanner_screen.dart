@@ -14,6 +14,7 @@ import 'package:nutriya/utils/app_string/app_image_path.dart';
 import 'package:nutriya/utils/styles/app_text_styles.dart';
 import 'package:nutriya/utils/utils.dart';
 import 'package:nutriya/viewmodel/dashboard/scanner/camera_viewmodel.dart';
+import 'package:nutriya/viewmodel/dashboard/scanner/food_logger_viewmodel.dart';
 import 'package:nutriya/viewmodel/dashboard/scanner/meal_search_screen_viewmodel.dart';
 import 'package:nutriya/views/widget/app_bar/common_appbar.dart';
 import 'package:provider/provider.dart';
@@ -45,7 +46,7 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
     // controller.initCamera(_detectionTimer!, _cameraController!);
     _initCamera();
     _flashModeControlRowAnimationController = AnimationController(
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 100),
       vsync: this,
     );
     _flashModeControlRowAnimation = CurvedAnimation(
@@ -103,7 +104,7 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
     }
   }
 
-  Future<XFile?> takePicture() async {
+  Future<XFile?> capturePicture() async {
     final CameraController? cameraController = _cameraController;
     if (cameraController == null || !cameraController.value.isInitialized) {
       // showInSnackBar('Error: select a camera first.');
@@ -117,6 +118,7 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
     }
 
     try {
+      _startFoodDetection();
       final XFile file = await cameraController.takePicture();
       return file;
     } on CameraException catch (e) {
@@ -126,13 +128,13 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
   }
 
   void onTakePictureButtonPressed() {
-    takePicture().then((XFile? file) {
+    capturePicture().then((XFile? file) {
       if (mounted) {
         setState(() {
           imageFile = file;
         });
         if (file != null) {
-          AppDecoration.showToast(message: 'Picture saved to ${file.path}');
+          // AppDecoration.showToast(message: 'Picture saved to ${file.path}');
         }
       }
     });
@@ -171,17 +173,49 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
     );
   }
 
+  // Future<void> _initCamera() async {
+  //   _cameras = await availableCameras();
+  //   final backCamera = _cameras.firstWhere(
+  //       (camera) => camera.lensDirection == CameraLensDirection.back);
+  //   _cameraController = CameraController(
+  //     backCamera,
+  //     ResolutionPreset.max,
+  //   );
+  //   await _cameraController!.initialize();
+  //   if (mounted) setState(() {});
+  //   _startFoodDetection();
+  // }
+
   Future<void> _initCamera() async {
     _cameras = await availableCameras();
-    final backCamera = _cameras.firstWhere(
-        (camera) => camera.lensDirection == CameraLensDirection.back);
+
+    // Get all back-facing cameras
+    final backCameras = _cameras
+        .where(
+          (camera) => camera.lensDirection == CameraLensDirection.back,
+        )
+        .toList();
+
+    // Print camera info for debugging
+    for (var cam in backCameras) {
+      print(
+          'Camera: ${cam.name}, lensDirection: ${cam.lensDirection}, orientation: ${cam.sensorOrientation}');
+    }
+
+    // Pick the first one with highest resolution or default to first
+    // Assuming the main camera is the first back-facing one
+    final CameraDescription mainBackCamera = backCameras[0];
+
     _cameraController = CameraController(
-      backCamera,
-      ResolutionPreset.medium,
+      mainBackCamera,
+      ResolutionPreset.max,
+      enableAudio: false,
     );
+
     await _cameraController!.initialize();
+
     if (mounted) setState(() {});
-    _startFoodDetection();
+    // _startFoodDetection(); // your detection logic
   }
 
   void _startFoodDetection() {
@@ -189,6 +223,7 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
       if (_isDetecting || !_cameraController!.value.isInitialized) return;
 
       _isDetecting = true;
+      // this start capturing on init
       try {
         final image = await _cameraController!.takePicture();
         final labeler = ImageLabeler(options: ImageLabelerOptions());
@@ -237,10 +272,12 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
                       bottomRight: Radius.circular(10.0.r)),
                   border: Border(
                     top: BorderSide(
-                        color: _foodDetected ? Colors.green : Colors.white,
+                        // color: _foodDetected ? Colors.green : Colors.white,
+                        color: Colors.white,
                         width: 4),
                     left: BorderSide(
-                        color: _foodDetected ? Colors.green : Colors.white,
+                        // color: _foodDetected ? Colors.green : Colors.white,
+                        color: Colors.white,
                         width: 4),
                   ),
                 ),
@@ -259,10 +296,12 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
                       bottomLeft: Radius.circular(10.0.r)),
                   border: Border(
                     top: BorderSide(
-                        color: _foodDetected ? Colors.green : Colors.white,
+                        // color: _foodDetected ? Colors.green : Colors.white,
+                        color: Colors.white,
                         width: 4),
                     right: BorderSide(
-                        color: _foodDetected ? Colors.green : Colors.white,
+                        // color: _foodDetected ? Colors.green : Colors.white,
+                        color: Colors.white,
                         width: 4),
                   ),
                 ),
@@ -281,10 +320,12 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
                       topRight: Radius.circular(10.0.r)),
                   border: Border(
                     bottom: BorderSide(
-                        color: _foodDetected ? Colors.green : Colors.white,
+                        // color: _foodDetected ? Colors.green : Colors.white,
+                        color: Colors.white,
                         width: 4),
                     left: BorderSide(
-                        color: _foodDetected ? Colors.green : Colors.white,
+                        // color: _foodDetected ? Colors.green : Colors.white,
+                        color: Colors.white,
                         width: 4),
                   ),
                 ),
@@ -303,10 +344,12 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
                       topLeft: Radius.circular(10.0.r)),
                   border: Border(
                     bottom: BorderSide(
-                        color: _foodDetected ? Colors.green : Colors.white,
+                        // color: _foodDetected ? Colors.green : Colors.white,
+                        color: Colors.white,
                         width: 4),
                     right: BorderSide(
-                        color: _foodDetected ? Colors.green : Colors.white,
+                        // color: _foodDetected ? Colors.green : Colors.white,
+                        color: Colors.white,
                         width: 4),
                   ),
                 ),
@@ -337,102 +380,125 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
   @override
   Widget build(BuildContext context) {
     if (_cameraController == null || !_cameraController!.value.isInitialized) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+      return Scaffold(
+          body: Center(
+              child: CircularProgressIndicator(
+        color: ThemeManagerPlus.of<AppTheme>(context).currentTheme.primaryGreen,
+      )));
     }
-    if (_foodDetected) {
-      // if (context.read<CameraViewModel>().foodDetected) {
-      context.read<MealSearchScreenViewmodel>().selectFood(
-            SuggestedFood(
-                foodname: "Egg",
-                calories: 72,
-                serving: 1,
-                protein: 12,
-                carbs: 30,
-                fat: 20,
-                quantity: 60,
-                fibre: 15),
-          );
-      appNavigator.pushNamed(routeFoodCart);
-    }
+    // if (_foodDetected) {
+    //   // if (context.read<CameraViewModel>().foodDetected) {
+
+    //   _detectionTimer?.cancel();
+    //   WidgetsBinding.instance.addPostFrameCallback((_) {
+    //     context.read<FoodLoggerViewmodel>().currentMeal = 'Breakfast';
+    //     context.read<MealSearchScreenViewmodel>().selectFood(
+    //           SuggestedFood(
+    //               foodname: "Egg",
+    //               calories: 72,
+    //               serving: 1,
+    //               protein: 12,
+    //               carbs: 30,
+    //               fat: 20,
+    //               quantity: 60,
+    //               fibre: 15),
+    //         );
+
+    //     appNavigator.pushNamed(routeFoodCart);
+    //   });
+    // }
+    final size = MediaQuery.of(context).size;
+    final deviceRatio = size.width / size.height;
     return WillPopScope(
       onWillPop: () async {
         return true;
       },
       child: Scaffold(
-        body: Stack(
-          fit: StackFit.expand,
-          children: [
-            CameraPreview(
-              _cameraController!,
-            ),
-
-            // Scanner Corners UI
-            _buildScannerCorners(context),
-
-            // Detection Status
-            Positioned(
-                top: 10,
-                left: 0,
-                right: 0,
-                child: SizedBox(
-                  height: 100.h,
-                  child: Row(
-                    children: [
-                      20.sBW,
-                      GestureDetector(
-                          onTap: () {
-                            appNavigator.goBack();
-                          },
-                          child: SvgPicture.asset(
-                            svgBackArrow,
-                            color: Colors.white,
-                          )),
-                      const Spacer(),
-                      Text("Food Analysis",
-                          style: AppTextStyle.outfitStyle(
-                              withTextStyle: TextStyle(
-                                  fontSize: 20.sp, color: Colors.white),
-                              outfitFont: OutfitFontStyle.bold)),
-                      const Spacer(),
-                      GestureDetector(
-                          onTap: () {
-                            appNavigator.goBack();
-                          },
-                          child: GestureDetector(
-                              onTap: () {
-                                if (_cameraController?.value.flashMode ==
-                                    FlashMode.torch) {
-                                  // context
-                                  //     .read<CameraViewModel>()
-                                  //     .onSetFlashModeButtonPressed(
-                                  //         FlashMode.off, _cameraController!);
-                                  onSetFlashModeButtonPressed(FlashMode.off);
-                                } else {
-                                  // context
-                                  //     .read<CameraViewModel>()
-                                  //     .onSetFlashModeButtonPressed(
-                                  //         FlashMode.torch, _cameraController!);
-                                  onSetFlashModeButtonPressed(FlashMode.torch);
-                                }
-                              },
-                              child: SvgPicture.asset(
-                                svgFlashIcon,
-                                color: _cameraController?.value.flashMode ==
-                                        FlashMode.torch
-                                    ? ThemeManagerPlus.of<AppTheme>(context)
-                                        .currentTheme
-                                        .primaryGreen
-                                    : Colors.white,
-                              ))),
-                      20.sBW,
-                    ],
-                  ),
-                )),
-            Positioned(
-                bottom: 50, left: 0, right: 0, child: _captureControlRowWidget()
-                // child: _captureControlRowWidget(_cameraController)
+        body: SizedBox(
+          // height: 0.8.sh,
+          // width: 1.sw,
+          child: Stack(
+            // fit: StackFit.expand,
+            children: [
+              Transform.scale(
+                alignment: Alignment.topCenter,
+                scale: 1 /
+                    (_cameraController!.value.aspectRatio *
+                        MediaQuery.of(context).size.aspectRatio),
+                child: CameraPreview(
+                  _cameraController!,
                 ),
-          ],
+              ),
+
+              // Scanner Corners UI
+              _buildScannerCorners(context),
+
+              // Detection Status
+              Positioned(
+                  top: 10,
+                  left: 0,
+                  right: 0,
+                  child: SizedBox(
+                    height: 100.h,
+                    child: Row(
+                      children: [
+                        20.sBW,
+                        GestureDetector(
+                            onTap: () {
+                              appNavigator.goBack();
+                            },
+                            child: SvgPicture.asset(
+                              svgBackArrow,
+                              color: Colors.white,
+                            )),
+                        const Spacer(),
+                        Text("Food Analysis",
+                            style: AppTextStyle.outfitStyle(
+                                withTextStyle: TextStyle(
+                                    fontSize: 20.sp, color: Colors.white),
+                                outfitFont: OutfitFontStyle.bold)),
+                        const Spacer(),
+                        GestureDetector(
+                            onTap: () {
+                              appNavigator.goBack();
+                            },
+                            child: GestureDetector(
+                                onTap: () {
+                                  if (_cameraController?.value.flashMode ==
+                                      FlashMode.torch) {
+                                    // context
+                                    //     .read<CameraViewModel>()
+                                    //     .onSetFlashModeButtonPressed(
+                                    //         FlashMode.off, _cameraController!);
+                                    onSetFlashModeButtonPressed(FlashMode.off);
+                                  } else {
+                                    // context
+                                    //     .read<CameraViewModel>()
+                                    //     .onSetFlashModeButtonPressed(
+                                    //         FlashMode.torch, _cameraController!);
+                                    onSetFlashModeButtonPressed(
+                                        FlashMode.torch);
+                                  }
+                                },
+                                child: SvgPicture.asset(
+                                  svgFlashIcon,
+                                  color: _cameraController?.value.flashMode ==
+                                          FlashMode.torch
+                                      ? ThemeManagerPlus.of<AppTheme>(context)
+                                          .currentTheme
+                                          .primaryGreen
+                                      : Colors.white,
+                                ))),
+                        20.sBW,
+                      ],
+                    ),
+                  )),
+              Positioned(
+                  top: 600, left: 0, right: 0, child: _captureControlRowWidget()
+                  // child: _captureControlRowWidget(_cameraController)
+                  ),
+            ],
+          ),
         ),
       ),
     );

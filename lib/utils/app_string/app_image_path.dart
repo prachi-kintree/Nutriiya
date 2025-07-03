@@ -413,9 +413,9 @@ String svgGoodEmojiIcon = "assets/images/good_emoji.svg";
 String svgBestEmojiIcon = "assets/images/best_emoji_icon.svg";
 String svgGreenCheckIcon2 = "assets/images/green_check_2.svg";
 String svgNextArrowGreen = "assets/images/next_green_long_arrow.svg";
-String svgFitBitIcon = "assets/images/fibit_icon.svg";
-String svgGoogleFitIcon = "assets/images/google_fit_icon.svg";
-String svgGarminIcon = "assets/images/garmin_icon.svg";
+String svgFitBitIcon = "assets/images/fibit_icon.png";
+String svgGoogleFitIcon = "assets/images/google_fit_icon.png";
+String svgGarminIcon = "assets/images/garmin_icon.png";
 String pngConnectWatchImage = "assets/images/connect_watch_img.png";
 
 // new icons

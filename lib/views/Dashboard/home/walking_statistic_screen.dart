@@ -164,7 +164,7 @@ class _WalkingStatisticScreenState extends State<WalkingStatisticScreen> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
           decoration: BoxDecoration(
             gradient: AppDecoration().scaffoldGradient,
           ),
@@ -260,7 +260,7 @@ class _WalkingStatisticScreenState extends State<WalkingStatisticScreen> {
                   ],
                 ),
               ),
-              // 5.sBH,
+              1.sBH,
               Text(
                 "Key Statistics",
                 style: AppTextStyle.outfitStyle(
@@ -301,7 +301,7 @@ class _WalkingStatisticScreenState extends State<WalkingStatisticScreen> {
                           ),
                           ProgressIndicator(
                               bgColor: Colors.grey[300]!,
-                              fgColor: Color(0xffFFC600),
+                              fgColor: Color(0xffFF7300),
                               limit: "8000",
                               current: "5304",
                               measurementValue: '',
@@ -567,140 +567,143 @@ class _WalkingStatisticScreenState extends State<WalkingStatisticScreen> {
               ),
               10.sBH,
               Container(
-                padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
+                padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 15.w),
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(20.0.r),
+                    borderRadius: BorderRadius.circular(12.0.r),
                     boxShadow: AppDecoration.addShadow()),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Typical range', // Use the extracted 'time'
-                          style: AppTextStyle.outfitStyle(
-                              withTextStyle: TextStyle(
-                                  fontSize: 14.sp, color: Colors.black),
-                              outfitFont: OutfitFontStyle.regular),
-                        ),
-                        // const SizedBox(height: 4),
-                        4.sBH,
-                        Text.rich(
-                          TextSpan(
-                            children: [
-                              TextSpan(
-                                  text: 'Duration:', // Use the extracted 'bpm'
-                                  style: AppTextStyle.outfitStyle(
-                                      withTextStyle: TextStyle(
-                                          fontSize: 12.sp, color: Colors.black),
-                                      outfitFont: OutfitFontStyle.light)),
-                              TextSpan(
-                                  text: ' 50 min 1 sec',
-                                  style: AppTextStyle.outfitStyle(
-                                      withTextStyle: TextStyle(
-                                          fontSize: 14.sp, color: Colors.black),
-                                      outfitFont: OutfitFontStyle.regular)),
-                            ],
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Typical range', // Use the extracted 'time'
+                            style: AppTextStyle.outfitStyle(
+                                withTextStyle: TextStyle(
+                                    fontSize: 14.sp, color: Colors.black),
+                                outfitFont: OutfitFontStyle.regular),
                           ),
-                        ),
-                      ],
-                    ),
-                    10.sBH,
-                    Text(
-                      'Zone 5', // Use the extracted 'time'
-                      style: AppTextStyle.outfitStyle(
-                          withTextStyle:
-                              TextStyle(fontSize: 14.sp, color: Colors.black),
-                          outfitFont: OutfitFontStyle.regular),
-                    ),
-                    10.sBH,
-                    HeartRateZoneGauge(
-                      isFilled: false,
-                      bpmRange: "172",
-                      percentage: 0,
-                      duration: const Duration(minutes: 0, seconds: 0),
-                    ),
-                    10.sBH,
-                    Text(
-                      'Zone 4', // Use the extracted 'time'
-                      style: AppTextStyle.outfitStyle(
-                          withTextStyle:
-                              TextStyle(fontSize: 14.sp, color: Colors.black),
-                          outfitFont: OutfitFontStyle.regular),
-                    ),
-                    10.sBH,
-                    HeartRateZoneGauge(
-                      isFilled: false,
-                      bpmRange: "160-171 BPM",
-                      percentage: 0,
-                      duration: const Duration(minutes: 0, seconds: 0),
-                    ),
-                    10.sBH,
-                    Text(
-                      'Zone 3', // Use the extracted 'time'
-                      style: AppTextStyle.outfitStyle(
-                          withTextStyle:
-                              TextStyle(fontSize: 14.sp, color: Colors.black),
-                          outfitFont: OutfitFontStyle.regular),
-                    ),
-                    10.sBH,
-                    HeartRateZoneGauge(
-                      isFilled: false,
-                      bpmRange: "178-159 BPM",
-                      percentage: 0,
-                      duration: const Duration(minutes: 0, seconds: 0),
-                    ),
-                    10.sBH,
-                    Text(
-                      'Zone 2', // Use the extracted 'time'
-                      style: AppTextStyle.outfitStyle(
-                          withTextStyle:
-                              TextStyle(fontSize: 14.sp, color: Colors.black),
-                          outfitFont: OutfitFontStyle.regular),
-                    ),
-                    10.sBH,
-                    HeartRateZoneGauge(
-                      isFilled: true,
-                      bpmRange: "136-147 BPM",
-                      percentage: 60,
-                      duration: const Duration(minutes: 0, seconds: 0),
-                    ),
-                    10.sBH,
-                    Text(
-                      'Zone 1', // Use the extracted 'time'
-                      style: AppTextStyle.outfitStyle(
-                          withTextStyle:
-                              TextStyle(fontSize: 14.sp, color: Colors.black),
-                          outfitFont: OutfitFontStyle.regular),
-                    ),
-                    10.sBH,
-                    HeartRateZoneGauge(
-                      isFilled: true,
-                      bpmRange: "110-135 BPM",
-                      percentage: 38,
-                      duration: const Duration(minutes: 0, seconds: 0),
-                    ),
-                    10.sBH,
-                    Text(
-                      'Zone 0', // Use the extracted 'time'
-                      style: AppTextStyle.outfitStyle(
-                          withTextStyle:
-                              TextStyle(fontSize: 14.sp, color: Colors.black),
-                          outfitFont: OutfitFontStyle.regular),
-                    ),
-                    10.sBH,
-                    HeartRateZoneGauge(
-                      isFilled: true,
-                      bpmRange: "<110 BPM",
-                      percentage: 10,
-                      duration: const Duration(minutes: 0, seconds: 0),
-                    ),
-                    20.sBH
-                  ],
-                ),
-              )
+                          // const SizedBox(height: 4),
+
+                          Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                    text:
+                                        'Duration:', // Use the extracted 'bpm'
+                                    style: AppTextStyle.outfitStyle(
+                                        withTextStyle: TextStyle(
+                                            fontSize: 12.sp,
+                                            color: Colors.black),
+                                        outfitFont: OutfitFontStyle.light)),
+                                TextSpan(
+                                    text: ' 50 min 1 sec',
+                                    style: AppTextStyle.outfitStyle(
+                                        withTextStyle: TextStyle(
+                                            fontSize: 14.sp,
+                                            color: Colors.black),
+                                        outfitFont: OutfitFontStyle.regular)),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      15.sBH,
+                      Text(
+                        'Zone 5', // Use the extracted 'time'
+                        style: AppTextStyle.outfitStyle(
+                            withTextStyle:
+                                TextStyle(fontSize: 14.sp, color: Colors.black),
+                            outfitFont: OutfitFontStyle.regular),
+                      ),
+                      10.sBH,
+                      HeartRateZoneGauge(
+                        isFilled: false,
+                        bpmRange: "172",
+                        percentage: 0,
+                        duration: const Duration(minutes: 0, seconds: 0),
+                      ),
+                      15.sBH,
+                      Text(
+                        'Zone 4', // Use the extracted 'time'
+                        style: AppTextStyle.outfitStyle(
+                            withTextStyle:
+                                TextStyle(fontSize: 14.sp, color: Colors.black),
+                            outfitFont: OutfitFontStyle.regular),
+                      ),
+                      10.sBH,
+                      HeartRateZoneGauge(
+                        isFilled: false,
+                        bpmRange: "160-171 ",
+                        percentage: 0,
+                        duration: const Duration(minutes: 0, seconds: 0),
+                      ),
+                      15.sBH,
+                      Text(
+                        'Zone 3', // Use the extracted 'time'
+                        style: AppTextStyle.outfitStyle(
+                            withTextStyle:
+                                TextStyle(fontSize: 14.sp, color: Colors.black),
+                            outfitFont: OutfitFontStyle.regular),
+                      ),
+                      10.sBH,
+                      HeartRateZoneGauge(
+                        isFilled: false,
+                        bpmRange: "178-159 ",
+                        percentage: 0,
+                        duration: const Duration(minutes: 0, seconds: 0),
+                      ),
+                      15.sBH,
+                      Text(
+                        'Zone 2', // Use the extracted 'time'
+                        style: AppTextStyle.outfitStyle(
+                            withTextStyle:
+                                TextStyle(fontSize: 14.sp, color: Colors.black),
+                            outfitFont: OutfitFontStyle.regular),
+                      ),
+                      10.sBH,
+                      HeartRateZoneGauge(
+                        isFilled: true,
+                        bpmRange: "136-147 ",
+                        percentage: 60,
+                        duration: const Duration(minutes: 0, seconds: 0),
+                      ),
+                      15.sBH,
+                      Text(
+                        'Zone 1', // Use the extracted 'time'
+                        style: AppTextStyle.outfitStyle(
+                            withTextStyle:
+                                TextStyle(fontSize: 14.sp, color: Colors.black),
+                            outfitFont: OutfitFontStyle.regular),
+                      ),
+                      10.sBH,
+                      HeartRateZoneGauge(
+                        isFilled: true,
+                        bpmRange: "110-135 ",
+                        percentage: 38,
+                        duration: const Duration(minutes: 0, seconds: 0),
+                      ),
+                      15.sBH,
+                      Text(
+                        'Zone 0', // Use the extracted 'time'
+                        style: AppTextStyle.outfitStyle(
+                            withTextStyle:
+                                TextStyle(fontSize: 14.sp, color: Colors.black),
+                            outfitFont: OutfitFontStyle.regular),
+                      ),
+                      10.sBH,
+                      HeartRateZoneGauge(
+                        isFilled: true,
+                        bpmRange: "<110",
+                        percentage: 10,
+                        duration: const Duration(minutes: 0, seconds: 0),
+                      ),
+                      20.sBH
+                    ]),
+              ),
+              20.sBH
             ],
           ),
         ),

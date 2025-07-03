@@ -259,7 +259,7 @@ class _CommonSearchBarState extends State<CommonSearchBar> {
         height: 51.h,
         width: 1.sw,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(21.0.r),
+            borderRadius: BorderRadius.circular(25.0.r),
             color: effectiveBackgroundColor),
         child: Padding(
           padding: effectivePadding!,

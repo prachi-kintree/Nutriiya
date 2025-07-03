@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nutriya/RouteManager/route_manager_barrel.dart';
@@ -46,8 +47,12 @@ class _MealSearchScreenState extends State<MealSearchScreen> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                10.sBH,
+                20.sBH,
                 CommonSearchBar(
+                    textStyle: WidgetStateProperty.all(AppTextStyle.outfitStyle(
+                        withTextStyle:
+                            TextStyle(fontSize: 18.sp, color: Colors.black),
+                        outfitFont: OutfitFontStyle.regular)),
                     searchController: mealSearchCont.searchMealController,
                     onChanged: (value) {
                       mealSearchCont.searchMealOnChange(value);

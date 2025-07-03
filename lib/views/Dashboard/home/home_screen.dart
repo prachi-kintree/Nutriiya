@@ -124,9 +124,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 fit: StackFit.loose,
                                 children: [
                                   Positioned(
-                                    top: -70.h,
-                                    left: 20.w,
-                                    right: 20.w,
+                                    top: -100,
+                                    left: 20,
+                                    right: 20,
                                     child: SfRadialGauge(
                                       animationDuration: 4000,
                                       enableLoadingAnimation: true,
@@ -165,9 +165,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ),
                                   Positioned(
-                                    top: -30.h,
-                                    left: 20.w,
-                                    right: 20.w,
+                                    top: -40,
+                                    left: 20,
+                                    right: 20,
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -268,9 +268,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 fit: StackFit.loose,
                                 children: [
                                   Positioned(
-                                    top: -70.h,
-                                    left: 20.w,
-                                    right: 20.w,
+                                    top: -100,
+                                    left: 20,
+                                    right: 20,
                                     child: SfRadialGauge(
                                       animationDuration: 4000,
                                       enableLoadingAnimation: true,
@@ -302,9 +302,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ),
                                   Positioned(
-                                    top: -30.h,
-                                    left: 20.w,
-                                    right: 20.w,
+                                    top: -30,
+                                    left: 20,
+                                    right: 20,
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -312,7 +312,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         65.sBH,
                                         SvgPicture.asset(svgCaloriesBurn),
                                         5.sBH,
-                                        Text("Calories",
+                                        Text(" Burned Calories",
                                             style: AppTextStyle.outfitStyle(
                                                 withTextStyle: TextStyle(
                                                     fontSize: 14.sp,
@@ -339,13 +339,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   outfitFont:
                                                       OutfitFontStyle.medium))
                                         ])),
-                                        Text("of 725 kcal",
-                                            style: AppTextStyle.outfitStyle(
-                                                withTextStyle: TextStyle(
-                                                    fontSize: 16.sp,
-                                                    color: Colors.black),
-                                                outfitFont:
-                                                    OutfitFontStyle.medium)),
                                       ],
                                     ),
                                   )
@@ -367,7 +360,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text("View Details",
+                                    Text("View Activity",
                                         style: AppTextStyle.outfitStyle(
                                             withTextStyle: TextStyle(
                                                 fontSize: 14.sp,
@@ -855,19 +848,43 @@ class LogMealsWidget extends StatelessWidget {
                 list.isNotEmpty
                     ? Align(
                         alignment: Alignment.bottomRight,
-                        child: CustomButton(
-                            onPressed: (startLoading, stopLoading, btnState) {
-                              appNavigator.pushNamed(routeMealDetailScreen);
-                            },
-                            // padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
-                            buttonTextStyle: AppTextStyle.outfitStyle(
-                                withTextStyle: TextStyle(fontSize: 16.sp),
-                                outfitFont: OutfitFontStyle.medium),
-                            width: 100.w,
-                            height: 30.h,
-                            buttonText: 'Details'),
-                      )
+                        child:
+                            // CustomButton(
+                            //     onPressed: (startLoading, stopLoading, btnState) {
+                            //       appNavigator.pushNamed(routeMealDetailScreen);
+                            //     },
+                            //     // padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
+                            //     buttonTextStyle: AppTextStyle.outfitStyle(
+                            //         withTextStyle: TextStyle(fontSize: 16.sp),
+                            //         outfitFont: OutfitFontStyle.medium),
+                            //     width: 100.w,
+                            //     height: 30.h,
+                            //     buttonText: 'Details'),
+                            InkWell(
+                          onTap: () {
+                            appNavigator.pushNamed(routeMealDetailScreen);
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text("View Details",
+                                  style: AppTextStyle.outfitStyle(
+                                      withTextStyle: TextStyle(
+                                          fontSize: 14.sp,
+                                          color: ThemeManagerPlus.of<AppTheme>(
+                                                  context)
+                                              .currentTheme
+                                              .primaryGreen),
+                                      outfitFont: OutfitFontStyle.medium)),
+                              5.sBW,
+                              SvgPicture.asset(svgNextArrowGreen),
+                              10.sBW,
+                            ],
+                          ),
+                        ))
                     : const SizedBox(),
+                10.sBH
               ],
             ),
           )),

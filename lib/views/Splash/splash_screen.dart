@@ -31,24 +31,23 @@ class _SplashScreenState extends State<SplashScreen>
       // print(userId);
       if (status == AnimationStatus.completed) {
         print("_______");
-      //   print(getIt<AppDetailService>().appDetails?.appVersion);
-      //
-      //   if (shouldShowUpdatePop) {
-      //   } else {
-          //AnalyticsHelper.shared.trackUserEvent(eventName: "session_start");
-          // hasLogout
-               appNavigator.pushReplacementNamed(routeLogin);
-              // : appNavigator.pushReplacementNamed(
-              // AppRouteManager.shared.determineRoute());
-          // if (userId == "") {
-          //   appNavigator.pushReplacementNamed(routeIntro);
-          // } else {
-          //   appNavigator.pushNamed(routeDashboard);
-          // }
+        //   print(getIt<AppDetailService>().appDetails?.appVersion);
+        //
+        //   if (shouldShowUpdatePop) {
+        //   } else {
+        //AnalyticsHelper.shared.trackUserEvent(eventName: "session_start");
+        // hasLogout
+        appNavigator.pushReplacementNamed(routeDashboard);
+        // : appNavigator.pushReplacementNamed(
+        // AppRouteManager.shared.determineRoute());
+        // if (userId == "") {
+        //   appNavigator.pushReplacementNamed(routeIntro);
+        // } else {
+        //   appNavigator.pushNamed(routeDashboard);
+        // }
         // }
       }
     });
-
   }
 
   setupAnimation() {
