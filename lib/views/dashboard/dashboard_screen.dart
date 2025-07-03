@@ -7,7 +7,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_mlkit_image_labeling/google_mlkit_image_labeling.dart';
 import 'package:nutriya/RouteManager/route_manager_barrel.dart';
 import 'package:nutriya/extension/extension_sized_box.dart';
 import 'package:nutriya/utils/utils.dart';
