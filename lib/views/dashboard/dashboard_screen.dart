@@ -290,7 +290,7 @@ class SelectableMealContainer extends StatelessWidget {
                       .primaryGreen!
                   : Colors.transparent)),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           SvgPicture.asset(meals.icon!),
           Text(meals.title!,
