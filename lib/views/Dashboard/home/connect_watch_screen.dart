@@ -11,8 +11,18 @@ import 'package:nutriya/utils/styles/app_text_styles.dart';
 import 'package:nutriya/views/Account/help/help_support_main_screen.dart';
 import 'package:nutriya/views/widget/app_bar/common_appbar.dart';
 
-class ConnectWatchScreen extends StatelessWidget {
+class ConnectWatchScreen extends StatefulWidget {
   const ConnectWatchScreen({super.key});
+
+  @override
+  State<ConnectWatchScreen> createState() => _ConnectWatchScreenState();
+}
+
+class _ConnectWatchScreenState extends State<ConnectWatchScreen> {
+  bool switchValue1 = false;
+  bool switchValue2 = false;
+  bool switchValue3 = false;
+  bool switchValue4 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +59,12 @@ class ConnectWatchScreen extends StatelessWidget {
                           outfitFont: OutfitFontStyle.regular)),
                   const Spacer(),
                   CupertinoSwitch(
-                    value: false,
-                    onChanged: (val) {},
+                    value: switchValue1,
+                    onChanged: (val) {
+                      setState(() {
+                        switchValue1 = val;
+                      });
+                    },
                   )
                 ],
               ),
@@ -69,8 +83,12 @@ class ConnectWatchScreen extends StatelessWidget {
                           outfitFont: OutfitFontStyle.regular)),
                   const Spacer(),
                   CupertinoSwitch(
-                    value: false,
-                    onChanged: (val) {},
+                    value: switchValue2,
+                    onChanged: (val) {
+                      setState(() {
+                        switchValue2 = val;
+                      });
+                    },
                   )
                 ],
               ),
@@ -89,8 +107,12 @@ class ConnectWatchScreen extends StatelessWidget {
                           outfitFont: OutfitFontStyle.regular)),
                   const Spacer(),
                   CupertinoSwitch(
-                    value: false,
-                    onChanged: (val) {},
+                    value: switchValue3,
+                    onChanged: (val) {
+                      setState(() {
+                        switchValue3 = val;
+                      });
+                    },
                   )
                 ],
               ),
@@ -109,8 +131,12 @@ class ConnectWatchScreen extends StatelessWidget {
                           outfitFont: OutfitFontStyle.regular)),
                   const Spacer(),
                   CupertinoSwitch(
-                    value: false,
-                    onChanged: (val) {},
+                    value: switchValue4,
+                    onChanged: (val) {
+                      setState(() {
+                        switchValue4 = val;
+                      });
+                    },
                   )
                 ],
               ),

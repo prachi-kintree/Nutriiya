@@ -8,6 +8,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../utils/styles/app_text_styles.dart';
 import 'dashed_widget.dart';
 
+
 class CalorieData {
   final String day;
   final double calories;

@@ -28,10 +28,10 @@ class CommonBottomsheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        if (isCancelable) {
-          return true;
-        }
-        return false;
+        // if (isCancelable) {
+        //   return true;
+        // }
+        return true;
       },
       child: Container(
         height: height.h,
@@ -91,7 +91,8 @@ Future<void> openBottomSheet(
     bool? isCancelable,
     bool? isOnlyChild}) {
   return showModalBottomSheet(
-    isDismissible: isCancelable ?? true,
+    // isDismissible: isCancelable ?? true,
+    isDismissible: true,
     context: context,
     builder: (context) {
       return CommonBottomsheet(

@@ -23,6 +23,7 @@ import 'package:nutriya/views/Account/help/help_support_main_screen.dart';
 import 'package:nutriya/views/Account/security/security_main_screen.dart';
 import 'package:nutriya/views/Account/subscription/my_subscription_plan_screen.dart';
 import 'package:nutriya/views/Account/subscription/subscription_done.dart';
+import 'package:nutriya/views/Dashboard/home/calories_intake_screen.dart';
 import 'package:nutriya/views/Dashboard/home/connect_watch_screen.dart';
 import 'package:nutriya/views/Dashboard/home/fitness_activity_screen.dart';
 import 'package:nutriya/views/Dashboard/home/walking_statistic_screen.dart';
@@ -230,6 +231,8 @@ class AppRouteManager {
         return FadeInRoute(page: FitnessActivityScreen(), settings: settings);
       case routeWalkingScreen:
         return FadeInRoute(page: WalkingStatisticScreen(), settings: settings);
+      case routeCaloriesIntakeScreen:
+        return FadeInRoute(page: CaloriesIntakeScreen(), settings: settings);
       // case routeProgress:
       //   return FadeInRoute(page: ProgressScreen(), settings: settings);
       // case routeCreatePost:

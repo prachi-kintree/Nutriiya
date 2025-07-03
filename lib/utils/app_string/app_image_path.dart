@@ -1,4 +1,4 @@
-String svgBackButton = "assets/images/back_arrow.svg";
+String svgBackButton = "assets/images/back_button_icon.svg";
 String imgFather = "assets/images/father.png"; // Not Working
 String imgMother = "assets/images/mother.png"; // Not Working
 String svgPhotoIcon = "assets/images/photo_icon.svg";
