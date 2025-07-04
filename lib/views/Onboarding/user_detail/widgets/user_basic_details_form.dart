@@ -176,8 +176,8 @@ class _UserBasicDetailsFormState extends State<UserBasicDetailForm> {
             textInputType: TextInputType.text,
             onTextFieldClick: _pickDOB,
             trailingIcon: Padding(
-              padding: EdgeInsets.only(top: 8.h, bottom: 8.h, right: 10.w),
-              child: SvgPicture.asset(svgCalenderIcon),
+              padding: EdgeInsets.only(top: 1.h, bottom: 1.h, right: 10.w),
+              child: SvgPicture.asset(svgPickDob,width: 26.h, height: 26.h),
             ),floatingLabelStyle: AppTextStyle.outfitStyle(
             withTextStyle: TextStyle(fontSize: 15.sp, color: ThemeManagerPlus.of<AppTheme>(context)
                 .currentTheme

@@ -90,10 +90,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               outfitFont: OutfitFontStyle.regular)),
                       10.sBW,
 
-                      // SvgPicture.asset(
-                      //   svgCalenderIcon,
-                      //   height: 14.h,
-                      // ),
+                      SvgPicture.asset(
+                        svgCalenderIcon,
+                        height: 22.h,
+                      ),
                     ],
                   ),
                 ),
@@ -123,10 +123,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Stack(
                                 fit: StackFit.loose,
                                 children: [
-                                  Positioned(
-                                    top: -70.h,
-                                    left: 20.w,
-                                    right: 20.w,
+                                  Positioned.fill(
+
+                                    // top: -90.h,
+                                    // left: 20.w,
+                                    // right: 20.w,
                                     child: SfRadialGauge(
                                       animationDuration: 4000,
                                       enableLoadingAnimation: true,
@@ -136,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           showTicks: false,
                                           startAngle: 160,
                                           endAngle: 20,
-                                          radiusFactor: 0.7,
+                                          radiusFactor: 1.1,
                                           canScaleToFit: true,
                                           axisLineStyle: AxisLineStyle(
                                             thickness: 0.2.w,
@@ -267,10 +268,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Stack(
                                 fit: StackFit.loose,
                                 children: [
-                                  Positioned(
-                                    top: -70.h,
-                                    left: 20.w,
-                                    right: 20.w,
+                                  Positioned.fill(
+                                    // top: -90.h,
+                                    // left: 20.w,
+                                    // right: 20.w,
                                     child: SfRadialGauge(
                                       animationDuration: 4000,
                                       enableLoadingAnimation: true,
@@ -280,7 +281,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           showTicks: false,
                                           startAngle: 160,
                                           endAngle: 20,
-                                          radiusFactor: 0.7,
+                                          radiusFactor: 1.1,
                                           canScaleToFit: true,
                                           axisLineStyle: AxisLineStyle(
                                             thickness: 0.2.w,

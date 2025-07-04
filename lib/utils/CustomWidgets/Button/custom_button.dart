@@ -17,6 +17,7 @@ class CustomButton extends StatelessWidget {
   Color? buttonColor;
   bool disableElevation;
   Color? progressIndicatorColor;
+  Color? borderColor;
   EdgeInsets? padding;
   Function(Function startLoading, Function stopLoading, ButtonState btnState)?
       onPressed;
@@ -25,6 +26,7 @@ class CustomButton extends StatelessWidget {
       this.width = 100,
       this.isDisabled = false,
       this.buttonTextStyle,
+      this.borderColor,
       this.disableElevation = false,
       this.height,
       this.buttonColor = const Color(0xFF42A004),
@@ -40,6 +42,7 @@ class CustomButton extends StatelessWidget {
           height: height ?? 40.h,
           borderRadius: 30.w,
           elevation: 0,
+          borderSide: BorderSide(color: borderColor ?? Colors.transparent),
           // elevation: disableElevation ? 0 : null,
           animate: true,
           color: isDisabled

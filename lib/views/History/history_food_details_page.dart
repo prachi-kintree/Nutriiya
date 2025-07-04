@@ -8,6 +8,7 @@ import 'package:nutriya/views/dashboard/Scanner/food_cart_screen.dart';
 import 'package:theme_manager_plus/theme_manager_plus.dart';
 
 import '../../viewmodel/dashboard/scanner/meal_search_screen_viewmodel.dart';
+import '../widget/common_gradient_scaffold.dart';
 
 class HistoryFoodDetailsPage extends StatelessWidget {
   final String image;
@@ -17,7 +18,7 @@ class HistoryFoodDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+      body:  Stack(children: [CommonGradient(), SingleChildScrollView(
         child: Column(
           children: [
             Stack(
@@ -63,7 +64,10 @@ class HistoryFoodDetailsPage extends StatelessWidget {
                         serving: 1)))
           ],
         ),
-      ),
+      )])
+
+
+
     );
   }
 }

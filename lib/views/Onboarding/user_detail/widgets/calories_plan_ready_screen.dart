@@ -136,7 +136,7 @@ class CaloriesPlanReadyScreen extends StatelessWidget {
                       outfitFont: OutfitFontStyle.medium),
                   width: 500.w,
                   onPressed: (startLoading, stopLoading, btnState) {
-                    appNavigator.pushNamed(routeIntro);
+                    appNavigator.pushNamed(routeDashboard);
                   },
                   isDisabled: false,
                   disableElevation: false),

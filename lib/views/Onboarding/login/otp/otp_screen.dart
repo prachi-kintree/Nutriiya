@@ -27,11 +27,15 @@ class OtpScreen extends StatelessWidget {
         child: Stack(
           children: [
             CustomGradientBackground(),
-            OtpWidget(
-                contact: "9876543210",
-                onTapNext: () {
-                  appNavigator.pushReplacementNamed(routeSelectUserLanguage);
-                })
+            Consumer<LoginViewModel>(
+              builder: (context, controller, child) {
+                return OtpWidget(
+                    contact: controller.mobileController.text,
+                    onTapNext: () {
+                      appNavigator.pushReplacementNamed(routeSelectUserLanguage);
+                    });
+              }
+            )
           ],
         ),
       ),
