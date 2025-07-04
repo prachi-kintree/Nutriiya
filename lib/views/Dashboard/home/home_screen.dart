@@ -128,8 +128,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                     left: 20,
                                     right: 20,
                                     child: SfRadialGauge(
-                                      animationDuration: 4000,
-                                      enableLoadingAnimation: true,
                                       axes: <RadialAxis>[
                                         RadialAxis(
                                           showLabels: false,
@@ -150,11 +148,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                           pointers: <GaugePointer>[
                                             RangePointer(
+                                                animationDuration: 4000,
+                                                enableAnimation: true,
                                                 color: ThemeManagerPlus.of<
                                                         AppTheme>(context)
                                                     .currentTheme
                                                     .primaryGreen,
-                                                value: 50.0,
+                                                value: 80.0,
                                                 width: 0.2.w,
                                                 sizeUnit: GaugeSizeUnit.factor,
                                                 cornerStyle:
@@ -272,8 +272,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                     left: 20,
                                     right: 20,
                                     child: SfRadialGauge(
-                                      animationDuration: 4000,
-                                      enableLoadingAnimation: true,
                                       axes: <RadialAxis>[
                                         RadialAxis(
                                           showLabels: false,
@@ -290,8 +288,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                           pointers: <GaugePointer>[
                                             RangePointer(
+                                                enableAnimation: true,
                                                 color: Color(0xffFF7300),
-                                                value: 50.0,
+                                                value: 80.0,
                                                 width: 0.2.w,
                                                 sizeUnit: GaugeSizeUnit.factor,
                                                 cornerStyle:
@@ -505,7 +504,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   outfitFont: OutfitFontStyle.bold)),
                           20.sBH,
                           Text(
-                              "Lorem ipsum is simply dummy text \nLorem ipsum is simply dummy text",
+                              "Track steps, heart rate & workouts \nseamlessly in one place.",
                               style: AppTextStyle.outfitStyle(
                                   withTextStyle: TextStyle(
                                       fontSize: 12.sp,
@@ -637,9 +636,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                       InkWell(
                                         onTap: () {
                                           appNavigator.goBack();
-                                          context
-                                              .read<FoodLoggerViewmodel>()
-                                              .navigateToDesireMeal(meals[0]);
+                                          appNavigator
+                                              .pushNamed(routeMealCameraScreen);
+                                          // context
+                                          //     .read<FoodLoggerViewmodel>()
+                                          //     .navigateToDesireMeal(meals[0]);
                                         },
                                         child: Container(
                                           height: 135.h,
@@ -844,7 +845,7 @@ class LogMealsWidget extends StatelessWidget {
                           },
                         ))
                     : const SizedBox(),
-                5.sBH,
+                (list.isNotEmpty) ? 5.sBH : 0.sBH,
                 list.isNotEmpty
                     ? Align(
                         alignment: Alignment.bottomRight,
@@ -884,7 +885,7 @@ class LogMealsWidget extends StatelessWidget {
                           ),
                         ))
                     : const SizedBox(),
-                10.sBH
+                (list.isNotEmpty) ? 10.sBH : 0.sBH
               ],
             ),
           )),
@@ -1065,8 +1066,6 @@ class ProgressIndicator extends StatelessWidget {
           height: 100.w,
           width: 100.w,
           child: SfRadialGauge(
-            animationDuration: 2000,
-            enableLoadingAnimation: true,
             axes: <RadialAxis>[
               RadialAxis(
                   showLabels: false,
@@ -1085,6 +1084,8 @@ class ProgressIndicator extends StatelessWidget {
                   ),
                   pointers: <GaugePointer>[
                     RangePointer(
+                        animationDuration: 4000,
+                        enableAnimation: true,
                         color: fgColor,
                         value: double.parse(current),
                         width: 0.12.w,

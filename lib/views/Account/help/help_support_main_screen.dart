@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nutriya/RouteManager/route_manager_barrel.dart';
+import 'package:nutriya/extension/extension_sized_box.dart';
 import 'package:nutriya/utils/app_string/app_image_path.dart';
 import 'package:nutriya/utils/styles/app_decoration.dart';
 import 'package:nutriya/utils/styles/app_text_styles.dart';
@@ -27,6 +28,7 @@ class HelpSupportMainScreen extends StatelessWidget {
         child: Column(
           spacing: 10.h,
           children: [
+            15.sBH,
             CustomListTile(
               child: InkWell(
                 onTap: () {
@@ -41,7 +43,7 @@ class HelpSupportMainScreen extends StatelessWidget {
                         'FAQ',
                         style: AppTextStyle.outfitStyle(
                             withTextStyle:
-                                TextStyle(fontSize: 18.sp, color: Colors.black),
+                                TextStyle(fontSize: 16.sp, color: Colors.black),
                             outfitFont: OutfitFontStyle.regular),
                       ),
                       SvgPicture.asset(svgForwardArrow, color: Colors.black)
@@ -64,7 +66,7 @@ class HelpSupportMainScreen extends StatelessWidget {
                         'Contact Support',
                         style: AppTextStyle.outfitStyle(
                             withTextStyle:
-                                TextStyle(fontSize: 18.sp, color: Colors.black),
+                                TextStyle(fontSize: 16.sp, color: Colors.black),
                             outfitFont: OutfitFontStyle.regular),
                       ),
                       SvgPicture.asset(svgForwardArrow, color: Colors.black)
@@ -85,7 +87,7 @@ class HelpSupportMainScreen extends StatelessWidget {
                         'Privacy Policy',
                         style: AppTextStyle.outfitStyle(
                             withTextStyle:
-                                TextStyle(fontSize: 18.sp, color: Colors.black),
+                                TextStyle(fontSize: 16.sp, color: Colors.black),
                             outfitFont: OutfitFontStyle.regular),
                       ),
                       SvgPicture.asset(svgForwardArrow, color: Colors.black)
@@ -108,7 +110,7 @@ class HelpSupportMainScreen extends StatelessWidget {
                         'Feedback',
                         style: AppTextStyle.outfitStyle(
                             withTextStyle:
-                                TextStyle(fontSize: 18.sp, color: Colors.black),
+                                TextStyle(fontSize: 16.sp, color: Colors.black),
                             outfitFont: OutfitFontStyle.regular),
                       ),
                       SvgPicture.asset(svgForwardArrow, color: Colors.black)

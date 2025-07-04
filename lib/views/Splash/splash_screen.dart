@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen>
         //   } else {
         //AnalyticsHelper.shared.trackUserEvent(eventName: "session_start");
         // hasLogout
-        appNavigator.pushReplacementNamed(routeDashboard);
+        appNavigator.pushReplacementNamed(routeLogin);
         // : appNavigator.pushReplacementNamed(
         // AppRouteManager.shared.determineRoute());
         // if (userId == "") {

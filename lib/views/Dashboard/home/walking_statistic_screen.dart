@@ -744,8 +744,6 @@ class ProgressIndicator extends StatelessWidget {
           height: 100.w,
           width: 100.w,
           child: SfRadialGauge(
-            animationDuration: 2000,
-            enableLoadingAnimation: true,
             axes: <RadialAxis>[
               RadialAxis(
                   showLabels: false,
@@ -764,6 +762,8 @@ class ProgressIndicator extends StatelessWidget {
                   ),
                   pointers: <GaugePointer>[
                     RangePointer(
+                      animationDuration: 2000,
+                      enableAnimation: true,
                       color: fgColor,
                       value: double.parse(current),
                       width: 0.12.w,

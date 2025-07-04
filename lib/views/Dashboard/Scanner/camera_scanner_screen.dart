@@ -8,8 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_mlkit_image_labeling/google_mlkit_image_labeling.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:nutriya/RouteManager/route_manager_barrel.dart';
 import 'package:nutriya/extension/extension_sized_box.dart';
+import 'package:nutriya/utils/CustomWidgets/Login/profile_image_selection_widget.dart';
 import 'package:nutriya/utils/app_string/app_image_path.dart';
 import 'package:nutriya/utils/styles/app_text_styles.dart';
 import 'package:nutriya/utils/utils.dart';
@@ -41,7 +43,7 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
   @override
   void initState() {
     super.initState();
-    final controller = context.read<CameraViewModel>();
+    // final controller = context.read<CameraViewModel>();
     WidgetsBinding.instance.addObserver(this);
     // controller.initCamera(_detectionTimer!, _cameraController!);
     _initCamera();
@@ -118,14 +120,78 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
     }
 
     try {
-      _startFoodDetection();
-      final XFile file = await cameraController.takePicture();
-      return file;
+      // _startFoodDetection();
+      if (_foodDetected) {
+        final XFile file = await cameraController.takePicture();
+        return file;
+      } else {
+        AppDecoration.showToast(message: "No food detected.");
+      }
     } on CameraException catch (e) {
       _showCameraException(e);
       return null;
     }
   }
+
+  // Future<XFile?> capturePicture() async {
+  //   final CameraController? cameraController = _cameraController;
+
+  //   if (cameraController == null || !cameraController.value.isInitialized) {
+  //     AppDecoration.showToast(message: "Camera not ready.");
+  //     return null;
+  //   }
+
+  //   if (_isDetecting || cameraController.value.isTakingPicture) return null;
+
+  //   setState(() => _isDetecting = true);
+
+  //   XFile? image;
+
+  //   try {
+  //     image = await cameraController.takePicture();
+
+  //     final inputImage = InputImage.fromFilePath(image.path);
+  //     final labeler = ImageLabeler(options: ImageLabelerOptions());
+  //     final labels = await labeler.processImage(inputImage);
+  //     await labeler.close();
+
+  //     final hasFood = labels.any((label) =>
+  //         label.label.toLowerCase().contains("food") ||
+  //         ["pizza", "burger", "fruit", "vegetable", "salad"]
+  //             .contains(label.label.toLowerCase()));
+
+  //     if (hasFood) {
+  //       // context.read<FoodLoggerViewmodel>().currentMeal = 'Breakfast';
+  //       // context.read<MealSearchScreenViewmodel>().selectFood(
+  //       //       SuggestedFood(
+  //       //         foodname: "Egg",
+  //       //         calories: 72,
+  //       //         serving: 1,
+  //       //         protein: 12,
+  //       //         carbs: 30,
+  //       //         fat: 20,
+  //       //         quantity: 60,
+  //       //         fibre: 15,
+  //       //       ),
+  //       //     );
+
+  //       // await appNavigator.pushNamed(routeFoodCart);
+  //       setState(() {
+  //         _foodDetected = true;
+  //       });
+  //     } else {
+  //       AppDecoration.showToast(message: "No food detected.");
+  //     }
+
+  //     return image; // ✅ return image whether food found or not
+  //   } catch (e) {
+  //     print("Capture or detection error: $e");
+  //     AppDecoration.showToast(message: "Something went wrong.");
+  //     return null;
+  //   } finally {
+  //     if (mounted) setState(() => _isDetecting = false);
+  //   }
+  // }
 
   void onTakePictureButtonPressed() {
     capturePicture().then((XFile? file) {
@@ -134,6 +200,28 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
           imageFile = file;
         });
         if (file != null) {
+          if (_foodDetected) {
+            // if (context.read<CameraViewModel>().foodDetected) {
+
+            // _detectionTimer?.cancel();
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              context.read<FoodLoggerViewmodel>().currentMeal = 'Breakfast';
+              context.read<MealSearchScreenViewmodel>().selectFood(
+                    SuggestedFood(
+                        foodname: "Egg",
+                        calories: 72,
+                        serving: 1,
+                        protein: 12,
+                        carbs: 30,
+                        fat: 20,
+                        quantity: 60,
+                        fibre: 15),
+                  );
+              // _foodDetected = false;
+              // stopFoodDetection();
+              appNavigator.pushNamed(routeFoodCart);
+            });
+          }
           // AppDecoration.showToast(message: 'Picture saved to ${file.path}');
         }
       }
@@ -144,32 +232,61 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
     // Widget _captureControlRowWidget(CameraController? cameraController) {
     final CameraController? cameraController = _cameraController;
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        IconButton(
-          icon: const Icon(Icons.camera_alt),
-          color: Colors.white,
-          onPressed: cameraController != null &&
-                  cameraController.value.isInitialized &&
-                  !cameraController.value.isRecordingVideo
-              ? onTakePictureButtonPressed
-              : null,
-        ),
-        // Container(
-        // height: 60.h,
-        // width: 60.h,
-        // decoration: const BoxDecoration(
-        //     color: Colors.amber, shape: BoxShape.circle),
-        // child: Container(
-        //   padding: const EdgeInsets.all(8.0),
-        //   decoration: BoxDecoration(
-        //     color: Colors.white,
-        //     border: Border.all(color: Colors.black),
-        //     shape: BoxShape.circle,
-        //   ),
-        // ))
-      ],
+    return Container(
+      color: Colors.black87,
+      padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          // IconButton(
+          //   icon: const Icon(Icons.photos),
+          //   color: Colors.white,
+          //   onPressed: () {},
+          //   // onPressed: cameraController != null &&
+          //   //         cameraController.value.isInitialized &&
+          //   //         !cameraController.value.isRecordingVideo
+          //   //     ? onTakePictureButtonPressed
+          //   //     : null,
+          // ),
+          InkWell(
+              onTap: () {
+                ImagePickerManager().openGallery();
+              },
+              child: SvgPicture.asset(svgGallary)),
+          InkWell(
+            onTap: () {
+              cameraController != null &&
+                      cameraController.value.isInitialized &&
+                      !cameraController.value.isRecordingVideo
+                  ? onTakePictureButtonPressed()
+                  : null;
+            },
+            child: Container(
+              height: 50.h,
+              width: 50.h,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white, width: 3),
+                  color: Color(0xffD9D9D9),
+                  shape: BoxShape.circle),
+              // child:
+              //  IconButton(
+              //   icon: const Icon(Icons.camera_alt),
+              //   color: Colors.black,
+              //   onPressed: cameraController != null &&
+              //           cameraController.value.isInitialized &&
+              //           !cameraController.value.isRecordingVideo
+              //       ? onTakePictureButtonPressed
+              //       : null,
+              // ),
+            ),
+          ),
+          SizedBox(
+            height: 20.w,
+            width: 20.w,
+          )
+        ],
+      ),
     );
   }
 
@@ -215,7 +332,7 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
     await _cameraController!.initialize();
 
     if (mounted) setState(() {});
-    // _startFoodDetection(); // your detection logic
+    _startFoodDetection(); // your detection logic
   }
 
   void _startFoodDetection() {
@@ -225,6 +342,7 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
       _isDetecting = true;
       // this start capturing on init
       try {
+        await _cameraController!.setFlashMode(FlashMode.off);
         final image = await _cameraController!.takePicture();
         final labeler = ImageLabeler(options: ImageLabelerOptions());
 
@@ -250,6 +368,12 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
     });
   }
 
+  void stopFoodDetection() {
+    _detectionTimer?.cancel();
+    _detectionTimer = null;
+    _isDetecting = false;
+  }
+
   Widget _buildScannerCorners(context) {
     return Positioned(
       top: MediaQuery.of(context).size.height * 0.25,
@@ -272,12 +396,12 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
                       bottomRight: Radius.circular(10.0.r)),
                   border: Border(
                     top: BorderSide(
-                        // color: _foodDetected ? Colors.green : Colors.white,
-                        color: Colors.white,
+                        color: _foodDetected ? Colors.green : Colors.white,
+                        // color: Colors.white,
                         width: 4),
                     left: BorderSide(
-                        // color: _foodDetected ? Colors.green : Colors.white,
-                        color: Colors.white,
+                        color: _foodDetected ? Colors.green : Colors.white,
+                        // color: Colors.white,
                         width: 4),
                   ),
                 ),
@@ -296,12 +420,12 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
                       bottomLeft: Radius.circular(10.0.r)),
                   border: Border(
                     top: BorderSide(
-                        // color: _foodDetected ? Colors.green : Colors.white,
-                        color: Colors.white,
+                        color: _foodDetected ? Colors.green : Colors.white,
+                        // color: Colors.white,
                         width: 4),
                     right: BorderSide(
-                        // color: _foodDetected ? Colors.green : Colors.white,
-                        color: Colors.white,
+                        color: _foodDetected ? Colors.green : Colors.white,
+                        // color: Colors.white,
                         width: 4),
                   ),
                 ),
@@ -320,12 +444,12 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
                       topRight: Radius.circular(10.0.r)),
                   border: Border(
                     bottom: BorderSide(
-                        // color: _foodDetected ? Colors.green : Colors.white,
-                        color: Colors.white,
+                        color: _foodDetected ? Colors.green : Colors.white,
+                        // color: Colors.white,
                         width: 4),
                     left: BorderSide(
-                        // color: _foodDetected ? Colors.green : Colors.white,
-                        color: Colors.white,
+                        color: _foodDetected ? Colors.green : Colors.white,
+                        // color: Colors.white,
                         width: 4),
                   ),
                 ),
@@ -344,12 +468,12 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
                       topLeft: Radius.circular(10.0.r)),
                   border: Border(
                     bottom: BorderSide(
-                        // color: _foodDetected ? Colors.green : Colors.white,
-                        color: Colors.white,
+                        color: _foodDetected ? Colors.green : Colors.white,
+                        // color: Colors.white,
                         width: 4),
                     right: BorderSide(
-                        // color: _foodDetected ? Colors.green : Colors.white,
-                        color: Colors.white,
+                        color: _foodDetected ? Colors.green : Colors.white,
+                        // color: Colors.white,
                         width: 4),
                   ),
                 ),
@@ -363,12 +487,12 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
 
   @override
   void dispose() {
-    _cameraController?.dispose();
-    _detectionTimer?.cancel();
+    // _cameraController?.dispose();
     WidgetsBinding.instance.removeObserver(this);
 
     _flashModeControlRowAnimationController.dispose();
     _flashModeControlRowAnimation.dispose();
+    // stopFoodDetection();
     // context
     //     .read<CameraViewModel>()
     //     .flashModeControlRowAnimationController
@@ -403,7 +527,8 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
     //               quantity: 60,
     //               fibre: 15),
     //         );
-
+    //     _foodDetected = false;
+    //     // stopFoodDetection();
     //     appNavigator.pushNamed(routeFoodCart);
     //   });
     // }
@@ -414,6 +539,7 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
         return true;
       },
       child: Scaffold(
+        bottomNavigationBar: _captureControlRowWidget(),
         body: SizedBox(
           // height: 0.8.sh,
           // width: 1.sw,
@@ -429,6 +555,17 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
                   _cameraController!,
                 ),
               ),
+
+              // Positioned.fill(
+              //   child: FittedBox(
+              //     fit: BoxFit.cover,
+              //     child: SizedBox(
+              //       width: _cameraController!.value.previewSize!.height,
+              //       height: _cameraController!.value.previewSize!.width,
+              //       child: CameraPreview(_cameraController!),
+              //     ),
+              //   ),
+              // ),
 
               // Scanner Corners UI
               _buildScannerCorners(context),
@@ -493,10 +630,14 @@ class _CameraScannerScreenState extends State<CameraScannerScreen>
                       ],
                     ),
                   )),
-              Positioned(
-                  top: 600, left: 0, right: 0, child: _captureControlRowWidget()
-                  // child: _captureControlRowWidget(_cameraController)
-                  ),
+              // Positioned(
+              //     top: 733,
+              //     // bottom: 20,
+              //     left: 0,
+              //     right: 0,
+              //     child: _captureControlRowWidget()
+              //     // child: _captureControlRowWidget(_cameraController)
+              //     ),
             ],
           ),
         ),

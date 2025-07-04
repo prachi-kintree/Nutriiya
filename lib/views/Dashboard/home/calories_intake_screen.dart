@@ -575,7 +575,7 @@ void showCustomDateRangePicker(BuildContext context) {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                   child: Center(
-                    child: Text("SELECTED RANGE",
+                    child: Text("SELECTED DATE",
                         style: AppTextStyle.outfitStyle(
                             withTextStyle: TextStyle(
                                 fontSize: 18.sp,
@@ -588,12 +588,13 @@ void showCustomDateRangePicker(BuildContext context) {
               Expanded(
                 child: SfDateRangePicker(
                   controller: controller,
-                  selectionMode: DateRangePickerSelectionMode.range,
+                  selectionMode: DateRangePickerSelectionMode.single,
                   onViewChanged: (DateRangePickerViewChangedArgs args) {
                     // setState(() {
                     //   _visibleDate = args.visibleDateRange.startDate;
                     // });
                   },
+                  selectionColor: primaryColor,
                   rangeTextStyle: AppTextStyle.outfitStyle(
                       withTextStyle:
                           TextStyle(fontSize: 14.sp, color: Colors.black),

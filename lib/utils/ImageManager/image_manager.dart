@@ -10,12 +10,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:gallery_picker/gallery_picker.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:nutriya/RouteManager/app_routes.dart';
+import 'package:nutriya/utils/utils.dart';
+import 'package:nutriya/viewmodel/dashboard/scanner/food_logger_viewmodel.dart';
+import 'package:nutriya/viewmodel/dashboard/scanner/meal_search_screen_viewmodel.dart';
 
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import 'package:provider/provider.dart';
+import 'package:theme_manager_plus/theme_manager_plus.dart';
 import 'package:video_compress/video_compress.dart';
 
 import '../../RouteManager/navigator_service.dart';
@@ -505,8 +510,8 @@ class ImagePickerManager {
       // ],
       uiSettings: [
         AndroidUiSettings(
-            toolbarTitle: 'Kintree',
-            toolbarColor: Color(0xFFFF6200EE),
+            toolbarTitle: 'Nutriiya',
+            toolbarColor: Color(0xff42A004),
             toolbarWidgetColor: Colors.white,
             initAspectRatio: CropAspectRatioPreset.original,
             lockAspectRatio: false),
@@ -521,7 +526,28 @@ class ImagePickerManager {
       if (compressedImage != null) {
         userimagePath = compressedImage.path;
         log("current image : ${userimagePath}");
-        uploadImage(imagePath: compressedImage.path);
+        //  WidgetsBinding.instance.addPostFrameCallback((_) {
+        appNavigator.navigationContext
+            ?.read<FoodLoggerViewmodel>()
+            .currentMeal = 'Breakfast';
+        appNavigator.navigationContext
+            ?.read<MealSearchScreenViewmodel>()
+            .selectFood(
+              SuggestedFood(
+                  foodname: "Egg",
+                  calories: 72,
+                  serving: 1,
+                  protein: 12,
+                  carbs: 30,
+                  fat: 20,
+                  quantity: 60,
+                  fibre: 15),
+            );
+        // _foodDetected = false;
+        // stopFoodDetection();
+        appNavigator.pushNamed(routeFoodCart);
+        // });
+        // uploadImage(imagePath: compressedImage.path);
       }
     }
   }

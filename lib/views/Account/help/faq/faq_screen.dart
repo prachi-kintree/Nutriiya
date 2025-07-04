@@ -21,28 +21,29 @@ class FaqHelpScreen extends StatelessWidget {
           ),
           child: Column(
             spacing: 10.h,
-            children: const [
-              CustomExpandTile(
+            children: [
+              15.sBH,
+              const CustomExpandTile(
                 title: "What is Nutria?",
                 subtitle:
                     "Nutria is your AI-powered nutrition guide designed for Indian lifestyles or all lifestyles",
               ),
-              CustomExpandTile(
+              const CustomExpandTile(
                 title: "How does Nutria work?",
                 subtitle:
                     "Nutria is your AI-powered nutrition guide designed for Indian lifestyles or all lifestyles",
               ),
-              CustomExpandTile(
+              const CustomExpandTile(
                 title: "Who can use Nutria?",
                 subtitle:
                     "Nutria is your AI-powered nutrition guide designed for Indian lifestyles or all lifestyles",
               ),
-              CustomExpandTile(
+              const CustomExpandTile(
                 title: "Is Nutria free to use?",
                 subtitle:
                     "Nutria is your AI-powered nutrition guide designed for Indian lifestyles or all lifestyles",
               ),
-              CustomExpandTile(
+              const CustomExpandTile(
                 title: "Lorem Ipsum Is simply dummy text?",
                 subtitle:
                     "Nutria is your AI-powered nutrition guide designed for Indian lifestyles or all lifestyles",

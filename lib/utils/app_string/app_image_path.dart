@@ -426,3 +426,4 @@ String svgDuration = "assets/images/duration_icon.svg";
 String svgAverageHR = "assets/images/average_hr_icon.svg";
 String svgMaxHr = "assets/images/max_hr_icon.svg";
 String svgWalking = "assets/images/walking_icon.svg";
+String svgGallary = "assets/images/gallary_icon.svg";

@@ -107,8 +107,6 @@ class FitnessActivityScreen extends StatelessWidget {
                                 left: 20.w,
                                 right: 20.w,
                                 child: SfRadialGauge(
-                                  animationDuration: 4000,
-                                  enableLoadingAnimation: true,
                                   axes: <RadialAxis>[
                                     RadialAxis(
                                       showLabels: false,
@@ -125,6 +123,8 @@ class FitnessActivityScreen extends StatelessWidget {
                                       ),
                                       pointers: <GaugePointer>[
                                         RangePointer(
+                                            animationDuration: 4000,
+                                            enableAnimation: true,
                                             color: Color(0xffFF7300),
                                             value: 50.0,
                                             width: 0.2.w,
