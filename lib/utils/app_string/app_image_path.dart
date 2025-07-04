@@ -1,40 +1,12 @@
 String svgBackButton = "assets/images/back_button_icon.svg";
-String imgFather = "assets/images/father.png"; // Not Working
-String imgMother = "assets/images/mother.png"; // Not Working
-String svgPhotoIcon = "assets/images/photo_icon.svg";
-String svgKintreeLogo = "assets/images/kintree_logo.svg";
-String svgSuccessTick = "assets/images/success.svg";
-String svgDialer = "assets/images/dialer.svg"; // Not Working
-String svgKintreeText = "assets/images/kintree_text.svg";
 String svgTick = "assets/images/tick.svg";
-String svgEditNew = "assets/images/edit_new.svg";
-String svgFamilyTreeInactive = "assets/images/family_tree_inactive.svg";
-String svgMyself = "assets/images/myself.svg";
-String svgChildren = "assets/images/children.svg";
-String svgGodfatherFT = "assets/images/godfather_ft_icon.svg";
-String svgCheckedRadio = "assets/images/checked_radio.svg";
-String svgUncheckedRadio = "assets/images/unchecked_radio.svg";
-String svgForeroomIconActive = "assets/images/foreroom_icon_active.svg";
-String svgForeroomIconInactive = "assets/images/foreroom_icon_inactive.svg";
-String svgPostInactive = "assets/images/post_inactive.svg";
-String svgAddEventIcon = "assets/images/add_event.svg";
-String svgProfileIconActive = "assets/images/profile_icon_active.svg";
-String svgProfileIconInactive = "assets/images/profile_icon_inactive.svg";
 String svgProfileImage = "assets/images/profile_image.svg";
-String svgAddDocument = "assets/images/add_document.svg";
-String svgClose = "assets/images/close.svg";
-String svgCorrectNew = "assets/images/correct_icon.svg";
 String svgDropDownArrow = "assets/images/drop_down_arrow.svg";
 String svgForwardArrow = "assets/images/forward_arrow.svg";
-String svgDelete = "assets/images/delete.svg";
-String svgDeleteRed = "assets/images/delete_icon.svg";
-String svgSharePostIcon = "assets/images/share_post.svg";
-String svgCopy = "assets/images/copy_icon.svg";
 
 // Social
 
 // String svgWhatsapp = "assets/images/whatsapp.svg";
-String svgFacebook = "assets/images/facebookcircle.svg";
 String svgSnapchat = "assets/images/snapchat.svg";
 String svgInstagram = "assets/images/instagram.svg";
 String svgMessage = "assets/images/message.svg";
@@ -144,7 +116,6 @@ String famTreeInactive = "assets/images/fam_tree_inactive.svg";
 String primaryFamTree = "assets/images/primary_fam.svg";
 String globe = "assets/images/globe.svg";
 String svgPhoneBook = "assets/images/phone_book.svg";
-String svgNotificationIcon = "assets/images/notification_icon_new.svg";
 String svgNextArrow = "assets/images/next_arrow.svg";
 
 // Kintree Rewards
@@ -206,7 +177,6 @@ String svgRemoveAlbum = "assets/images/svgRemoveAlbum.svg";
 String pngCreateAlbum = "assets/images/pngCreateAlbum.png";
 
 // DashBoard
-String svgDBNotificationNew = "assets/images/svgNotificationNew.svg";
 String svgDBMyOrdersNew = "assets/images/svgMyOrderNew.svg";
 String svgDBSettingNew = "assets/images/svgSettingsNew.svg";
 String svgDBShareAppNew = "assets/images/svgShareAppNew.svg";
@@ -300,6 +270,7 @@ String svgTrophy = "assets/images/trophy_icon.svg";
 String svgGainMuscle = "assets/images/gain_muscle_icon.svg";
 String svgLoseWeight = "assets/images/lose_weight_icon.svg";
 String svgManageDiabetes = "assets/images/manage_diabetes_icon.svg";
+String svgStayHealthy = "assets/images/stay_healthy_and_balanced.svg";
 String svgEastIndian = "assets/images/east_indian_food.svg";
 String svgCentralIndian = "assets/images/central_indian_food.svg";
 String svgNorthIndian = "assets/images/north_indian_food.svg";
@@ -318,6 +289,7 @@ String svgEnabledUptrend = "assets/images/enabled_uptrend_icon.svg";
 String svgCrown = "assets/images/crown.svg";
 String svgForwardArrowGreen = "assets/images/forward_arrow.svg";
 String svgRateUs = "assets/images/rate_us.svg";
+String svgAppAppearance = "assets/images/app_appearance.svg";
 // String svgReminder = "assets/images/reminder.svg";
 String svgShare = "assets/images/share.svg";
 String svgBillingAndSubs = "assets/images/billing_and_subscription.svg";
@@ -330,12 +302,17 @@ String svgUnitAndMeasures = "assets/images/unit_or_measure.svg";
 String svgCalorieCounting = "assets/images/calorie_counting.svg";
 String svgMotivation = "assets/images/motivation.svg";
 String svgPlans = "assets/images/plans.svg";
+String svgPickDob = "assets/images/pick_dob.svg";
 String svgProgressInsights = "assets/images/progress_insights.svg";
 String svgSubsTick = "assets/images/tick.svg";
 String svgCancel = "assets/images/cancel.svg";
 String svgWhatsapp = "assets/images/whatsapp_icon.svg";
 String svgSms = "assets/images/sms_icon.svg";
 String svgGmail = "assets/images/gmail_icon.svg";
+String svgLightActive = "assets/images/light_active_icon.svg";
+String svgVeryActive = "assets/images/very_active_icon.svg";
+String svgActive = "assets/images/active_icon.svg";
+String svgSitting = "assets/images/sitting_icon.svg";
 
 String pngDalChawal = "assets/images/dal-chawal.png";
 String pngPavBhaji = "assets/images/pav-bhaji.png";

@@ -24,7 +24,8 @@ class UserBasicDetailsViewModel extends ChangeNotifier {
   String numberPrefix = "+91";
   String countryFlag =
       "https://api.kintree.com/kintree-assets/images/countries/in.png";
-  int currentPage = 1;
+  int onboardingCurrentPage = 1;
+  int prefsCurrentPage = 1;
 
   String enteredOtp = "";
   bool showInvalidOtp = false;
@@ -38,11 +39,13 @@ class UserBasicDetailsViewModel extends ChangeNotifier {
   SelectableFieldItem? _selectedGoalItem;
   SelectableFieldItem? _selectedRegionalItem;
   SelectableFieldItem? _selectedGroceryItem;
+  SelectableFieldItem? _selectedActivityLevel;
 
   SelectableFieldItem? get selectedDietaryItem => _selectedDietaryItem;
   SelectableFieldItem? get selectedGoalItem => _selectedGoalItem;
   SelectableFieldItem? get selectedRegionalItem => _selectedRegionalItem;
   SelectableFieldItem? get selectedGroceryItem => _selectedGroceryItem;
+  SelectableFieldItem? get selectedActivityLevel => _selectedActivityLevel;
 
   // getEnumFromString(String type) {
   //   switch (type) {
@@ -57,9 +60,18 @@ class UserBasicDetailsViewModel extends ChangeNotifier {
   //   }
   // }
 
-  changeCurrentPage() {
-    if (currentPage < 8) {
-      currentPage++;
+  changeOnboardCurrentPage() {
+    if (onboardingCurrentPage < 3) {
+      onboardingCurrentPage++;
+      notifyListeners();
+    } else {
+      // appNavigator.pushReplacementNamed(routePersonalizeCaloriesIndicator);
+      // appNavigator.pushReplacementNamed(routeIntro);
+    }
+  }
+ changePrefsCurrentPage() {
+    if (prefsCurrentPage < 6) {
+      prefsCurrentPage++;
       notifyListeners();
     } else {
       appNavigator.pushReplacementNamed(routePersonalizeCaloriesIndicator);
@@ -69,6 +81,10 @@ class UserBasicDetailsViewModel extends ChangeNotifier {
 
   addDietaryPreference({required SelectableFieldItem selectedItem}) {
     _selectedDietaryItem = selectedItem;
+    notifyListeners();
+  }
+  addUserActivityLevel({required SelectableFieldItem selectedItem}) {
+    _selectedActivityLevel = selectedItem;
     notifyListeners();
   }
 
@@ -85,6 +101,7 @@ addGroceryPreference({required SelectableFieldItem selectedItem}) {
   _selectedGroceryItem = selectedItem;
     notifyListeners();
   }
+
 
 // requestForResendOtp({Function(String?)? codeRecieved}) async {
 //   if (loginType == LoginType.email) {

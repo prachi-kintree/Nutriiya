@@ -30,6 +30,7 @@ class LoginViewModel extends ChangeNotifier {
   bool isOtpSent = false;
   // CountryModel? countryData;
   bool isIndianUser = false;
+  TextEditingController mobileController = TextEditingController();
   TextEditingController otpController = TextEditingController();
 
   getEnumFromString(String type) {

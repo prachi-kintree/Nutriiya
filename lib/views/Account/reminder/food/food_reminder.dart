@@ -87,7 +87,7 @@ class _FoodReminderState extends State<FoodReminder> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Lorem Ipsum is simply dummy text",
+                            "Add meal reminders so you never miss your dose of delicious.",
                             style: AppTextStyle.outfitStyle(
                                 withTextStyle: TextStyle(
                                     fontSize: 14.sp,

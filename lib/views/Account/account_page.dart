@@ -43,7 +43,7 @@ class _AccountState extends State<Account> {
         onTap: () => appNavigator.pushNamed(routeNotificationSetting)),
     SettingsItem(
         title: "Languages",
-        iconPath: svgLanguage,
+        iconPath: svgAppAppearance,
         onTap: () => appNavigator.pushNamed(routeLanguages)),
     SettingsItem(
         title: "Reminder",
@@ -73,7 +73,81 @@ class _AccountState extends State<Account> {
       title: "Share app",
       iconPath: svgShare,
       onTap: () {
+        showModalBottomSheet(context: appNavigator.navigationContext!, builder: (context) {
+          return Container(
+            padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 20.w),
+            decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(topRight: Radius.circular(30),topLeft: Radius.circular(30))
+            ),
+            child: Column(
 
+              mainAxisSize:MainAxisSize.min,
+              // spacing: 15.h,
+              children: [
+                Text("Share",style: AppTextStyle.outfitStyle(
+                    withTextStyle: TextStyle(
+                        fontSize: 24.sp, color: ThemeManagerPlus.of<AppTheme>(context)
+                        .currentTheme
+                        .light_black_text_color),
+                    outfitFont: OutfitFontStyle.regular)),
+                15.sBH,
+                Divider(
+                  height: 1,
+                  thickness: 0.3,
+                  color: ThemeManagerPlus.of<AppTheme>(context)
+                      .currentTheme
+                      .subtitleGrey,
+                ),
+                // 15.sBH,
+                // Text("Are you sure you want to end your session?",style: AppTextStyle.outfitStyle(
+                //     withTextStyle: TextStyle(
+                //         fontSize: 16.sp, color: ThemeManagerPlus.of<AppTheme>(context)
+                //         .currentTheme
+                //         .light_black_text_color),
+                //     outfitFont: OutfitFontStyle.regular)),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomButton(
+                        buttonText: "Stay Logged in",
+                        padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
+                        buttonTextStyle: AppTextStyle.outfitStyle(
+                            withTextStyle: TextStyle(fontSize: 16.sp, color: ThemeManagerPlus.of<AppTheme>(context)
+                                .currentTheme
+                                .black),
+                            outfitFont: OutfitFontStyle.medium),
+                        width: 150.w,
+                        onPressed: (startLoading, stopLoading, btnState) {
+                          appNavigator.goBack();
+                        },
+                        isDisabled: false,
+                        buttonColor: Colors.white,
+                        borderColor: ThemeManagerPlus.of<AppTheme>(context)
+                            .currentTheme
+                            .primaryGreen,
+                        disableElevation: false),
+                    30.sBW,
+                    CustomButton(
+                        buttonText: "Yes, Logout",
+                        padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
+                        buttonColor: const Color(0xffF64650),
+                        buttonTextStyle: AppTextStyle.outfitStyle(
+                            withTextStyle: TextStyle(fontSize: 16.sp),
+                            outfitFont: OutfitFontStyle.medium),
+                        width: 150.w,
+                        onPressed: (startLoading, stopLoading, btnState) {
+                          appNavigator.popUntil(routeLogin);
+                        },
+                        isDisabled: false,
+                        disableElevation: false),
+                  ],
+                ),
+              ],
+            ),
+          );
+        });
       },
     ),
     SettingsItem(
@@ -231,7 +305,7 @@ class _AccountState extends State<Account> {
             final item = items[index];
             return ListTile(
               leading:
-                  SvgPicture.asset(item.iconPath, width: 22.h, height: 22.h),
+                  SvgPicture.asset(item.iconPath, width: 26.h, height: 26.h),
               title: Text(item.title,
                   style: AppTextStyle.outfitStyle(
                       withTextStyle: TextStyle(
@@ -262,20 +336,21 @@ class _AccountState extends State<Account> {
                     child: Column(
 
                       mainAxisSize:MainAxisSize.min,
-                      spacing: 15.h,
+                      // spacing: 15.h,
                       children: [
                         Text("Logout",style: AppTextStyle.outfitStyle(
                             withTextStyle: TextStyle(
                                 fontSize: 24.sp, color: const Color(0xffF64650)),
                             outfitFont: OutfitFontStyle.regular)),
+                        15.sBH,
                         Divider(
                           height: 1,
-                          thickness: 0.2,
+                          thickness: 0.3,
                           color: ThemeManagerPlus.of<AppTheme>(context)
                               .currentTheme
                               .subtitleGrey,
                         ),
-                    
+                        15.sBH,
                         Text("Are you sure you want to end your session?",style: AppTextStyle.outfitStyle(
                             withTextStyle: TextStyle(
                                 fontSize: 16.sp, color: ThemeManagerPlus.of<AppTheme>(context)
@@ -287,24 +362,35 @@ class _AccountState extends State<Account> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CustomButton(
-                                buttonText: "Save",
+                                buttonText: "Stay Logged in",
                                 padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
                                 buttonTextStyle: AppTextStyle.outfitStyle(
-                                    withTextStyle: TextStyle(fontSize: 16.sp),
+                                    withTextStyle: TextStyle(fontSize: 16.sp, color: ThemeManagerPlus.of<AppTheme>(context)
+                                        .currentTheme
+                                        .black),
                                     outfitFont: OutfitFontStyle.medium),
-                                width: 100.w,
-                                onPressed: (startLoading, stopLoading, btnState) {},
+                                width: 150.w,
+                                onPressed: (startLoading, stopLoading, btnState) {
+                                  appNavigator.goBack();
+                                },
                                 isDisabled: false,
+                                buttonColor: Colors.white,
+                                borderColor: ThemeManagerPlus.of<AppTheme>(context)
+                                    .currentTheme
+                                    .primaryGreen,
                                 disableElevation: false),
                             30.sBW,
                             CustomButton(
-                                buttonText: "Save",
+                                buttonText: "Yes, Logout",
                                 padding: EdgeInsets.only(top: 30.h, bottom: 20.h),
+                                buttonColor: const Color(0xffF64650),
                                 buttonTextStyle: AppTextStyle.outfitStyle(
                                     withTextStyle: TextStyle(fontSize: 16.sp),
                                     outfitFont: OutfitFontStyle.medium),
-                                width: 100.w,
-                                onPressed: (startLoading, stopLoading, btnState) {},
+                                width: 150.w,
+                                onPressed: (startLoading, stopLoading, btnState) {
+                                  appNavigator.popUntil(routeLogin);
+                                },
                                 isDisabled: false,
                                 disableElevation: false),
                           ],

@@ -6,6 +6,7 @@ const String routeHome = "/";
 const String routeOtp = "/otp";
 const String routeSelectUserLanguage = "/selectLanguage";
 const String routeUserDetails = "/userDetails";
+const String routeUserPrefs = "/userPrefs";
 const String routeVerifiedSuccess = "/verifiedSuccess";
 const String routeProfileCreatedSuccess = "/profileCreatedSuccess";
 const String routeMemberAddedSuccess = "/memberAddedSuccess";

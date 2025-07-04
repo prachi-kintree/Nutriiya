@@ -80,14 +80,13 @@ class MobileTextField extends StatelessWidget {
                       .currentTheme
                       .purple_500,
                   decoration: InputDecoration(
-                    // focusedBorder: OutlineInputBorder(
-                    //     borderRadius: BorderRadius.circular(20.h),
-                    //     borderSide: BorderSide(
-                    //         width: enabledBorderWidth ?? 1,
-                    //         color: ThemeManagerPlus.of<AppTheme>(context)
-                    //             .currentTheme
-                    //             .purple_500!
-                    //             .withOpacity(0.5))),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.h),
+                        borderSide: BorderSide(
+                            width: enabledBorderWidth ?? 1,
+                            color: ThemeManagerPlus.of<AppTheme>(context)
+                                .currentTheme
+                                .primaryGreen!)),
                     enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(color: Colors.transparent),
                         borderRadius: BorderRadius.circular(21)),

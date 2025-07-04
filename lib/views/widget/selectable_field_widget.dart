@@ -49,7 +49,7 @@ class SelectableFieldWidget extends StatelessWidget {
             withTextStyle: TextStyle(fontSize: 16.sp, color: Colors.black),
             outfitFont: OutfitFontStyle.regular),
       ),leading:
-      SvgPicture.asset(selectableFieldItem.icon, height: 20.h),
+      SvgPicture.asset(selectableFieldItem.icon, width: 26.h, height: 26.h),
       )
     );
   }

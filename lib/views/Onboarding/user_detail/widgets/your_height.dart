@@ -20,13 +20,14 @@ class YourHeight extends StatefulWidget {
 }
 
 class _YourHeightState extends State<YourHeight> {
-  double height = 75.0;
   bool isCm = true;
+
+  double height = 75.0;
   RulerPickerController? _rulerPickerController;
 
   @override
   void initState() {
-    _rulerPickerController = RulerPickerController(value: height);
+    _rulerPickerController = RulerPickerController(value: height!);
     super.initState();
   }
   @override
@@ -56,8 +57,10 @@ class _YourHeightState extends State<YourHeight> {
             setState(() {
               if(isCm) {
                 isCm = false;
+                height = 5.0;
               } else {
                 isCm = true;
+                height = 75.0;
               }
             });
             print("Selected index: $index");
@@ -76,7 +79,7 @@ class _YourHeightState extends State<YourHeight> {
                   controller: _rulerPickerController!,
                   rulerMarginTop: 0,
                   ranges: [
-                    RulerRange(begin: isCm ? 20 : 5, end: isCm ? 300 : 9, scale: 0.5)
+                    RulerRange(begin: isCm ? 20 : 1, end: isCm ? 300 : 10, scale: isCm ? 1 : 0.1)
                   ],
                   marker: Padding(
                     padding: EdgeInsets.only(left: 100.h),

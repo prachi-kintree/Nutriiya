@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nutriya/RouteManager/app_routes.dart';
 import 'package:nutriya/RouteManager/navigator_service.dart';
 import 'package:nutriya/extension/extension_sized_box.dart';
 import 'package:nutriya/viewmodel/login/user_basic_details_view_model.dart';
@@ -52,8 +53,8 @@ class _BmiReportState extends State<BmiReport> {
                       outfitFont: OutfitFontStyle.medium),
                   width: 500.w,
                   onPressed: (startLoading, stopLoading, btnState) {
-                    controller.changeCurrentPage();
-                    appNavigator.goBack();
+                    // controller.changeOnboardCurrentPage();
+                    appNavigator.pushNamed(routeUserPrefs);
                   },
                   isDisabled: false,
                   disableElevation: false);

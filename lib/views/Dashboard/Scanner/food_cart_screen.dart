@@ -283,7 +283,7 @@ class NutrientsWidget extends StatelessWidget {
                   .add(context.read<MealSearchScreenViewmodel>().currentFood!);
               print(
                   "length of meal ${context.read<MealSearchScreenViewmodel>().breakfastList.length}");
-              appNavigator.pushNamedAndRemoveUntil(routeUserDetails);
+              appNavigator.pushNamedAndRemoveUntil(routeDashboard);
             },
             isDisabled: false,
             disableElevation: false),
