@@ -7,46 +7,38 @@ import 'package:google_mlkit_image_labeling/google_mlkit_image_labeling.dart';
 import 'package:nutriya/utils/styles/app_decoration.dart';
 
 class CameraViewModel with ChangeNotifier {
-  late final AnimationController flashModeControlRowAnimationController;
-  late final CurvedAnimation flashModeControlRowAnimation;
-  late List<CameraDescription> cameras;
   bool isDetecting = false;
   bool foodDetected = false;
   XFile? imageFile;
+  CameraController? cameraController;
 
-  void onFlashModeButtonPressed() {
-    if (flashModeControlRowAnimationController.value == 1) {
-      flashModeControlRowAnimationController.reverse();
-    } else {
-      flashModeControlRowAnimationController.forward();
-      // _exposureModeControlRowAnimationController.reverse();
-      // _focusModeControlRowAnimationController.reverse();
-    }
+  updateListner() {
+    notifyListeners();
   }
 
-  Future<XFile?> takePicture(CameraController cameraController) async {
-    // final CameraController? cameraController = _cameraController;
-    if (cameraController == null || !cameraController.value.isInitialized) {
-      // showInSnackBar('Error: select a camera first.');
-      AppDecoration.showToast(message: "Error: select a camera first.");
-      return null;
-    }
+  // void onSetFlashModeButtonPressed(FlashMode mode) {
+  //   setFlashMode(mode).then((_) {
+  //     if (mounted) {
+  //       setState(() {});
+  //     }
+  //   });
+  // }
 
-    if (cameraController.value.isTakingPicture) {
-      // A capture is already pending, do nothing.
-      return null;
+  Future<void> setFlashMode(FlashMode mode) async {
+    if (cameraController == null) {
+      return;
     }
 
     try {
-      final XFile file = await cameraController.takePicture();
-      return file;
+      await cameraController?.setFlashMode(mode);
     } on CameraException catch (e) {
-      _showCameraException(e);
-      return null;
+      showCameraException(e);
+      rethrow;
     }
+    notifyListeners();
   }
 
-  void _showCameraException(CameraException e) {
+  void showCameraException(CameraException e) {
     _logError(e.code, e.description);
     AppDecoration.showToast(message: 'Error: ${e.code}\n${e.description}');
   }
@@ -56,70 +48,50 @@ class CameraViewModel with ChangeNotifier {
     print('Error: $code${message == null ? '' : '\nError Message: $message'}');
   }
 
-  Future<void> setFlashMode(FlashMode mode, CameraController controller) async {
-    if (controller == null) {
-      return;
+  Future<void> initCamera(Timer? detectionTimer) async {
+    final cameras = await availableCameras();
+
+    // Get all back-facing cameras
+    final backCameras = cameras
+        .where(
+          (camera) => camera.lensDirection == CameraLensDirection.back,
+        )
+        .toList();
+
+    // Print camera info for debugging
+    for (var cam in backCameras) {
+      print(
+          'Camera: ${cam.name}, lensDirection: ${cam.lensDirection}, orientation: ${cam.sensorOrientation}');
     }
 
-    try {
-      await controller!.setFlashMode(mode);
-    } on CameraException catch (e) {
-      _showCameraException(e);
-      rethrow;
-    }
-  }
+    // Pick the first one with highest resolution or default to first
+    // Assuming the main camera is the first back-facing one
+    final CameraDescription mainBackCamera = backCameras[0];
 
-  void onSetFlashModeButtonPressed(
-      FlashMode mode, CameraController controller) {
-    setFlashMode(mode, controller).then((_) {
-      // if (mounted) {
-      //   setState(() {});
-      // }
-      notifyListeners();
-    });
-  }
-
-  void onTakePictureButtonPressed(CameraController controller) {
-    takePicture(controller).then((XFile? file) {
-      imageFile = file;
-      if (file != null) {
-        AppDecoration.showToast(message: 'Picture saved to ${file.path}');
-      }
-      notifyListeners();
-      // if (mounted) {
-      //   setState(() {
-      //     imageFile = file;
-      //   });
-      //   if (file != null) {
-      //     AppDecoration.showToast(message: 'Picture saved to ${file.path}');
-      //   }
-      // }
-    });
-  }
-
-  Future<void> initCamera(
-      Timer detectionTimer, CameraController cameraController) async {
-    cameras = await availableCameras();
-    final backCamera = cameras.firstWhere(
-        (camera) => camera.lensDirection == CameraLensDirection.back);
     cameraController = CameraController(
-      backCamera,
-      ResolutionPreset.medium,
+      mainBackCamera,
+      ResolutionPreset.high,
+      enableAudio: false,
     );
-    await cameraController.initialize();
-    // if (mounted) setState(() {});
-    _startFoodDetection(detectionTimer, cameraController);
+
+    await cameraController?.initialize();
     notifyListeners();
+    _startFoodDetection(detectionTimer);
+    notifyListeners();
+    // your detection logic
   }
 
   void _startFoodDetection(
-      Timer detectionTimer, CameraController cameraController) {
+    Timer? detectionTimer,
+  ) {
     detectionTimer = Timer.periodic(Duration(seconds: 2), (_) async {
       if (isDetecting || !cameraController!.value.isInitialized) return;
 
       isDetecting = true;
+      // this start capturing on init
       try {
-        final image = await cameraController.takePicture();
+        // await cameraController!.setFlashMode(FlashMode.off);
+        final image = await cameraController!.takePicture();
         final labeler = ImageLabeler(options: ImageLabelerOptions());
 
         final inputImage = InputImage.fromFilePath(image.path);
@@ -130,18 +102,19 @@ class CameraViewModel with ChangeNotifier {
             ["pizza", "burger", "fruit", "vegetable", "salad"]
                 .contains(label.label.toLowerCase()));
 
-        foodDetected = hasFood;
-
         // setState(() {
         //   _foodDetected = hasFood;
         // });
-
+        foodDetected = hasFood;
+        notifyListeners();
         await labeler.close();
         File(image.path).delete();
+        notifyListeners();
       } catch (e) {
         print("Detection error: $e");
       } finally {
         isDetecting = false;
+        notifyListeners();
       }
     });
   }
