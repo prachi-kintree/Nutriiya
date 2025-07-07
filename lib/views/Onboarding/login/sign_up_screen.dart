@@ -8,9 +8,11 @@ import 'package:nutriya/extension/extension_sized_box.dart';
 import 'package:nutriya/utils/CustomWidgets/Textfields/mobile_textfield.dart';
 import 'package:nutriya/utils/styles/app_text_styles.dart';
 import 'package:nutriya/utils/utils.dart';
+import 'package:provider/provider.dart';
 import 'package:theme_manager_plus/theme_manager_plus.dart';
 
 import '../../../Injector/app_injector.dart';
+import '../../../viewmodel/login/login_view_model.dart';
 import '../../widget/gradient_scaffold.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -63,15 +65,20 @@ class SignUpScreen extends StatelessWidget {
                                     .subtitleGrey),
                             outfitFont: OutfitFontStyle.regular)),
                     20.sBH,
-                    MobileTextField(
-                      floatingLabelText: "Enter Your Mobile Number",
-                      countryFlag: pngIndianFlag,
-                      onValueChanged: (String) {},
-                      isPaddingThere: false,
-                      onCountryCodePressed: (String) {},
-                      textValidator:
-                          getIt<FieldValidator>().validateMobileNumber,
-                      countryPrefix: '+91',
+                    Consumer<LoginViewModel>(
+                      builder: (context, controller, child) {
+                        return MobileTextField(
+                          floatingLabelText: "Enter Your Mobile Number",
+                          textController: controller.mobileController,
+                          countryFlag: pngIndianFlag,
+                          onValueChanged: (String) {},
+                          isPaddingThere: false,
+                          onCountryCodePressed: (String) {},
+                          textValidator:
+                              getIt<FieldValidator>().validateMobileNumber,
+                          countryPrefix: '+91',
+                        );
+                      }
                     ),
                     CustomButton(
                         buttonText: "Continue",

@@ -89,11 +89,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                   fontSize: 14.sp, color: Color(0xff09020F)),
                               outfitFont: OutfitFontStyle.regular)),
                       10.sBW,
-
-                      // SvgPicture.asset(
-                      //   svgCalenderIcon,
-                      //   height: 14.h,
-                      // ),
+                      SvgPicture.asset(
+                        svgCalenderIcon,
+                        height: 22.h,
+                      ),
                     ],
                   ),
                 ),
@@ -123,10 +122,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Stack(
                                 fit: StackFit.loose,
                                 children: [
-                                  Positioned(
-                                    top: -100,
-                                    left: 20,
-                                    right: 20,
+                                  Positioned.fill(
+                                    // top: -90.h,
+                                    // left: 20.w,
+                                    // right: 20.w,
                                     child: SfRadialGauge(
                                       axes: <RadialAxis>[
                                         RadialAxis(
@@ -134,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           showTicks: false,
                                           startAngle: 160,
                                           endAngle: 20,
-                                          radiusFactor: 0.7,
+                                          radiusFactor: 1.1,
                                           canScaleToFit: true,
                                           axisLineStyle: AxisLineStyle(
                                             thickness: 0.2.w,
@@ -267,10 +266,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Stack(
                                 fit: StackFit.loose,
                                 children: [
-                                  Positioned(
-                                    top: -100,
-                                    left: 20,
-                                    right: 20,
+                                  Positioned.fill(
+                                    // top: -90.h,
+                                    // left: 20.w,
+                                    // right: 20.w,
                                     child: SfRadialGauge(
                                       axes: <RadialAxis>[
                                         RadialAxis(
@@ -278,7 +277,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           showTicks: false,
                                           startAngle: 160,
                                           endAngle: 20,
-                                          radiusFactor: 0.7,
+                                          radiusFactor: 1.1,
                                           canScaleToFit: true,
                                           axisLineStyle: AxisLineStyle(
                                             thickness: 0.2.w,

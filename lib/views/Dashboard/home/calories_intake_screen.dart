@@ -1,16 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nutriya/utils/theme/theme_model.dart';
 import 'package:nutriya/views/widget/app_bar/common_appbar.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:nutriya/extension/extension_sized_box.dart';
 import 'package:nutriya/utils/app_string/app_image_path.dart';
-import 'package:nutriya/views/User_Progress/widgets/dashed_widget.dart';
-import 'package:nutriya/views/User_Progress/widgets/weight_chart.dart';
+import 'package:nutriya/views/widget/common_gradient_scaffold.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:theme_manager_plus/theme_manager_plus.dart';
@@ -25,128 +23,282 @@ class CaloriesIntakeScreen extends StatefulWidget {
 }
 
 class _CaloriesIntakeScreenState extends State<CaloriesIntakeScreen> {
+  DateTime selectedDate = DateTime.now();
+
+  void showCustomDateRangePicker(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (context) {
+        DateRangePickerController controller = DateRangePickerController();
+        Color? primaryColor =
+            ThemeManagerPlus.of<AppTheme>(context).currentTheme.primaryGreen;
+        return Dialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          insetPadding: const EdgeInsets.symmetric(horizontal: 16),
+          child: SizedBox(
+            width: double.infinity,
+            height: 400.h,
+            child: Column(
+              children: [
+                // Header with title, close and save buttons
+                Container(
+                  height: 40.h,
+                  padding: EdgeInsets.symmetric(horizontal: 18.w),
+                  decoration: BoxDecoration(
+                      color: primaryColor,
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                      ),
+                      border: const Border(
+                          bottom: BorderSide(
+                        color: Colors.black12,
+                        width: 1,
+                      ))),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: () => Navigator.pop(context),
+                        child: const Icon(Icons.close, color: Colors.white),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          final DateTime? selectedDate =
+                              controller.selectedDate;
+                          if (selectedDate != null) {
+                            setState(() {
+                              this.selectedDate = selectedDate;
+                            });
+                          }
+                          Navigator.pop(context);
+                        },
+                        child: Text('SAVE',
+                            style: AppTextStyle.outfitStyle(
+                                withTextStyle: TextStyle(
+                                    fontSize: 14.sp, color: Colors.white),
+                                outfitFont: OutfitFontStyle.semibold)),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                    height: 70.h,
+                    decoration: BoxDecoration(
+                      color: primaryColor,
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 14),
+                    child: Center(
+                      child: Text("SELECTED DATE",
+                          style: AppTextStyle.outfitStyle(
+                              withTextStyle: TextStyle(
+                                  fontSize: 18.sp,
+                                  color: Colors.white,
+                                  letterSpacing: 1.2),
+                              outfitFont: OutfitFontStyle.semibold)),
+                    )),
+
+                // Date picker
+                Expanded(
+                  child: SfDateRangePicker(
+                    controller: controller,
+                    selectionMode: DateRangePickerSelectionMode.single,
+                    onViewChanged: (DateRangePickerViewChangedArgs args) {
+                      // setState(() {
+                      //   _visibleDate = args.visibleDateRange.startDate;
+                      // });
+                    },
+                    selectionColor: primaryColor,
+                    rangeTextStyle: AppTextStyle.outfitStyle(
+                        withTextStyle:
+                            TextStyle(fontSize: 14.sp, color: Colors.black),
+                        outfitFont: OutfitFontStyle.regular),
+                    selectionTextStyle: AppTextStyle.outfitStyle(
+                        withTextStyle: TextStyle(fontSize: 14.sp),
+                        outfitFont: OutfitFontStyle.regular),
+                    rangeSelectionColor: const Color(0xffD9ECCD),
+                    startRangeSelectionColor: primaryColor,
+                    endRangeSelectionColor: primaryColor,
+                    todayHighlightColor: primaryColor,
+
+                    navigationMode: DateRangePickerNavigationMode.scroll,
+                    navigationDirection:
+                        DateRangePickerNavigationDirection.vertical,
+                    allowViewNavigation: true,
+                    showNavigationArrow: true,
+                    monthCellStyle: DateRangePickerMonthCellStyle(
+                      todayTextStyle: AppTextStyle.outfitStyle(
+                          withTextStyle:
+                              TextStyle(fontSize: 14.sp, color: primaryColor),
+                          outfitFont: OutfitFontStyle.semibold),
+                      textStyle: AppTextStyle.outfitStyle(
+                          withTextStyle:
+                              TextStyle(fontSize: 14.sp, color: Colors.black),
+                          outfitFont: OutfitFontStyle.regular),
+                    ),
+                    // View settings
+                    view: DateRangePickerView.month,
+                    monthViewSettings: const DateRangePickerMonthViewSettings(
+                      firstDayOfWeek: 1,
+                      enableSwipeSelection: true,
+                      // showTrailingAndLeadingDates: true,
+                    ),
+                    // Set min and max date limits
+                    minDate: DateTime(2000),
+                    maxDate: DateTime(2100),
+
+                    // Clean look
+                    showActionButtons: false,
+                    headerHeight: 30.h,
+                    headerStyle: DateRangePickerHeaderStyle(
+                        textStyle: AppTextStyle.outfitStyle(
+                            withTextStyle: TextStyle(
+                                fontSize: 17.sp,
+                                color: Colors.black.withOpacity(0.7)),
+                            outfitFont: OutfitFontStyle.semibold),
+                        textAlign: TextAlign.center),
+                  ),
+                ),
+                10.sBH
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CommonAppBar(
         appBarTitle: 'Calorie Details ',
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          alignment: Alignment.center,
-          padding: EdgeInsets.symmetric(horizontal: 15.w),
-          child: Column(
-            children: [
-              15.sBH,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
+        children: [
+          const CommonGradient(),
+          SingleChildScrollView(
+            child: Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.symmetric(horizontal: 15.w),
+              child: Column(
                 children: [
-                  SvgPicture.asset(
-                    svgBackButton,
-                    color: Colors.black,
-                  ),
-                  10.sBW,
-                  RichText(
-                      text: TextSpan(children: [
-                    WidgetSpan(
-                      child: GestureDetector(
-                        onTap: () async {
-                          showCustomDateRangePicker(context);
-                        },
-                        child: Text("27/06/2025",
-                            style: AppTextStyle.outfitStyle(
-                                withTextStyle: TextStyle(
-                                    fontSize: 16.sp, color: Colors.black),
-                                outfitFont: OutfitFontStyle.medium)),
+                  15.sBH,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        svgBackButton,
+                        color: Colors.black,
                       ),
-                    ),
-                  ])),
-                  10.sBW,
-                  SvgPicture.asset(
-                    svgForwardArrowGreen,
-                    color: Colors.black,
+                      10.sBW,
+                      RichText(
+                          text: TextSpan(children: [
+                        WidgetSpan(
+                          child: GestureDetector(
+                            onTap: () async {
+                              showCustomDateRangePicker(context);
+                            },
+                            child: Text(
+                                DateFormat('dd/MM/yyyy').format(selectedDate),
+                                style: AppTextStyle.outfitStyle(
+                                    withTextStyle: TextStyle(
+                                        fontSize: 16.sp, color: Colors.black),
+                                    outfitFont: OutfitFontStyle.medium)),
+                          ),
+                        ),
+                      ])),
+                      10.sBW,
+                      SvgPicture.asset(
+                        svgForwardArrowGreen,
+                        color: Colors.black,
+                      ),
+                    ],
                   ),
+                  20.sBH,
+                  const NutrientChart(
+                    chartColor: Color(0xffA1CE50),
+                    chartName: 'Calorie',
+                    measurement: 'kcal',
+                    intervalGap: 500,
+                    limit: 3000,
+                    listData: [
+                      CalorieIntake(meal: 'Breakfast', calories: 800),
+                      CalorieIntake(
+                          meal: 'Lunch',
+                          calories: 1700,
+                          isSelected: true), // selected
+                      CalorieIntake(meal: 'Snack', calories: 900),
+                      CalorieIntake(meal: 'Dinner', calories: 1200),
+                    ],
+                  ),
+                  10.sBH,
+                  const NutrientChart(
+                    intervalGap: 50,
+                    limit: 400,
+                    chartColor: Color(0xff4A90E2),
+                    chartName: 'Protein',
+                    measurement: 'g',
+                    listData: [
+                      CalorieIntake(meal: 'Breakfast', calories: 140),
+                      CalorieIntake(
+                          meal: 'Lunch',
+                          calories: 350,
+                          isSelected: true), // selected
+                      CalorieIntake(meal: 'Snack', calories: 90),
+                      CalorieIntake(meal: 'Dinner', calories: 220),
+                    ],
+                  ),
+                  10.sBH,
+                  const NutrientChart(
+                    intervalGap: 50,
+                    limit: 400,
+                    chartColor: Color(0xffA1CE50),
+                    chartName: 'Carbs',
+                    measurement: 'g',
+                    listData: [
+                      CalorieIntake(meal: 'Breakfast', calories: 290),
+                      CalorieIntake(
+                          meal: 'Lunch',
+                          calories: 340,
+                          isSelected: true), // selected
+                      CalorieIntake(meal: 'Snack', calories: 190),
+                      CalorieIntake(meal: 'Dinner', calories: 380),
+                    ],
+                  ),
+                  10.sBH,
+                  const NutrientChart(
+                    intervalGap: 50,
+                    limit: 400,
+                    chartColor: Color(0xffF5A623),
+                    chartName: 'Fat',
+                    measurement: 'g',
+                    listData: [
+                      CalorieIntake(meal: 'Breakfast', calories: 370),
+                      CalorieIntake(
+                          meal: 'Lunch',
+                          calories: 270,
+                          isSelected: true), // selected
+                      CalorieIntake(meal: 'Snack', calories: 170),
+                      CalorieIntake(meal: 'Dinner', calories: 220),
+                    ],
+                  ),
+                  30.sBH,
                 ],
               ),
-              20.sBH,
-              const CaloriesChart(
-                chartColor: Color(0xffA1CE50),
-                chartName: 'Calorie',
-                measurement: 'kcal',
-                intervalGap: 500,
-                limit: 3000,
-                listData: [
-                  CalorieIntake(meal: 'Breakfast', calories: 800),
-                  CalorieIntake(
-                      meal: 'Lunch',
-                      calories: 1700,
-                      isSelected: true), // selected
-                  CalorieIntake(meal: 'Snack', calories: 900),
-                  CalorieIntake(meal: 'Dinner', calories: 1200),
-                ],
-              ),
-              10.sBH,
-              const CaloriesChart(
-                intervalGap: 50,
-                limit: 400,
-                chartColor: Color(0xff4A90E2),
-                chartName: 'Protein',
-                measurement: 'g',
-                listData: [
-                  CalorieIntake(meal: 'Breakfast', calories: 140),
-                  CalorieIntake(
-                      meal: 'Lunch',
-                      calories: 350,
-                      isSelected: true), // selected
-                  CalorieIntake(meal: 'Snack', calories: 90),
-                  CalorieIntake(meal: 'Dinner', calories: 220),
-                ],
-              ),
-              10.sBH,
-              const CaloriesChart(
-                intervalGap: 50,
-                limit: 400,
-                chartColor: Color(0xffA1CE50),
-                chartName: 'Carbs',
-                measurement: 'g',
-                listData: [
-                  CalorieIntake(meal: 'Breakfast', calories: 290),
-                  CalorieIntake(
-                      meal: 'Lunch',
-                      calories: 340,
-                      isSelected: true), // selected
-                  CalorieIntake(meal: 'Snack', calories: 190),
-                  CalorieIntake(meal: 'Dinner', calories: 380),
-                ],
-              ),
-              10.sBH,
-              const CaloriesChart(
-                intervalGap: 50,
-                limit: 400,
-                chartColor: Color(0xffF5A623),
-                chartName: 'Fat',
-                measurement: 'g',
-                listData: [
-                  CalorieIntake(meal: 'Breakfast', calories: 370),
-                  CalorieIntake(
-                      meal: 'Lunch',
-                      calories: 270,
-                      isSelected: true), // selected
-                  CalorieIntake(meal: 'Snack', calories: 170),
-                  CalorieIntake(meal: 'Dinner', calories: 220),
-                ],
-              ),
-              30.sBH,
-            ],
-          ),
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
 }
 
-class CaloriesChart extends StatefulWidget {
-  const CaloriesChart({
+class NutrientChart extends StatefulWidget {
+  const NutrientChart({
     super.key,
     required this.chartName,
     required this.measurement,
@@ -163,16 +315,27 @@ class CaloriesChart extends StatefulWidget {
   final double limit;
 
   @override
-  State<CaloriesChart> createState() => CaloriesChartState();
+  State<NutrientChart> createState() => NutrientChartState();
 }
 
-class CaloriesChartState extends State<CaloriesChart> {
-  // final List<CalorieIntake> data = const [
-  //   CalorieIntake(meal: 'Breakfast', calories: 2300),
-  //   CalorieIntake(meal: 'Lunch', calories: 2100, isSelected: true), // selected
-  //   CalorieIntake(meal: 'Snack', calories: 2400),
-  //   CalorieIntake(meal: 'Dinner', calories: 2200),
-  // ];
+class NutrientChartState extends State<NutrientChart> {
+  late TooltipBehavior _tooltipBehavior;
+
+  @override
+  void initState() {
+    super.initState();
+    // TODO: implement initState
+    _tooltipBehavior = TooltipBehavior(
+      enable: true,
+      color: Colors.transparent,
+      canShowMarker: false,
+      tooltipPosition: TooltipPosition.pointer,
+      builder: (dynamic data, dynamic point, dynamic series, int pointIndex,
+          int seriesIndex) {
+        return _buildCustomTooltip(data);
+      },
+    );
+  }
 
   final double calorieGoal = 2500;
   int selectedFormat = 0;
@@ -282,6 +445,7 @@ class CaloriesChartState extends State<CaloriesChart> {
             height: 180.h,
             child: selectedFormat == 1
                 ? SfCartesianChart(
+                    tooltipBehavior: _tooltipBehavior,
                     plotAreaBorderWidth: 0,
                     onMarkerRender: (MarkerRenderArgs args) {
                       final point = widget.listData[args.pointIndex ?? 0];
@@ -410,6 +574,7 @@ class CaloriesChartState extends State<CaloriesChart> {
                     ],
                   )
                 : SfCartesianChart(
+                    tooltipBehavior: _tooltipBehavior,
                     plotAreaBorderWidth: 0,
                     primaryXAxis: const CategoryAxis(
                       isVisible: true,
@@ -496,6 +661,64 @@ class CaloriesChartState extends State<CaloriesChart> {
       ),
     );
   }
+
+  Widget _buildCustomTooltip(dynamic data) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          height: 60.h,
+          width: 60.w,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              border: Border.all(color: widget.chartColor, width: 5)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '${data.calories}',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: widget.chartColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12),
+              ),
+              Text(
+                'mL',
+                style: TextStyle(color: widget.chartColor, fontSize: 10),
+              ),
+            ],
+          ),
+        ),
+        // ClipPath(
+        //   clipper: TriangleClipper(),
+        //   child: Container(
+        //     color: widget.chartColor,
+        //     height: 8,
+        //     width: 12,
+        //   ),
+        // )
+      ],
+    );
+  }
+}
+
+class TriangleClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+    path.moveTo(0, 0);
+    path.lineTo(size.width / 2, size.height);
+    path.lineTo(size.width, 0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
 }
 
 class CalorieIntake {
@@ -508,148 +731,4 @@ class CalorieIntake {
     required this.calories,
     this.isSelected = false,
   });
-}
-
-void showCustomDateRangePicker(BuildContext context) {
-  showDialog(
-    context: context,
-    barrierDismissible: true,
-    builder: (context) {
-      DateRangePickerController controller = DateRangePickerController();
-      Color? primaryColor =
-          ThemeManagerPlus.of<AppTheme>(context).currentTheme.primaryGreen;
-      return Dialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        insetPadding: const EdgeInsets.symmetric(horizontal: 16),
-        child: SizedBox(
-          width: double.infinity,
-          height: 400.h,
-          child: Column(
-            children: [
-              // Header with title, close and save buttons
-              Container(
-                height: 40.h,
-                padding: EdgeInsets.symmetric(horizontal: 18.w),
-                decoration: BoxDecoration(
-                    color: primaryColor,
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    ),
-                    border: const Border(
-                        bottom: BorderSide(
-                      color: Colors.black12,
-                      width: 1,
-                    ))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: () => Navigator.pop(context),
-                      child: const Icon(Icons.close, color: Colors.white),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        final PickerDateRange? selectedRange =
-                            controller.selectedRange;
-                        if (selectedRange != null) {
-                          print('Start: ${selectedRange.startDate}');
-                          print('End: ${selectedRange.endDate}');
-                        }
-                        Navigator.pop(context);
-                      },
-                      child: Text('SAVE',
-                          style: AppTextStyle.outfitStyle(
-                              withTextStyle: TextStyle(
-                                  fontSize: 14.sp, color: Colors.white),
-                              outfitFont: OutfitFontStyle.semibold)),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                  height: 70.h,
-                  decoration: BoxDecoration(
-                    color: primaryColor,
-                  ),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                  child: Center(
-                    child: Text("SELECTED DATE",
-                        style: AppTextStyle.outfitStyle(
-                            withTextStyle: TextStyle(
-                                fontSize: 18.sp,
-                                color: Colors.white,
-                                letterSpacing: 1.2),
-                            outfitFont: OutfitFontStyle.semibold)),
-                  )),
-
-              // Date picker
-              Expanded(
-                child: SfDateRangePicker(
-                  controller: controller,
-                  selectionMode: DateRangePickerSelectionMode.single,
-                  onViewChanged: (DateRangePickerViewChangedArgs args) {
-                    // setState(() {
-                    //   _visibleDate = args.visibleDateRange.startDate;
-                    // });
-                  },
-                  selectionColor: primaryColor,
-                  rangeTextStyle: AppTextStyle.outfitStyle(
-                      withTextStyle:
-                          TextStyle(fontSize: 14.sp, color: Colors.black),
-                      outfitFont: OutfitFontStyle.regular),
-                  selectionTextStyle: AppTextStyle.outfitStyle(
-                      withTextStyle: TextStyle(fontSize: 14.sp),
-                      outfitFont: OutfitFontStyle.regular),
-                  rangeSelectionColor: const Color(0xffD9ECCD),
-                  startRangeSelectionColor: primaryColor,
-                  endRangeSelectionColor: primaryColor,
-                  todayHighlightColor: primaryColor,
-
-                  navigationMode: DateRangePickerNavigationMode.scroll,
-                  navigationDirection:
-                      DateRangePickerNavigationDirection.vertical,
-                  allowViewNavigation: true,
-                  showNavigationArrow: true,
-                  monthCellStyle: DateRangePickerMonthCellStyle(
-                    todayTextStyle: AppTextStyle.outfitStyle(
-                        withTextStyle:
-                            TextStyle(fontSize: 14.sp, color: primaryColor),
-                        outfitFont: OutfitFontStyle.semibold),
-                    textStyle: AppTextStyle.outfitStyle(
-                        withTextStyle:
-                            TextStyle(fontSize: 14.sp, color: Colors.black),
-                        outfitFont: OutfitFontStyle.regular),
-                  ),
-                  // View settings
-                  view: DateRangePickerView.month,
-                  monthViewSettings: const DateRangePickerMonthViewSettings(
-                    firstDayOfWeek: 1,
-                    enableSwipeSelection: true,
-                    // showTrailingAndLeadingDates: true,
-                  ),
-                  // Set min and max date limits
-                  minDate: DateTime(2000),
-                  maxDate: DateTime(2100),
-
-                  // Clean look
-                  showActionButtons: false,
-                  headerHeight: 30.h,
-                  headerStyle: DateRangePickerHeaderStyle(
-                      textStyle: AppTextStyle.outfitStyle(
-                          withTextStyle: TextStyle(
-                              fontSize: 17.sp,
-                              color: Colors.black.withOpacity(0.7)),
-                          outfitFont: OutfitFontStyle.semibold),
-                      textAlign: TextAlign.center),
-                ),
-              ),
-              10.sBH
-            ],
-          ),
-        ),
-      );
-    },
-  );
 }

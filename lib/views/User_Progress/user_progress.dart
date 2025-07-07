@@ -1,3 +1,5 @@
+import 'package:date_util_plus/date_util_plus.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nutriya/extension/extension_sized_box.dart';
@@ -13,8 +15,17 @@ import 'package:theme_manager_plus/theme_manager_plus.dart';
 import '../../utils/styles/app_text_styles.dart';
 import '../../utils/theme/theme_model.dart';
 
-class UserProgressScreen extends StatelessWidget {
+class UserProgressScreen extends StatefulWidget {
   const UserProgressScreen({Key? key}) : super(key: key);
+
+  @override
+  State<UserProgressScreen> createState() => _UserProgressScreenState();
+}
+
+class _UserProgressScreenState extends State<UserProgressScreen> {
+  DateTime? startDate = DateTime.now();
+  DateTime? endDate = DateTime.now().subtractDays(days: 7);
+  int currentTab = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +43,16 @@ class UserProgressScreen extends StatelessWidget {
                   _title(),
                   CustomIconTabBar(
                     items: const [
+                      // CustomTabItem(label: 'Daily'),
                       CustomTabItem(label: 'Weekly'),
                       CustomTabItem(label: 'Monthly'),
                       CustomTabItem(label: 'Yearly'),
                     ],
-                    onChanged: (e) {},
+                    onChanged: (e) {
+                      setState(() {
+                        currentTab = e;
+                      });
+                    },
                   ),
                   RichText(
                       text: TextSpan(children: [
@@ -54,7 +70,8 @@ class UserProgressScreen extends StatelessWidget {
                         onTap: () async {
                           showCustomDateRangePicker(context);
                         },
-                        child: Text("May 17-May 23, 2025",
+                        child: Text(
+                            "${DateFormat.MMMM().format(startDate ?? DateTime.now())} ${startDate?.day}-${DateFormat.MMMM().format(endDate ?? DateTime.now())} ${endDate?.day}, ${startDate?.year}",
                             style: AppTextStyle.outfitStyle(
                                 withTextStyle: TextStyle(
                                     fontSize: 16.sp, color: Colors.black),
@@ -71,11 +88,11 @@ class UserProgressScreen extends StatelessWidget {
                       ),
                     )),
                   ])),
-                  const CalorieChart(),
-                  NutritionChart(),
-                  const WaterChart(),
-                  const StepsChart(),
-                  const WeightChart()
+                  CalorieChart(currentTab: currentTab),
+                  NutritionChart(currentTab: currentTab),
+                   WaterChart(currentTab: currentTab),
+                   StepsChart(currentTab: currentTab),
+                   WeightChart(currentTab: currentTab)
                 ],
               ),
             ),
@@ -98,6 +115,7 @@ class UserProgressScreen extends StatelessWidget {
       barrierDismissible: true,
       builder: (context) {
         DateRangePickerController controller = DateRangePickerController();
+
         Color? primaryColor =
             ThemeManagerPlus.of<AppTheme>(context).currentTheme.primaryGreen;
         return Dialog(
@@ -138,6 +156,11 @@ class UserProgressScreen extends StatelessWidget {
                           if (selectedRange != null) {
                             print('Start: ${selectedRange.startDate}');
                             print('End: ${selectedRange.endDate}');
+                            setState(() {
+                              startDate = selectedRange.startDate;
+                              endDate = selectedRange.endDate;
+                            });
+
                           }
                           Navigator.pop(context);
                         },

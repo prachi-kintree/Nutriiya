@@ -330,7 +330,7 @@ class _IntroScreenState extends State<IntroScreen>
             _currentPage(introScreenModelList[_step - 1]),
             const Spacer(),
             CustomPaint(
-              size: Size(screenWidth, 100),
+              size: Size(screenWidth, 50.h),
               painter: CurvedProgressBarPainter(progress: linearProgress),
             ),
             // 15.sBH,
@@ -340,7 +340,7 @@ class _IntroScreenState extends State<IntroScreen>
                   if (_step < maxSteps) {
                     _step++;
                   } else {
-                    appNavigator.pushNamed(routeDashboard);
+                    appNavigator.pushNamed(routeLogin);
                     // _step = maxSteps;
                   }
                 });

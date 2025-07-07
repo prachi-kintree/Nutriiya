@@ -4,8 +4,18 @@ import 'package:nutriya/extension/extension_sized_box.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../../utils/styles/app_text_styles.dart';
+import '../../Dashboard/home/calories_intake_screen.dart';
 
-class NutritionChart extends StatelessWidget {
+class NutritionChart extends StatefulWidget {
+  final int currentTab;
+
+  NutritionChart({super.key, required this.currentTab});
+
+  @override
+  State<NutritionChart> createState() => _NutritionChartState();
+}
+
+class _NutritionChartState extends State<NutritionChart> {
   final List<_NutritionData> chartData = [
     _NutritionData('16', 55, 20, 25, false),
     _NutritionData('17', 30, 30, 40, true),
@@ -16,8 +26,21 @@ class NutritionChart extends StatelessWidget {
     _NutritionData('22', 45, 35, 20, false),
   ];
 
-  NutritionChart({super.key});
+  late TooltipBehavior _tooltipBehavior;
 
+  @override
+  void initState() {
+    super.initState();
+    _tooltipBehavior = TooltipBehavior(
+      enable: true,
+      color: Colors.transparent,
+      canShowMarker: false,
+      tooltipPosition: TooltipPosition.pointer,
+      builder: (dynamic data, dynamic point, dynamic series, int pointIndex, int seriesIndex) {
+        return _buildCustomTooltip(data,point,series,pointIndex,seriesIndex);
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -90,7 +113,7 @@ class NutritionChart extends StatelessWidget {
             child: SfCartesianChart(
               plotAreaBorderWidth: 0,
               // legend: const Legend(isVisible: true),
-              tooltipBehavior: TooltipBehavior(enable: true),
+              tooltipBehavior: _tooltipBehavior,
               primaryXAxis: const CategoryAxis(
                 majorTickLines: MajorTickLines(width: 0),
                 majorGridLines: MajorGridLines(width: 0),
@@ -149,6 +172,69 @@ class NutritionChart extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildCustomTooltip(dynamic data,dynamic point,dynamic series,dynamic pointIndex,dynamic seriesIndex) {
+
+    print(point);
+    print(series);
+    print(pointIndex);
+    print(seriesIndex);
+    Map<String, dynamic>? currentSelected;
+    Color? currentColor;
+
+    switch(seriesIndex) {
+      case(0):
+        currentSelected = {"data": data.carbs, "unit": "carbs"};
+        currentColor = const Color(0xffF54336);
+      case(1):
+        currentSelected = {"data": data.protein, "unit": "protein"};
+        currentColor = const Color(0xffFF981F);
+
+      case(2):
+        currentSelected = {"data": data.fat, "unit": "fat"};
+        currentColor = const Color(0xff1A94ED);
+
+    }
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          height: 60.h,
+          width: 60.w,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              border: Border.all(color: currentColor!, width: 5)
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '${currentSelected?["data"]}',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: currentColor, fontWeight: FontWeight.bold, fontSize: 12),
+              ),
+              Text(
+                '${currentSelected?["unit"]}',
+                style: TextStyle(color: currentColor, fontSize: 10),
+              ),
+            ],
+          ),
+        ),
+        // ClipPath(
+        //   clipper: TriangleClipper(),
+        //   child: Container(
+        //     color: const Color(0xff1A96F0),
+        //     height: 8,
+        //     width: 12,
+        //   ),
+        // )
+      ],
     );
   }
 }

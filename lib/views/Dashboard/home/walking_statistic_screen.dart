@@ -182,7 +182,7 @@ class _WalkingStatisticScreenState extends State<WalkingStatisticScreen> {
                               fontSize: 14.sp, color: const Color(0xff484C52)),
                           outfitFont: OutfitFontStyle.regular)),
                   10.sBW,
-                  SvgPicture.asset(svgDatePicker)
+                  SvgPicture.asset(svgCalenderIcon)
                 ],
               ),
               Container(
@@ -290,7 +290,7 @@ class _WalkingStatisticScreenState extends State<WalkingStatisticScreen> {
                         children: [
                           Row(
                             children: [
-                              SvgPicture.asset(svgSteps),
+                              // SvgPicture.asset(svgLightActive),
                               10.sBW,
                               Text("Steps",
                                   style: AppTextStyle.outfitStyle(

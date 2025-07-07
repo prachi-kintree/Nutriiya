@@ -8,30 +8,63 @@ import 'package:nutriya/views/User_Progress/widgets/weight_chart.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../../utils/styles/app_text_styles.dart';
+import '../../Dashboard/home/calories_intake_screen.dart';
 
 class CalorieChart extends StatefulWidget {
-  const CalorieChart({super.key});
+  final int currentTab;
+  const CalorieChart({super.key, required this.currentTab});
 
   @override
   State<CalorieChart> createState() => _CalorieChartState();
 }
 
 class _CalorieChartState extends State<CalorieChart> {
-  final List<CalorieData> data = const [
+  final List<CalorieData> weekData = const [
     CalorieData(day: '16', calories: 2300),
-    CalorieData(day: '17', calories: 2100, isSelected: true), // selected
+    CalorieData(day: '17', calories: 2100, isSelected: true),
     CalorieData(day: '18', calories: 2400),
     CalorieData(day: '19', calories: 2200),
     CalorieData(day: '20', calories: 2600),
     CalorieData(day: '21', calories: 2500),
     CalorieData(day: '22', calories: 2300),
   ];
+  final List<CalorieData> monthData = const [
+    CalorieData(day: 'Week 1', calories: 2300),
+    CalorieData(day: 'Week 2', calories: 2600,isSelected: true),
+    CalorieData(day: 'Week 3', calories: 2300),
+    CalorieData(day: 'Week 4', calories: 1800),
+  ];
+  final List<CalorieData> yearData = const [
+    CalorieData(day: 'Qtr 1', calories: 2100),
+    CalorieData(day: 'Qtr 2', calories: 1500,isSelected: true),
+    CalorieData(day: 'Qtr 3', calories: 2000),
+    CalorieData(day: 'Qtr 4', calories: 2600),
+  ];
 
   final double calorieGoal = 2500;
   int selectedFormat = 0;
+  late TooltipBehavior _tooltipBehavior;
+  late List<CalorieData> data;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _tooltipBehavior = TooltipBehavior(
+      enable: true,
+      color: Colors.transparent,
+      canShowMarker: false,
+      tooltipPosition: TooltipPosition.pointer,
+      builder: (dynamic data, dynamic point, dynamic series, int pointIndex, int seriesIndex) {
+        return _buildCustomTooltip(data);
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    print("curr ${widget.currentTab}");
+    data = widget.currentTab == 0 ? weekData : widget.currentTab == 1 ? monthData : yearData;
     return Container(
       padding: EdgeInsets.all(10.h),
       decoration: BoxDecoration(
@@ -132,7 +165,7 @@ class _CalorieChartState extends State<CalorieChart> {
             height: 180.h,
             child: selectedFormat == 1
                 ? SfCartesianChart(
-              tooltipBehavior: TooltipBehavior(enable: true),
+              tooltipBehavior: _tooltipBehavior,
               plotAreaBorderWidth: 0,
               onMarkerRender: (MarkerRenderArgs args) {
                 final point = data[args.pointIndex ?? 0];
@@ -254,7 +287,7 @@ class _CalorieChartState extends State<CalorieChart> {
               ],
             )
                 : SfCartesianChart(
-              tooltipBehavior: TooltipBehavior(enable: true),
+              tooltipBehavior: _tooltipBehavior,
               plotAreaBorderWidth: 0,
               primaryXAxis: const CategoryAxis(
                 isVisible: true,
@@ -356,5 +389,47 @@ class _CalorieChartState extends State<CalorieChart> {
       ),
     );
   }
+
+  Widget _buildCustomTooltip(dynamic data) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          height: 60.h,
+          width: 60.w,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              border: Border.all(color: const Color(0xffA1CE50), width: 5)
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                '${data.calories}',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: const Color(0xffA1CE50), fontWeight: FontWeight.bold, fontSize: 12),
+              ),
+              Text(
+                'kCal',
+                style: TextStyle(color: const Color(0xffA1CE50), fontSize: 10),
+              ),
+            ],
+          ),
+        ),
+        // ClipPath(
+        //   clipper: TriangleClipper(),
+        //   child: Container(
+        //     color: const Color(0xffA1CE50),
+        //     height: 8,
+        //     width: 12,
+        //   ),
+        // )
+      ],
+    );
+  }
+
 }
 

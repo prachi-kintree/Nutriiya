@@ -40,7 +40,7 @@ import '../Injector/app_injector.dart';
 import '../utils/LocalData/local_data_manager.dart';
 import '../utils/animations/page_route_animation.dart';
 import '../utils/styles/app_decoration.dart';
-import '../views/Account/amount_page.dart';
+import '../views/Account/account_page.dart';
 import '../views/Account/languages/languages.dart';
 import '../views/Account/notification/notification_settings.dart';
 import '../views/Account/personal_info/personal_info_form.dart';
@@ -57,6 +57,7 @@ import '../views/Onboarding/login/sign_up_screen.dart';
 import '../views/Onboarding/login/otp/otp_screen.dart';
 import '../views/Onboarding/login/sign_in_screen.dart';
 import '../views/Onboarding/user_detail/user_details_screen.dart';
+import '../views/Onboarding/user_detail/user_preferences/user_preferences_screen.dart';
 import '../views/Onboarding/user_detail/widgets/bmi_report.dart';
 import '../views/splash/splash_screen.dart';
 import '../views/widgets/food_details/common_food_details.dart'
@@ -118,6 +119,8 @@ class AppRouteManager {
         return FadeInRoute(page: const SelectLanguage(), settings: settings);
       case routeUserDetails:
         return FadeInRoute(page: UserDetailsScreen(), settings: settings);
+      case routeUserPrefs:
+        return FadeInRoute(page: UserPreferencesScreen(), settings: settings);
       case routeBmiReport:
         return FadeInRoute(page: const BmiReport(), settings: settings);
       case routePersonalizeCaloriesIndicator:

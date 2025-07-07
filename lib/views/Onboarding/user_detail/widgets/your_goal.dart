@@ -28,8 +28,8 @@ class _YourGoalState extends State<YourGoal> {
     SelectableFieldItem(
         icon: svgManageDiabetes, type: "Manage Diabetes", isSelected: false),
     SelectableFieldItem(
-        icon: svgTrophy,
-        type: "Maintain a healthy lifestyle",
+        icon: svgStayHealthy,
+        type: "Stay healthy & balanced",
         isSelected: false)
   ];
 

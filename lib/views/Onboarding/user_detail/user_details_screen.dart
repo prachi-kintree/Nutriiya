@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:nutriya/utils/app_string/app_image_path.dart';
+import 'package:nutriya/views/Onboarding/user_detail/widgets/activity_level.dart';
 import 'package:nutriya/views/Onboarding/user_detail/widgets/dietary_prefernces.dart';
 import 'package:nutriya/views/Onboarding/user_detail/widgets/grocery_behavior.dart';
 import 'package:nutriya/views/Onboarding/user_detail/widgets/personalization_calories_calculation_screen.dart';
@@ -27,6 +28,7 @@ import '../../widget/gradient_scaffold.dart';
 
 class UserDetailsScreen extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   UserDetailsScreen({super.key});
 
   @override
@@ -51,14 +53,12 @@ class UserDetailsScreen extends StatelessWidget {
               width: 500.w,
               onPressed: (startLoading, stopLoading, btnState) {
                 if (formKey.currentState?.validate() ?? false) {
-                  if (controller.currentPage == 1) {
+                  if (controller.onboardingCurrentPage == 3) {
                     appNavigator.pushNamed(routeBmiReport);
                   } else {
-                    controller.changeCurrentPage();
+                    controller.changeOnboardCurrentPage();
                   }
-
-            }
-
+                }
 
                 // widget.controller.changeCurrentPage();
               },
@@ -72,6 +72,7 @@ class UserDetailsScreen extends StatelessWidget {
 
 class CommonBase extends StatefulWidget {
   final GlobalKey<FormState> formKey;
+
   const CommonBase({super.key, required this.formKey});
 
   @override
@@ -79,7 +80,6 @@ class CommonBase extends StatefulWidget {
 }
 
 class _CommonBaseState extends State<CommonBase> {
-
   @override
   Widget build(BuildContext context) {
     return Consumer<UserBasicDetailsViewModel>(
@@ -91,10 +91,10 @@ class _CommonBaseState extends State<CommonBase> {
           Padding(
             padding: EdgeInsets.symmetric(vertical: 35.h, horizontal: 80.w),
             child: LinearProgressBar(
-              maxSteps: 6,
+              maxSteps: 3,
               progressType: LinearProgressBar.progressTypeLinear,
               minHeight: 3.h,
-              currentStep: controller.currentPage,
+              currentStep: controller.onboardingCurrentPage,
               progressColor: ThemeManagerPlus.of<AppTheme>(context)
                   .currentTheme
                   .secondaryOrange,
@@ -116,8 +116,8 @@ class _CommonBaseState extends State<CommonBase> {
                   topLeft: Radius.circular(50),
                 ),
               ),
-              child: Form(
-                  key: widget.formKey, child: _getCurrentBody(controller)),
+              child:
+                  Form(key: widget.formKey, child: _getCurrentBody(controller)),
             ),
           )
         ],
@@ -126,23 +126,13 @@ class _CommonBaseState extends State<CommonBase> {
   }
 
   Widget _getCurrentBody(controller) {
-    switch (controller.currentPage) {
+    switch (controller.onboardingCurrentPage) {
       case 1:
         return UserBasicDetailForm(controller: controller);
-        case 2:
+      case 2:
         return YourHeight(controller: controller);
-        case 3:
+      case 3:
         return YourWeight(controller: controller);
-      case 4:
-        return DietaryPreferences(controller: controller);
-      case 5:
-        return YourGoal(controller: controller);
-      case 6:
-        return YourTargetWeight(controller: controller);
-      case 7:
-        return RegionalFoodPreferences(controller: controller);
-      case 8:
-        return GroceryBehaviour(controller: controller);
 
       // return NudgeBottomSheet(
       //   bottomSheetType: BottomSheetType.statustracker,

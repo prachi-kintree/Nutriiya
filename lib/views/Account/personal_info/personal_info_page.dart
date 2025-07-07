@@ -26,8 +26,11 @@ class PersonalInformationPage extends StatelessWidget {
           children: [
             30.sBH,
             // Profile Image
-            const CircleAvatar(
+            CircleAvatar(
               radius: 45,
+              backgroundColor: ThemeManagerPlus.of<AppTheme>(context)
+                  .currentTheme
+                  .primaryGreen,
               backgroundImage: NetworkImage(
                   'https://i.pravatar.cc/150?img=3'), // Replace with real image
             ),
