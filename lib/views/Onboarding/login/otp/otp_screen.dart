@@ -26,7 +26,7 @@ class OtpScreen extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            CustomGradientBackground(),
+            const CustomGradientBackground(),
             Consumer<LoginViewModel>(
               builder: (context, controller, child) {
                 return OtpWidget(
@@ -197,7 +197,9 @@ class OtpWidget extends StatelessWidget {
                             withTextStyle: TextStyle(fontSize: 16.sp),
                             outfitFont: OutfitFontStyle.medium),
                         width: 500.w,
-                        onPressed: (startLoading, stopLoading, btnState) {},
+                        onPressed: (startLoading, stopLoading, btnState) {
+                          onTapNext();
+                        },
                         isDisabled: false,
                         disableElevation: false),
                   ],
